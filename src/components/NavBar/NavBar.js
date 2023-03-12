@@ -1,5 +1,5 @@
 import "./NavBar.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import home from "../../assets/images/icons/home-icon.png";
 import search from "../../assets/images/icons/search-icon.png";
 import chat from "../../assets/images/icons/chat-icon.png";
@@ -10,8 +10,9 @@ const NavBar = () => {
       <nav className="navBar">
         <ul className="navBar__links">
           <div className="navBar__sep">
-            <h1 className="site__title">STREAMIFY</h1>
-
+            <Link className="logo-link" to="/">
+              <h1 className="site__title">STREAMIFY</h1>
+            </Link>
             <div>
               <li>
                 <NavLink className="navBar__anchor" href="/">
