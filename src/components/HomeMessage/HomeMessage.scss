@@ -1,4 +1,8 @@
+@use "../../styles/partials/global";
+@use "../../styles/partials/variables";
+@use "../../styles/partials/mixins";
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&family=Lato&display=swap");
 .homeMessage {
   color: white;
   font-family: "Bebas Neue";
@@ -9,7 +13,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
-    padding-top: 6rem;
+    padding: 6rem 0 0 7rem;
   }
 }
