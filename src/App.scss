@@ -1,0 +1,10 @@
+@use "./styles/partials/global";
+@use "./styles/partials/mixins";
+@use "./styles/partials/variables";
+@use "./styles/partials/fonts";
+
+.homepage {
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/images/glass-background-with-frosted-pattern.svg");
+}
