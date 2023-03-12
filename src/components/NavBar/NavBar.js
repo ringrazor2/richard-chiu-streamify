@@ -6,24 +6,26 @@ const NavBar = () => {
       <nav className="navBar">
         <ul className="navBar__links">
           <li className="navBar__link">
-            <a href="#">
+            <NavLink className="navBar__anchor" href="/">
               <img src="../../assets/images/icons/home-icon.png"></img>
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#">
+            <NavLink className="navBar__anchor" href="/">
               <img src="../../assets/images/icons/search-icon.png"></img>Search
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#">
+            <NavLink className="navBar__anchor" href="/">
               <img src="../../assets/images/icons/chat-icon.png"></img>
               Chat
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <NavLink className="navBar__anchor" href="#">
+              Contact
+            </NavLink>
           </li>
         </ul>
       </nav>
