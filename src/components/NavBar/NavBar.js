@@ -5,6 +5,7 @@ const NavBar = () => {
     <>
       <nav className="navBar">
         <ul className="navBar__links">
+          STREAMIFY
           <li className="navBar__link">
             <NavLink className="navBar__anchor" href="/">
               <img src="../../assets/images/icons/home-icon.png"></img>
@@ -24,7 +25,7 @@ const NavBar = () => {
           </li>
           <li>
             <NavLink className="navBar__anchor" href="#">
-              Contact
+              Lists
             </NavLink>
           </li>
         </ul>
