@@ -5,27 +5,25 @@ const NavBar = () => {
     <>
       <nav className="navBar">
         <ul className="navBar__links">
-          <li>
-            <NavLink className="nav__link" href="/">
+          <li className="navBar__link">
+            <a href="#">
               <img src="../../assets/images/icons/home-icon.png"></img>
               Home
-            </NavLink>
+            </a>
           </li>
           <li>
-            <NavLink className="nav__link" ref="/">
+            <a href="#">
               <img src="../../assets/images/icons/search-icon.png"></img>Search
-            </NavLink>
+            </a>
           </li>
           <li>
-            <NavLink className="nav__link" href="/">
+            <a href="#">
               <img src="../../assets/images/icons/chat-icon.png"></img>
               Chat
-            </NavLink>
+            </a>
           </li>
           <li>
-            <NavLink className="nav__link" href="/">
-              Contact
-            </NavLink>
+            <a href="#">Contact</a>
           </li>
         </ul>
       </nav>
