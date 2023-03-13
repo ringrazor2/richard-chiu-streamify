@@ -1,0 +1,102 @@
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&family=Lato&family=Roboto:wght@300;400&display=swap");
+
+.explore-button {
+  background-color: #f0ecfc;
+  background-image: linear-gradient(315deg, #f0ecfc 0%, #cda2ef 74%);
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  width: 200px;
+  position: relative;
+
+  &__text {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      background: #c797eb;
+      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+        -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+        inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    &:before {
+      width: 2px;
+      height: 0%;
+      left: 0;
+      top: 0;
+    }
+
+    &:after {
+      height: 2px;
+      width: 0%;
+      left: 0;
+      top: 0;
+    }
+
+    &:hover:before {
+      height: 100%;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: "";
+    background: #c797eb;
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+      -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+      inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  &:before {
+    height: 0%;
+    width: 2px;
+    right: 0;
+    bottom: 0;
+  }
+
+  &:after {
+    width: 0%;
+    height: 2px;
+    right: 0;
+    bottom: 0;
+  }
+
+  &:hover:before {
+    height: 100%;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+
+  &:hover {
+    background: transparent;
+  }
+}
