@@ -13,7 +13,7 @@ const NavBar = () => {
         <ul className="navBar__links">
           <div className="navBar__sep">
             <Link className="logo-link" to="/">
-              <img className="logo" src={logo}></img>{" "}
+              <img className="logo" src={logo} alt="site logo"></img>
               <h1 className="site__title">STREAMIFY</h1>
             </Link>
             <div>
