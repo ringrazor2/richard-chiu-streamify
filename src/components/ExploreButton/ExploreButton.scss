@@ -12,6 +12,8 @@
   border: none;
   width: 200px;
   position: relative;
+  cursor: pointer;
+  margin-top: 15px;
 
   &__text {
     position: relative;
@@ -58,7 +60,7 @@
     }
 
     &:hover {
-      color: $secondary-color;
+      color: white;
     }
   }
 
