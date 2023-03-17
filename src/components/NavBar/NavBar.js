@@ -18,7 +18,7 @@ const NavBar = () => {
             </Link>
             <div>
               <li>
-                <NavLink className="navBar__anchor" href="/">
+                <NavLink className="navBar__anchor" to="/">
                   <img
                     className="navBar__icons"
                     src={home}
@@ -28,7 +28,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" href="/">
+                <NavLink className="navBar__anchor" to="search">
                   <img
                     className="navBar__icons"
                     src={search}
@@ -38,7 +38,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" href="/">
+                <NavLink className="navBar__anchor" to="/">
                   <img
                     className="navBar__icons"
                     src={chat}
@@ -48,7 +48,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" href="#">
+                <NavLink className="navBar__anchor" to="#">
                   <img
                     className="navBar__icons"
                     src={list}
@@ -59,7 +59,7 @@ const NavBar = () => {
               </li>
             </div>
           </div>
-          <NavLink className="navBar__anchor login">
+          <NavLink className="navBar__anchor login" to ="login">
             <img className="navBar__icons" src={user} alt="login icon"></img>
             Login
           </NavLink>
