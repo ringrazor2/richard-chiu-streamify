@@ -9,7 +9,37 @@
 .search-container {
   margin-top: 3rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   border: none;
   border-radius: 4px;
+}
+
+.show-details {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(37, 35, 35);
+  margin-top: 3rem;
+  width: 85%;
+  height: 450px;
+  padding: 2rem;
+  border-radius: 6px;
+}
+
+.show-poster-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3rem;
+}
+
+.poster-image {
+  margin-bottom: 2rem;
+  height: 300px;
+  width: 200px;
+}
+
+.show-text-container {
+  display: flex;
+  flex-direction: column;
 }
