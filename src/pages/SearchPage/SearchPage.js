@@ -29,7 +29,7 @@ const SearchPage = () => {
               lsdhjksla kjhkjhdsakjh jkhsadjkhd hkj sakldjh sdhajk hds kjhsda
               khsda kjd jkds lkh adsl
             </p>
-            <img src = {}></img>
+            {/* <img src = {}></img> */}
           </div>
         </div>
       </div>
