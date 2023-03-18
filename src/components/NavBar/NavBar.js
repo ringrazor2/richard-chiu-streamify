@@ -28,7 +28,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" to="search">
+                <NavLink className="navBar__anchor" to="/search">
                   <img
                     className="navBar__icons"
                     src={search}
@@ -59,7 +59,7 @@ const NavBar = () => {
               </li>
             </div>
           </div>
-          <NavLink className="navBar__anchor login" to ="login">
+          <NavLink className="navBar__anchor login" to="login">
             <img className="navBar__icons" src={user} alt="login icon"></img>
             Login
           </NavLink>
