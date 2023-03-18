@@ -38,7 +38,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" to="/">
+                <NavLink className="navBar__anchor" to="/chat">
                   <img
                     className="navBar__icons"
                     src={chat}
@@ -54,7 +54,7 @@ const NavBar = () => {
                     src={list}
                     alt="list icon"
                   ></img>
-                  Lists
+                  3 x 3
                 </NavLink>
               </li>
             </div>
