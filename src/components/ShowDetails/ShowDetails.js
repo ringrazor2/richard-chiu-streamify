@@ -2,6 +2,7 @@ import "./ShowDetails.scss";
 import dummyPicture from "../../assets/images/shows//gameofthrones.jpg";
 
 const ShowDetails = ({ show }) => {
+  // {show.genres.join(", ")}
   return (
     <>
       <div className="show-details">
