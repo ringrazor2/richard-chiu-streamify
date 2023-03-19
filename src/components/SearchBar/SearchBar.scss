@@ -39,15 +39,17 @@
   display: flex;
 }
 
-.search-icon-container {
+.search-icon-button {
   min-width: 46px;
   min-height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
   border-radius: 8px;
   margin-right: 12px;
   box-shadow: -2px -2px 4px rgba(#a04ad5, 0.6), 1px 1px 4px #a04ad5;
+  cursor: pointer;
 }
 
 label {

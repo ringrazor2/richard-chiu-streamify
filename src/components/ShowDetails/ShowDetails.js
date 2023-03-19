@@ -17,7 +17,7 @@ const ShowDetails = ({ show }) => {
           </p>
           <p className="show-info">
             <span className="show-subhead">Genres </span>
-            Drama, Action & Adventure, Fantasy {show.genres.join(", ")}
+            Drama, Action & Adventure, Fantasy
           </p>
         </div>
         <div className="show-text-container">
