@@ -7,6 +7,9 @@ import ShowDetails from "../../components/ShowDetails/ShowDetails";
 import dummyPicture from "../../assets/images/shows/gameofthrones.jpg";
 import dummylogo from "../../assets/images/icons/hbo-icon.png";
 
+// need to fix case sensitivity for search  
+// imbdRating coming up as undefined
+// get proper streaming img to load if avail in that country
 const SearchPage = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -15,7 +18,7 @@ const SearchPage = () => {
   const [show, setShow] = useState({
     title: "",
     poster: "",
-    imbdRating: "",
+    imdbRating: "",
     genres: "",
     overview: "",
     region: "",
@@ -42,7 +45,7 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    if (title.toLowerCase()) {
+    if (title) {
       // Use the form data to search for titles
       axios
         .request(options)

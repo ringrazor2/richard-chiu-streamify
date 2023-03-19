@@ -2,9 +2,7 @@ import "./ShowDetails.scss";
 import dummyPicture from "../../assets/images/shows//gameofthrones.jpg";
 
 const ShowDetails = ({ show }) => {
-  // {show.genres.join(", ")}
-  console.log(show.imbdRating);
-  console.log(show.title);
+ 
   return (
     <>
       <div className="show-details">
@@ -15,8 +13,8 @@ const ShowDetails = ({ show }) => {
             alt="show poster"
           ></img>
           <p className="show-info">
-            <span className="show-subhead">Imbd Rating </span>
-           {(show.imbdRating)}/100
+            <span className="show-subhead">Imdb Rating </span>
+           {(show.imdbRating)}/100
           </p>
           <p className="show-info">
             <span className="show-subhead">Type </span>
