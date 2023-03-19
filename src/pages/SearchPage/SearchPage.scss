@@ -36,6 +36,7 @@
   margin-bottom: 2rem;
   height: 300px;
   width: 200px;
+  object-fit: cover;
 }
 
 .show-text-container {
@@ -71,6 +72,7 @@
 
 .stream-info {
   display: flex;
+  justify-content: space-between;
 }
 
 .stream-region {

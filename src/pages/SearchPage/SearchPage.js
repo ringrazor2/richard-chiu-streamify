@@ -15,10 +15,11 @@ const SearchPage = () => {
   const [show, setShow] = useState({
     title: "",
     poster: "",
-    ratings: "",
+    imbdRating: "",
     genres: "",
     overview: "",
     region: "",
+    posterURLs: "",
     streamingUrls: [],
   });
 
@@ -41,22 +42,32 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    if (title) {
+    if (title.toLowerCase()) {
       // Use the form data to search for titles
       axios
         .request(options)
         .then((response) => {
+          const dataArr = response.data.result
+          console.log(dataArr);
           // Retrieve the specific data you need based on the form input matching the title
-          const matchingData = response.data.results.find(
-            (result) => result.title === title
-          );
-          const streamingUrls = matchingData.streamingInfo.map(
-            (info) => info.icon_url
-          );
-          setShow({
-            ...matchingData,
-            streamingUrls: streamingUrls,
-          });
+        
+            const matchingData = dataArr.find((result) => 
+            (result.title).toLowerCase() === (title).toLowerCase())
+            console.log(matchingData);
+            const genre =  (matchingData.genres).map(genre => genre.name).join(', ');
+            setShow({
+              ...matchingData,
+              genre: genre,
+            });
+          
+            console.log(setShow);
+          // const matchingData = response.data.results.find(
+          //   (result) => result.title === title
+          // );
+          // const streamingUrls = matchingData.streamingInfo.map(
+          //   (info) => info.icon_url
+          // );
+         
         })
         .catch(function (error) {
           console.error(error);

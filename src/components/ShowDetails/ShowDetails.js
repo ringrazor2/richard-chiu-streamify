@@ -3,33 +3,41 @@ import dummyPicture from "../../assets/images/shows//gameofthrones.jpg";
 
 const ShowDetails = ({ show }) => {
   // {show.genres.join(", ")}
+  console.log(show.imbdRating);
+  console.log(show.title);
   return (
     <>
       <div className="show-details">
         <div className="show-poster-container">
           <img
             className="poster-image"
-            src={dummyPicture} //{show.poster}
+            src= {show.posterURLs[342]} //{dummyPicture} 
             alt="show poster"
           ></img>
           <p className="show-info">
-            <span className="show-subhead">Rating </span>
-            9.2 imbd {show.ratings.imdb}/10
+            <span className="show-subhead">Imbd Rating </span>
+           {(show.imbdRating)}/100
           </p>
           <p className="show-info">
+            <span className="show-subhead">Type </span>
+            {show.type}
+          </p>
+          <p className="show-info">
+            <span className="show-subhead">Year </span>
+            {show.year || show.firstAirYear}
+          </p>
+          <p className="show-info genres">
             <span className="show-subhead">Genres </span>
-            Drama, Action & Adventure, Fantasy
+            {show.genre}
           </p>
         </div>
         <div className="show-text-container">
-          <h2 className="show-title">Game of Thrones {show.title}</h2>
+          <h2 className="show-title">{show.title}</h2>
           <h3 className="show-synopsis-title">Synopsis </h3>
           <p className="show-synopsis">
-            Nine noble families fight for control over the lands of Westeros,
-            while an ancient enemy returns after being dormant for millennia.
             {show.overview}
           </p>
-          <div className="stream-info">
+          {/* <div className="stream-info">
             {show.streamingUrls.map((url, index) => (
               <img
                 key={index}
@@ -39,7 +47,7 @@ const ShowDetails = ({ show }) => {
               />
             ))}
             <p className="stream-region">Region: USA {show.region}</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
