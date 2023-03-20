@@ -7,7 +7,7 @@ import ShowDetails from "../../components/ShowDetails/ShowDetails";
 import dummyPicture from "../../assets/images/shows/gameofthrones.jpg";
 import dummylogo from "../../assets/images/icons/hbo-icon.png";
 
-// need to fix case sensitivity for search  
+// need to fix case sensitivity for search
 // imbdRating coming up as undefined
 // get proper streaming img to load if avail in that country
 const SearchPage = () => {
@@ -23,7 +23,8 @@ const SearchPage = () => {
     overview: "",
     region: "",
     posterURLs: "",
-    streamingUrls: [],
+    streamingInfo: [],
+    streamingService: "",
   });
 
   const { title } = formData;
@@ -50,27 +51,33 @@ const SearchPage = () => {
       axios
         .request(options)
         .then((response) => {
-          const dataArr = response.data.result
+          const dataArr = response.data.result;
           console.log(dataArr);
           // Retrieve the specific data you need based on the form input matching the title
-        
-            const matchingData = dataArr.find((result) => 
-            (result.title).toLowerCase() === (title).toLowerCase())
-            console.log(matchingData);
-            const genre =  (matchingData.genres).map(genre => genre.name).join(', ');
-            setShow({
-              ...matchingData,
-              genre: genre,
-            });
-          
-            console.log(setShow);
+
+          const matchingData = dataArr.find(
+            (result) => result.title.toLowerCase() === title.toLowerCase()
+          );
+          console.log(matchingData);
+          const genre = matchingData.genres
+            .map((genre) => genre.name)
+            .join(", ");
+
+          const streamingService = Object.keys(matchingData.streamingInfo.us);
+          console.log(streamingService);
+          setShow({
+            ...matchingData,
+            genre: genre,
+            streamingService: streamingService,
+          });
+
+          console.log(setShow);
           // const matchingData = response.data.results.find(
           //   (result) => result.title === title
           // );
           // const streamingUrls = matchingData.streamingInfo.map(
           //   (info) => info.icon_url
           // );
-         
         })
         .catch(function (error) {
           console.error(error);
