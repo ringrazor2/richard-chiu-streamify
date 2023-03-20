@@ -69,7 +69,9 @@ const ShowDetails = ({ show }) => {
                   />
                 );
               })}
-            <p className="stream-region">Region: {show.countries[0] || "US"}</p>
+            <p className="stream-region">
+              Region: {(show.countries && show.countries[0]) || "US"}
+            </p>
           </div>
         </div>
       </div>
