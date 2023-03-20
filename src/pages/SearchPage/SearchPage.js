@@ -60,7 +60,9 @@ const SearchPage = () => {
             .map((genre) => genre.name)
             .join(", ");
 
-          const streamingService = Object.keys(matchingData.streamingInfo.us);
+          const streamingService = matchingData.streamingInfo.us
+            ? Object.keys(matchingData.streamingInfo.us)
+            : null;
           console.log(streamingService);
           setShow({
             ...matchingData,

@@ -6,7 +6,8 @@ import disneyPlus from "../../assets/images/icons/disneyPlus-icon.png";
 import crave from "../../assets/images/icons/crave-icon.png";
 import hbo from "../../assets/images/icons/hbo-icon.png";
 import hulu from "../../assets/images/icons/hulu-icon.png";
-
+import crunchyroll from "../../assets/images/icons/crunchyroll-icon.png";
+import peacock from "../../assets/images/icons/peakcock-icon.png";
 const ShowDetails = ({ show }) => {
   return (
     <>
@@ -31,7 +32,7 @@ const ShowDetails = ({ show }) => {
           </p>
           <p className="show-info genres">
             <span className="show-subhead">Genres </span>
-            {show.genre || "General"}
+            {show.genre && show.genre.length > 0 ? show.genre : "General"}
           </p>
         </div>
         <div className="show-text-container">
@@ -39,31 +40,36 @@ const ShowDetails = ({ show }) => {
           <h3 className="show-synopsis-title">Synopsis </h3>
           <p className="show-synopsis">{show.overview}</p>
           <div className="stream-info">
-            {show.streamingService.map((service, index) => {
-              let iconSrc = "";
-              if (service === "netflix") {
-                iconSrc = netflix;
-              } else if (service === "prime") {
-                iconSrc = prime;
-              } else if (service === "hbo") {
-                iconSrc = hbo;
-              } else if (service === "crave") {
-                iconSrc = crave;
-              } else if (service === "hulu") {
-                iconSrc = hulu;
-              } else if (service === "disney plus") {
-                iconSrc = disneyPlus;
-              }
-              return (
-                <img
-                  key={index}
-                  className="stream-icon"
-                  src={iconSrc || notFound}
-                  alt={`${service} icon`}
-                />
-              );
-            })}
-            <p className="stream-region">Region: USA {show.region}</p>
+            {show.streamingService &&
+              show.streamingService.map((service, index) => {
+                let iconSrc = "";
+                if (service === "netflix") {
+                  iconSrc = netflix;
+                } else if (service === "prime") {
+                  iconSrc = prime;
+                } else if (service === "hbo") {
+                  iconSrc = hbo;
+                } else if (service === "crave") {
+                  iconSrc = crave;
+                } else if (service === "hulu") {
+                  iconSrc = hulu;
+                } else if (service === "disney plus") {
+                  iconSrc = disneyPlus;
+                } else if (service === "crunchyroll") {
+                  iconSrc = crunchyroll;
+                } else if (service === "peacock") {
+                  iconSrc = peacock;
+                }
+                return (
+                  <img
+                    key={index}
+                    className="stream-icon"
+                    src={iconSrc || notFound}
+                    alt={`${service} icon`}
+                  />
+                );
+              })}
+            <p className="stream-region">Region: {show.countries[0] || "US"}</p>
           </div>
         </div>
       </div>
