@@ -1,6 +1,5 @@
 import "./ShowDetails.scss";
-import dummyPicture from "../../assets/images/shows//gameofthrones.jpg";
-
+import notFound from "../../assets/images/icons/notfound-icon.png";
 import netflix from "../../assets/images/icons/netflix-icon.png";
 import prime from "../../assets/images/icons/primevideo-icon.png";
 import disneyPlus from "../../assets/images/icons/disneyPlus-icon.png";
@@ -32,7 +31,7 @@ const ShowDetails = ({ show }) => {
           </p>
           <p className="show-info genres">
             <span className="show-subhead">Genres </span>
-            {show.genre}
+            {show.genre || "General"}
           </p>
         </div>
         <div className="show-text-container">
@@ -59,7 +58,7 @@ const ShowDetails = ({ show }) => {
                 <img
                   key={index}
                   className="stream-icon"
-                  src={iconSrc}
+                  src={iconSrc || notFound}
                   alt={`${service} icon`}
                 />
               );
