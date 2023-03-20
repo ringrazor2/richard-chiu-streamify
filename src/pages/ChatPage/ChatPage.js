@@ -1,5 +1,5 @@
 import "./ChatPage.scss";
-import NavBar from "../../../components/NavBar/NavBar";
+import NavBar from "../../components/NavBar/NavBar";
 const ChatPage = () => {
   return (
     <div className="chat-page">
