@@ -8,6 +8,7 @@ import hbo from "../../assets/images/icons/hbo-icon.png";
 import hulu from "../../assets/images/icons/hulu-icon.png";
 import crunchyroll from "../../assets/images/icons/crunchyroll-icon.png";
 import peacock from "../../assets/images/icons/peakcock-icon.png";
+import apple from "../../assets/images/icons/apple-icon.webp";
 const ShowDetails = ({ show }) => {
   return (
     <>
@@ -53,12 +54,14 @@ const ShowDetails = ({ show }) => {
                   iconSrc = crave;
                 } else if (service === "hulu") {
                   iconSrc = hulu;
-                } else if (service === "disney plus") {
+                } else if (service === "disney") {
                   iconSrc = disneyPlus;
                 } else if (service === "crunchyroll") {
                   iconSrc = crunchyroll;
                 } else if (service === "peacock") {
                   iconSrc = peacock;
+                } else if (service === "apple") {
+                  iconSrc = apple;
                 }
                 return (
                   <img

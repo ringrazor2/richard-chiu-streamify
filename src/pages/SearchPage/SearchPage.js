@@ -5,6 +5,8 @@ import NavBar from "../../components/NavBar/NavBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
 
+REACT_APP_STREAMAPI = process.env.REACT_APP_STREAMAPI;
+console.log(REACT_APP_STREAMAPI);
 // get type of subscription or paid
 // fix the /search from breaking when leaving page
 const SearchPage = () => {
@@ -37,7 +39,7 @@ const SearchPage = () => {
       output_language: "en",
     },
     headers: {
-      "X-RapidAPI-Key": "30a356aae7msh66d33873f28de99p18faa9jsn184f061401da",
+      "X-RapidAPI-Key": REACT_APP_STREAMAPI,
       "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
     },
   };
