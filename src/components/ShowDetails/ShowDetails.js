@@ -9,35 +9,37 @@ import hulu from "../../assets/images/icons/hulu-icon.png";
 
 const ShowDetails = ({ show }) => {
   return (
-    <>
-      <div className="show-details">
-        <div className="show-poster-container">
-          <img
-            className="poster-image"
-            src={show.posterURLs[342]}
-            alt="show poster"
-          ></img>
-          <p className="show-info">
-            <span className="show-subhead">Imdb Rating </span>
-            {show.imdbRating}/100
-          </p>
-          <p className="show-info">
-            <span className="show-subhead">Type </span>
-            {show.type}
-          </p>
-          <p className="show-info">
-            <span className="show-subhead">Year </span>
-            {show.year || show.firstAirYear}
-          </p>
-          <p className="show-info genres">
-            <span className="show-subhead">Genres </span>
-            {show.genre || "General"}
-          </p>
-        </div>
-        <div className="show-text-container">
-          <h2 className="show-title">{show.title}</h2>
-          <h3 className="show-synopsis-title">Synopsis </h3>
-          <p className="show-synopsis">{show.overview}</p>
+    <div className="show-details">
+      <div className="show-poster-container">
+        <img
+          className="poster-image"
+          src={show.posterURLs[342]}
+          alt="show poster"
+        ></img>
+        <p className="show-info">
+          <span className="show-subhead">Imdb Rating </span>
+          {show.imdbRating}/100
+        </p>
+        <p className="show-info">
+          <span className="show-subhead">Type </span>
+          {show.type}
+        </p>
+        <p className="show-info">
+          <span className="show-subhead">Year </span>
+          {show.year || show.firstAirYear}
+        </p>
+        <p className="show-info genres">
+          <span className="show-subhead">Genres </span>
+          {show.genre || "General"}
+        </p>
+      </div>
+
+      <div className="show-text-container">
+        <h2 className="show-title">{show.title}</h2>
+        <h3 className="show-synopsis-title">Synopsis </h3>
+        <p className="show-synopsis">{show.overview}</p>
+
+        {show.streamingService && (
           <div className="stream-info">
             {show.streamingService.map((service, index) => {
               let iconSrc = "";
@@ -65,9 +67,9 @@ const ShowDetails = ({ show }) => {
             })}
             <p className="stream-region">Region: USA {show.region}</p>
           </div>
-        </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
