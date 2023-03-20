@@ -48,7 +48,7 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" to="#">
+                <NavLink className="navBar__anchor" to="/3x3">
                   <img
                     className="navBar__icons"
                     src={list}
