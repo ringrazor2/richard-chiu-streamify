@@ -56,6 +56,7 @@ const ChatPage = () => {
       messages: [{ role: "user", content: input }],
     });
     console.log(res.data.choices[0].message.content);
+    userInterface.prompt();
   });
 
   // useEffect(() => {
