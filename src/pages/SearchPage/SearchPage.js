@@ -1,3 +1,4 @@
+require("dotenv").config();
 import "./SearchPage.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -5,10 +6,10 @@ import NavBar from "../../components/NavBar/NavBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
 
-REACT_APP_STREAMAPI = process.env.REACT_APP_STREAMAPI;
-console.log(REACT_APP_STREAMAPI);
 // get type of subscription or paid
 // fix the /search from breaking when leaving page
+
+REACT_APP_OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 const SearchPage = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -39,7 +40,7 @@ const SearchPage = () => {
       output_language: "en",
     },
     headers: {
-      "X-RapidAPI-Key": REACT_APP_STREAMAPI,
+      "X-RapidAPI-Key": REACT_APP_OPENAI_API_KEY,
       "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
     },
   };
