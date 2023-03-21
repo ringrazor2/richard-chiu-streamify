@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "./ChatPage.scss";
 import NavBar from "../../components/NavBar/NavBar";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
@@ -10,10 +11,12 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
+import { Configuration, OpenAIApi } from "openai";
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const chatKey = "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";
 
 const ChatPage = () => {
+  const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([
     {
       message: "What are the three most recent shows you have watched?",
@@ -21,15 +24,84 @@ const ChatPage = () => {
     },
   ]);
 
-  const handleSend = (message) => {
+  useEffect(() => {
+    const fetchEngines = async () => {
+      const configuration = new Configuration({
+        organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
+        apiKey: chatKey,
+      });
+      const openai = new OpenAIApi(configuration);
+      const response = await openai.listEngines();
+      console.log(response);
+    };
+
+    fetchEngines();
+  }, []);
+
+  const handleSend = async (message) => {
     const newMessage = {
       message: message,
       sender: "user",
     };
 
-    const newMessages = { ...messages, newMessage };
+    const newMessages = [...messages, newMessage];
     setMessages(newMessages);
+    setTyping(true);
+    await processMessageToChatGPT(newMessages);
   };
+
+  async function processMessageToChatGPT(chatMessages) {
+    let apiMessages = chatMessages.map((messageObject) => {
+      let role = "";
+      if (messageObject.sender === "ChatGPT") {
+        role = "assistant";
+      } else {
+        role = "user";
+      }
+      return { role: role, content: messageObject.message };
+    });
+
+    const systemMessage = {
+      role: "system",
+      content: "Explain in an enthusiastic manner ", // specify how you want chat to respond
+    };
+    const apiRequestBody = {
+      model: "davinci-codex",
+      prompt: {
+        text: [...apiMessages, systemMessage]
+          .map(({ content, role }) => `${role}: ${content}`)
+          .join("\n"),
+      },
+      temperature: 0.7,
+      max_tokens: 1500,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    };
+    try {
+      const response = await axios.post(
+        "https://api.openai.com/v1/engines/davinci-codex/completions",
+        apiRequestBody,
+        {
+          headers: {
+            Authorization: "Bearer " + chatKey,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = response.data;
+      setMessages([
+        ...chatMessages,
+        {
+          message: data.choices[0].text,
+          sender: "ChatGPT",
+        },
+      ]);
+    } catch (error) {
+      console.error(error);
+    }
+    setTyping(false);
+  }
   return (
     <div className="chat-page">
       <NavBar />
@@ -40,8 +112,16 @@ const ChatPage = () => {
         </div>
         <div className="chat-page-chatBot">
           <MainContainer>
-            <ChatContainer>
-              <MessageList>
+            <ChatContainer className="chat-container">
+              <MessageList
+                className="message-list"
+                scrollBehavior="smooth"
+                typingIndicator={
+                  typing ? (
+                    <TypingIndicator content="ChatGPT is typing" />
+                  ) : null
+                }
+              >
                 {messages.map((message, i) => {
                   return <Message key={i} model={message} />;
                 })}

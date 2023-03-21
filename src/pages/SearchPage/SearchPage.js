@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 import "./SearchPage.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -9,7 +9,6 @@ import ShowDetails from "../../components/ShowDetails/ShowDetails";
 // get type of subscription or paid
 // fix the /search from breaking when leaving page
 
-REACT_APP_OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 const SearchPage = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -40,7 +39,7 @@ const SearchPage = () => {
       output_language: "en",
     },
     headers: {
-      "X-RapidAPI-Key": REACT_APP_OPENAI_API_KEY,
+      "X-RapidAPI-Key": "6f365c6cdcmsh8226eb0b5972b7bp187be7jsnf67e81afcd20",
       "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
     },
   };
