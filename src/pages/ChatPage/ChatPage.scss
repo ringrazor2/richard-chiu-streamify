@@ -11,6 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 5rem;
+    justify-content: space-around;
   }
   &__message {
     color: white;
@@ -34,11 +35,6 @@
 .chat-container{
   padding-top: 0.5rem;
   
-}
-
-.scrollbar-container{
- 
-
 }
 
 .cs-message-list{

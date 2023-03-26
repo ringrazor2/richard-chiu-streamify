@@ -1,4 +1,5 @@
 import "./ShowDetails.scss";
+import { Link } from "react-router-dom";
 import notFound from "../../assets/images/icons/notfound-icon.png";
 import netflix from "../../assets/images/icons/netflix-icon.png";
 import prime from "../../assets/images/icons/primevideo-icon.png";
@@ -14,11 +15,13 @@ const ShowDetails = ({ show }) => {
     <>
       <div className="show-details">
         <div className="show-poster-container">
-          <img
-            className="poster-image"
-            src={show.posterURLs[342]}
-            alt="show poster"
-          ></img>
+          <Link to={show.youtubeTrailerVideoLink} target="_blank">
+            <img
+              className="poster-image"
+              src={show.posterURLs[342]}
+              alt="show poster"
+            ></img>
+          </Link>
           <p className="show-info">
             <span className="show-subhead">Imdb Rating </span>
             {show.imdbRating}/100

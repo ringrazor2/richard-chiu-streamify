@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./NavBar.scss";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/images/icons/streamify-logo.svg";
@@ -6,7 +7,14 @@ import search from "../../assets/images/icons/search-icon.png";
 import chat from "../../assets/images/icons/chat-icon.png";
 import list from "../../assets/images/icons/list-icon.png";
 import user from "../../assets/images/icons/user-icon.png";
+
 const NavBar = () => {
+  const [activeNavLink, setActiveNavLink] = useState("");
+
+  const handleNavLinkClick = (navLink) => {
+    setActiveNavLink(navLink);
+  };
+
   return (
     <>
       <nav className="navBar">
@@ -18,7 +26,13 @@ const NavBar = () => {
             </Link>
             <div>
               <li>
-                <NavLink className="navBar__anchor" to="/">
+                <NavLink
+                  className={`navBar__anchor ${
+                    activeNavLink === "home" ? "active" : ""
+                  }`}
+                  to="/"
+                  onClick={() => handleNavLinkClick("home")}
+                >
                   <img
                     className="navBar__icons"
                     src={home}
@@ -28,7 +42,13 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" to="/search">
+                <NavLink
+                  className={`navBar__anchor ${
+                    activeNavLink === "search" ? "active" : ""
+                  }`}
+                  to="/search"
+                  onClick={() => handleNavLinkClick("search")}
+                >
                   <img
                     className="navBar__icons"
                     src={search}
@@ -38,7 +58,13 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" to="/chat">
+                <NavLink
+                  className={`navBar__anchor ${
+                    activeNavLink === "chat" ? "active" : ""
+                  }`}
+                  to="/chat"
+                  onClick={() => handleNavLinkClick("chat")}
+                >
                   <img
                     className="navBar__icons"
                     src={chat}
@@ -48,7 +74,13 @@ const NavBar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink className="navBar__anchor" to="/3x3">
+                <NavLink
+                  className={`navBar__anchor ${
+                    activeNavLink === "3x3" ? "active" : ""
+                  }`}
+                  to="/3x3"
+                  onClick={() => handleNavLinkClick("3x3")}
+                >
                   <img
                     className="navBar__icons"
                     src={list}
@@ -59,7 +91,11 @@ const NavBar = () => {
               </li>
             </div>
           </div>
-          <NavLink className="navBar__anchor login" to="login">
+          <NavLink
+            className="navBar__anchor login"
+            to="login"
+            onClick={() => setActiveNavLink("")}
+          >
             <img className="navBar__icons" src={user} alt="login icon"></img>
             Login
           </NavLink>
