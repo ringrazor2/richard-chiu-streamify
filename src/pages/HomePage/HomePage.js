@@ -8,7 +8,6 @@ const HomePage = () => {
       <div className="homePage">
         <NavBar />
         <HomeMessage className="homePage-textContainer" />
-        {/* <Slider /> */}
       </div>
     </>
   );
