@@ -1,68 +1,90 @@
-import { useState } from "react";
-import { Configuration, OpenAIApi } from "openai";
-import {
-  MainContainer,
-  ChatContainer,
-  MessageList,
-  Message,
-  MessageInput,
-  TypingIndicator,
-} from "@chatscope/chat-ui-kit-react";
-import "./ChatPage.scss";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import NavBar from "../../components/NavBar/NavBar";
+import ChatBot from "../../components/ChatBot/ChatBot";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
-import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import "./ChatPage.scss";
 
-const chatKey = "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";
-
+// get title from chatGPT and set formData to that title
 const ChatPage = () => {
-  const [typing, setTyping] = useState(false);
-  const [clearMessages, setClearMessages] = useState(false);
+  const [formData, setFormData] = useState({
+    title: "",
+  });
+
+  const [show, setShow] = useState({
+    title: "",
+    poster: "",
+    imdbRating: "",
+    genres: "",
+    overview: "",
+    region: "",
+    posterURLs: "",
+    streamingInfo: [],
+    streamingService: "",
+  });
+
+  const { title } = formData;
+  console.log(title);
+
+  const options = {
+    method: "GET",
+    url: `https://streaming-availability.p.rapidapi.com/v2/search/title`,
+    params: {
+      title: title,
+      country: "us",
+      type: "all",
+      output_language: "en",
+    },
+    headers: {
+      "X-RapidAPI-Key": "6f365c6cdcmsh8226eb0b5972b7bp187be7jsnf67e81afcd20",
+      "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+    },
+  };
+
+  useEffect(() => {
+    if (title) {
+      // Use the form data to search for titles
+      axios
+        .request(options)
+        .then((response) => {
+          const dataArr = response.data.result;
+          console.log(dataArr);
+          // Retrieve the specific data you need based on the form input matching the title
+
+          const matchingData = dataArr.find(
+            (result) => result.title.toLowerCase() === title.toLowerCase()
+          );
+          console.log(matchingData);
+          const genre = matchingData.genres
+            .map((genre) => genre.name)
+            .join(", ");
+
+          const streamingService = matchingData.streamingInfo.us
+            ? Object.keys(matchingData.streamingInfo.us)
+            : null;
+          console.log(streamingService);
+          setShow({
+            ...matchingData,
+            genre: genre,
+            streamingService: streamingService,
+          });
+
+          console.log(setShow);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
+      setShow(null);
+    }
+  }, [title]);
+
   const [messages, setMessages] = useState([
     {
       message: "Tell me what kind of show you are looking for!",
       sender: "ChatGPT",
     },
   ]);
-
-  const configuration = new Configuration({
-    organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
-    apiKey: chatKey,
-  });
-
-  const openai = new OpenAIApi(configuration);
-
-  const handleSendMessage = async (message) => {
-    setTyping(true);
-    const userMessage = { role: "user", content: message };
-    // const recentShowsMessage = {
-    //   role: "user",
-    //   content: "I recently watched show1, show2, and show3.",
-    // };
-    openai
-      .createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: [userMessage],
-      })
-      .then((res) => {
-        setTyping(false);
-        const botMessage = res.data.choices[0].message.content;
-        console.log(botMessage);
-        setMessages([
-          ...messages,
-          { message: message, sender: "user" },
-          { message: botMessage, sender: "ChatGPT" },
-        ]);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const handleClearMessages = () => {
-    setClearMessages(!clearMessages);
-    setMessages([]);
-  };
 
   return (
     <div className="chat-page">
@@ -73,127 +95,17 @@ const ChatPage = () => {
             <h1 className="chat-page__message">Don't know what to watch?</h1>
             <h1 className="chat-page__message">We got you!</h1>
           </div>
-          <div className="show-details-container"></div>
+
+          <div className="show-details-container">
+            {/* {show && show.title.toLowerCase() === title.toLowerCase() && (
+              <ShowDetails show={show} />
+            )} */}
+          </div>
         </div>
-        <div className="chat-page-chatBot">
-          <MainContainer>
-            <ChatContainer className="chat-container">
-              <MessageList className="message-list" scrollBehavior="smooth">
-                {messages.map((message, i) => {
-                  return <Message key={i} model={message} />;
-                })}
-                {typing ? (
-                  <TypingIndicator content="ChatGPT is typing" />
-                ) : null}
-              </MessageList>
-              <MessageInput
-                placeholder="Type message here"
-                onSend={handleSendMessage}
-              />
-              <button>
-                onClick={handleClearMessages}
-                Clear Messages
-              </button>
-            </ChatContainer>
-          </MainContainer>
-        </div>
+        <ChatBot messages={messages} setMessages={setMessages} />
       </div>
     </div>
   );
 };
 
 export default ChatPage;
-
-// const userInterface = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-// });
-
-//   userInterface.prompt();
-//   userInterface.on("line", async (input) => {
-//     const res = await openai.createChatCompletion({
-//       model: "gpt-3.5-turbo",
-//       messages: [{ role: "user", content: input }],
-//     });
-//     console.log(res.data.choices[0].message.content);
-//     userInterface.prompt();
-//   });
-
-// useEffect(() => {
-//   const fetchEngines = async () => {
-//     const configuration = new Configuration({
-//       organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
-//       apiKey: chatKey,
-//     });
-//     const openai = new OpenAIApi(configuration);
-//     const response = await openai.listEngines();
-//     console.log(response);
-//   };
-
-//   fetchEngines();
-// }, []);
-
-// const handleSend = async (message) => {
-//   const newMessage = {
-//     message: message,
-//     sender: "user",
-//   };
-
-//   const newMessages = [...messages, newMessage];
-//   setMessages(newMessages);
-//   setTyping(true);
-//   await processMessageToChatGPT(newMessages);
-// };
-
-// async function processMessageToChatGPT(chatMessages) {
-//   let apiMessages = chatMessages.map((messageObject) => {
-//     let role = "";
-//     if (messageObject.sender === "ChatGPT") {
-//       role = "assistant";
-//     } else {
-//       role = "user";
-//     }
-//     return { role: role, content: messageObject.message };
-//   });
-
-//   const systemMessage = {
-//     role: "system",
-//     content: "Explain in an enthusiastic manner ", // specify how you want chat to respond
-//   };
-//   const apiRequestBody = {
-//     model: "davinci-codex",
-//     prompt: {
-//       text: [...apiMessages, systemMessage]
-//         .map(({ content, role }) => `${role}: ${content}`)
-//         .join("\n"),
-//     },
-//     temperature: 0.7,
-//     max_tokens: 1500,
-//     top_p: 1,
-//     frequency_penalty: 0,
-//     presence_penalty: 0,
-//   };
-//   try {
-//     const response = await axios.post(
-//       "https://api.openai.com/v1/engines/davinci-codex/completions",
-//       apiRequestBody,
-//       {
-//         headers: {
-//           Authorization: "Bearer " + chatKey,
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
-//     const data = response.data;
-//     setMessages([
-//       ...chatMessages,
-//       {
-//         message: data.choices[0].text,
-//         sender: "ChatGPT",
-//       },
-//     ]);
-//   } catch (error) {
-//     console.error(error);
-//   }
-//   setTyping(false);
-// }

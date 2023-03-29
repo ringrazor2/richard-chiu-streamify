@@ -24,33 +24,3 @@
     }
   }
 }
-
-.chat-page-chatBot{
-  position: "relative";
-  height: 70vh;
-  width: 30vw;
-
-}
-
-.chat-container{
-  padding-top: 0.5rem;
-  
-}
-
-.cs-message-list{
-  background-color: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 25%,
-    rgba(255, 255, 255, 0.2) 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-.cs-message__content, .cs-message-input__content-editor-wrapper, .cs-message-input__content-editor{
-  background-color: lavender !important;
-}
-
-.cs-message__html-content, .cs-message-input__content-editor{
-  color: black;
-}
-
