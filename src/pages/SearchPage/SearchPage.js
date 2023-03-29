@@ -7,7 +7,6 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
 
 // get type of subscription or paid
-// fix the /search from breaking when leaving page
 
 const SearchPage = () => {
   const [formData, setFormData] = useState({

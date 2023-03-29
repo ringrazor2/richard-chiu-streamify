@@ -10,6 +10,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import "./ChatPage.scss";
 import NavBar from "../../components/NavBar/NavBar";
+import ShowDetails from "../../components/ShowDetails/ShowDetails";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 
 const chatKey = "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";
@@ -47,7 +48,11 @@ const ChatPage = () => {
         setTyping(false);
         const botMessage = res.data.choices[0].message.content;
         console.log(botMessage);
-        setMessages([...messages, { message: botMessage, sender: "ChatGPT" }]);
+        setMessages([
+          ...messages,
+          { message: message, sender: "user" },
+          { message: botMessage, sender: "ChatGPT" },
+        ]);
       })
       .catch((err) => {
         console.error(err);
@@ -63,9 +68,12 @@ const ChatPage = () => {
     <div className="chat-page">
       <NavBar />
       <div className="chat-page-container">
-        <div className="chat-page__message-container">
-          <h1 className="chat-page__message">Don't know what to watch?</h1>
-          <h1 className="chat-page__message">We got you!</h1>
+        <div className="chat-page-left">
+          <div className="chat-page__message-container">
+            <h1 className="chat-page__message">Don't know what to watch?</h1>
+            <h1 className="chat-page__message">We got you!</h1>
+          </div>
+          <div className="show-details-container"></div>
         </div>
         <div className="chat-page-chatBot">
           <MainContainer>
