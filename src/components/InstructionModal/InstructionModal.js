@@ -5,7 +5,7 @@ import sampleThree from "../../assets/images/shows/sample3x3.png";
 
 Modal.setAppElement("#root");
 
-const InstructionModal = ({ modalIsOpen, closeModal }) => {
+const InstructionModal = ({ modalIsOpen, closeModal, sampleIsOpen }) => {
   return (
     <div className="instruction-modalContainer">
       <Modal
@@ -24,13 +24,21 @@ const InstructionModal = ({ modalIsOpen, closeModal }) => {
             of shows/movies that resonate with you in a 3 by 3 grid format. The
             goal of a 3x3 is to have a discussion piece with friends and family.
           </p>
+          <p className="instruction-modal__message instruction-modal__message-2 ">
+            Pick a theme and search for your show. Drag the show over to the 3x3
+            grid. Enjoy!
+          </p>
         </div>
         <div className="instruction-modal__buttons-container">
           <p className="instruction-modal__message">
             {" "}
             This is an example of a 3x3 for movies:
           </p>
-          <img src={sampleThree} className="sample-three"></img>
+          <img
+            src={sampleThree}
+            className="sample-three"
+            onClick={sampleIsOpen}
+          ></img>
         </div>
       </Modal>
     </div>
