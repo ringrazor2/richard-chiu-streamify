@@ -1,13 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Hind&display=swap");
 
-* {
-  -webkit-font-smoothing: antialiased;
-  color: #acbdce;
-}
 
-:root {
-  --border-radius: 10px;
-}
+
 
 .search-bar-form {
   padding: 1px;
@@ -47,7 +41,7 @@
   justify-content: center;
   border: none;
   border-radius: 8px;
-  margin-right: 12px;
+  margin-left: 12px;
   box-shadow: -2px -2px 4px rgba(#a04ad5, 0.6), 1px 1px 4px #a04ad5;
   cursor: pointer;
 }
@@ -55,9 +49,8 @@
 label {
   font-family: "Hind", sans-serif;
   display: block;
-  color: #3c4b66;
   margin-bottom: 12px;
-  background: linear-gradient(45deg, rgba(#6b7b8f, 1), #3c4b66);
+  background: linear-gradient(45deg, rgb(34, 32, 32), #3c4b66);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

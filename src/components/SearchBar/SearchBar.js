@@ -11,9 +11,6 @@ const SearchBar = ({ handleSubmit, formData, setFormData, title }) => {
         <div className="search-bar-container">
           <label>Search for your show</label>
           <div className="search-bar-Innercontainer">
-            <button className="search-icon-button" typ="submit">
-              <img className="search-icon" alt="search-icon" src={search}></img>
-            </button>
             <div className="search-bar-input-container">
               <input
                 placeholder="Search"
@@ -23,6 +20,9 @@ const SearchBar = ({ handleSubmit, formData, setFormData, title }) => {
                 // onChange={handleInputChange}
               />
             </div>
+            <button className="search-icon-button" typ="submit">
+              <img className="search-icon" alt="search-icon" src={search}></img>
+            </button>
           </div>
         </div>
       </form>

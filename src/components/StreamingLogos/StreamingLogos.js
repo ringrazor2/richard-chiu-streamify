@@ -8,27 +8,27 @@ import hbo from "../../assets/images/icons/hbo-icon.png";
 const StreamingLogos = () => {
   return (
     <div className="streaming-logos">
-      <Link to="www.netflix.com">
+      <Link to="https://www.netflix.com">
         <img className="streaming-logo" alt="netflix logo" src={netflix}></img>
       </Link>
-      <Link to="www.primevideo.com">
+      <Link to="https://www.primevideo.com">
         <img
           className="streaming-logo"
           alt="prime video logo"
           src={primeVideo}
         ></img>
       </Link>
-      <Link to="www.disneyplus.com">
+      <Link to="https:www.disneyplus.com">
         <img
           className="streaming-logo"
           alt="disney plus logo"
           src={disneyPlus}
         ></img>
       </Link>
-      <Link to="www.crave.com">
+      <Link to="https://www.crave.com">
         <img className="streaming-logo" alt="crave logo" src={crave}></img>
       </Link>
-      <Link to="www.hbomax.com">
+      <Link to="http://www.hbomax.com">
         <img className="streaming-logo" alt="hbo logo" src={hbo}></img>
       </Link>
     </div>

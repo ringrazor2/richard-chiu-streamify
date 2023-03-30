@@ -1,12 +1,9 @@
 import "./ExploreButton.scss";
-import { Link } from "react-router-dom";
-const ExportButton = () => {
+const ExportButton = ({ buttonText, openModal }) => {
   return (
-    <Link to="/search">
-      <button className="explore-button">
-        <span className="explore-button__text">Explore</span>
-      </button>
-    </Link>
+    <button className="explore-button" onClick={openModal}>
+      <span className="explore-button__text">{buttonText}</span>
+    </button>
   );
 };
 

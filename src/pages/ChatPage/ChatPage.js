@@ -1,14 +1,12 @@
-// require("dotenv").config();
-import "./SearchPage.scss";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import NavBar from "../../components/NavBar/NavBar";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import ChatBot from "../../components/ChatBot/ChatBot";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
+import "./ChatPage.scss";
 
-// get type of subscription or paid
-
-const SearchPage = () => {
+// get title from chatGPT and set formData to that title
+const ChatPage = () => {
   const [formData, setFormData] = useState({
     title: "",
   });
@@ -61,15 +59,9 @@ const SearchPage = () => {
             .map((genre) => genre.name)
             .join(", ");
 
-<<<<<<< HEAD
-          const streamingService =
-            matchingData.streamingInfo.us &&
-            Object.keys(matchingData.streamingInfo.us);
-=======
           const streamingService = matchingData.streamingInfo.us
             ? Object.keys(matchingData.streamingInfo.us)
             : null;
->>>>>>> 78d8ad5ef0c6cf6e92c051e5388472e9484693d3
           console.log(streamingService);
           setShow({
             ...matchingData,
@@ -87,25 +79,33 @@ const SearchPage = () => {
     }
   }, [title]);
 
+  const [messages, setMessages] = useState([
+    {
+      message: "Tell me what kind of show you are looking for!",
+      sender: "ChatGPT",
+    },
+  ]);
+
   return (
-    <div className="search-page">
+    <div className="chat-page">
       <NavBar />
-      <div className="search-container">
-        <SearchBar
-          handleSubmit={(e) => {
-            e.preventDefault();
-            setFormData({ title: e.target.elements.title.value });
-            e.target.reset();
-          }}
-          formData={formData}
-          setFormData={setFormData}
-        />
-        {show && show.title.toLowerCase() === title.toLowerCase() && (
-          <ShowDetails show={show} />
-        )}
+      <div className="chat-page-container">
+        <div className="chat-page-left">
+          <div className="chat-page__message-container">
+            <h1 className="chat-page__message">Don't know what to watch?</h1>
+            <h1 className="chat-page__message">We got you!</h1>
+          </div>
+
+          <div className="show-details-container">
+            {/* {show && show.title.toLowerCase() === title.toLowerCase() && (
+              <ShowDetails show={show} />
+            )} */}
+          </div>
+        </div>
+        <ChatBot messages={messages} setMessages={setMessages} />
       </div>
     </div>
   );
 };
 
-export default SearchPage;
+export default ChatPage;
