@@ -61,15 +61,9 @@ const SearchPage = () => {
             .map((genre) => genre.name)
             .join(", ");
 
-<<<<<<< HEAD
-          const streamingService =
-            matchingData.streamingInfo.us &&
-            Object.keys(matchingData.streamingInfo.us);
-=======
           const streamingService = matchingData.streamingInfo.us
             ? Object.keys(matchingData.streamingInfo.us)
             : null;
->>>>>>> 78d8ad5ef0c6cf6e92c051e5388472e9484693d3
           console.log(streamingService);
           setShow({
             ...matchingData,
