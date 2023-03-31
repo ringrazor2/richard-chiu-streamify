@@ -1,6 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&family=Lato&display=swap");
+
+
 .three-page {
     background: url("../../assets/images//backgrounds/primary-background.svg")
       no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
-    width: 100vw;}
+    width: 100vw;
+  
+    &__main-container{
+      margin-left: 7rem;
+      margin-top: 3rem;
+      display: flex;
+  
+    }
+  &__title{
+    color: white;
+    font-family: "Kaushan Script";
+    font-size: 3rem;
+  }
+
+  &__show{
+  height: 225px;
+  width: 175px;
+  object-fit: cover;
+  cursor: pointer;
+
+  }
+  &_subTitle{
+    font-family: "Lato";
+    color: #edf0f8;
+    font-size: 2rem;
+  }
+  }
+ .instruction {
+      position: absolute;
+      right: 2rem;
+    }
+
+   
+.three-search{
+  width: 435px;;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+
+.threeBythree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12rem;
+  margin-top: 2rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  height: 225px;
+  width: 175px;
+  border: 1px solid white;
+}
+
+.positionImg{
+  position: absolute;
+  top: 425px;
+  left: 220px;
+}
+
+.three-clearButton {
+  background: linear-gradient(
+    40deg,
+    rgba(#c8d8e7, 0.7),
+    rgba(255, 255, 255, 0.8)
+  );
+  position: absolute;
+  right:10rem;
+  margin-top: 26px;
+  margin-right: 6rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: red;
+  padding: 0.75rem 2.3rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}

@@ -1,13 +1,13 @@
 import "./SearchBar.scss";
 import search from "../../assets/images/icons/search-icon2.png";
-const SearchBar = ({ handleSubmit, formData, setFormData, title }) => {
+const SearchBar = ({ handleSubmit, title, className }) => {
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;
   //   setFormData((formData) => ({ ...formData, [name]: value }));
   // };
   return (
     <>
-      <form onSubmit={handleSubmit} className="search-bar-form">
+      <form onSubmit={handleSubmit} className={`search-bar-form ${className}`}>
         <div className="search-bar-container">
           <label>Search for your show</label>
           <div className="search-bar-Innercontainer">

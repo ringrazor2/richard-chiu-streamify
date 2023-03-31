@@ -9,7 +9,8 @@ position: relative;
 display:flex;
 flex-direction: column;
 z-index: 10;
-background-color: white; 
+background-color: white;
+ 
 margin: 0 auto;
 margin-top: 130px;
 font-family: "helvetica neue";
@@ -52,6 +53,10 @@ font-family: "helvetica neue";
   &__message{
     line-height: 2.5rem;
     font-size: 1.25rem;
+
+    &-2{
+      margin-top: 1rem;
+    }
   }
   &__buttons-container{
     margin-top: 2rem;
@@ -73,4 +78,5 @@ font-family: "helvetica neue";
     height: 200px;
     width: 155px;
     margin-left: 2rem;
+    cursor: pointer;
   }
