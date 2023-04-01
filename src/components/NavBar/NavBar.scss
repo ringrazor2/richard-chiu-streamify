@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: space-between;
     width: 60%;
-    margin-left: 7rem;
+    margin-left: 5rem;
   }
 
   &__links {
@@ -97,14 +97,10 @@ nav ul li {
 .logo {
   height: 52px;
   margin-right: 1rem;
+  margin-left: 2rem;
 }
 
 .active {
-  // background: #5c80eb;
-      // box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5);
-        // -4px -4px 6px 0 rgba(116, 125, 136, 0.2);
-        // inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
-        // inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
   color: white;
   font-weight: 700;
   font-family: "Lato";

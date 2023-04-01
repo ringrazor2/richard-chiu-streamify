@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "../../components/NavBar/NavBar";
 import ChatBot from "../../components/ChatBot/ChatBot";
+import phoneDrop from "../../assets/images/shows/phone-img.svg";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
+import DummyDetails from "../../components/ShowDetails/DummyDetails";
 import "./ChatPage.scss";
 
 // get title from chatGPT and set formData to that title
@@ -90,19 +92,24 @@ const ChatPage = () => {
     <div className="chat-page">
       <NavBar />
       <div className="chat-page-container">
-        <div className="chat-page-left">
-          <div className="chat-page__message-container">
-            <h1 className="chat-page__message">Don't know what to watch?</h1>
-            <h1 className="chat-page__message">We got you!</h1>
-          </div>
+        <div className="chat-page__message-container">
+          <h1 className="chat-page__message">Don't know what to watch?</h1>
+          <h1 className="chat-page__message chat-page__message-2">
+            We got you! Ask Chat and get a recommendation
+          </h1>
+        </div>
+        <div className="chat-page-main">
+          {/* <img className="chat-page__image" src={phoneDrop}></img> */}
+          <ChatBot messages={messages} setMessages={setMessages} />
+          <DummyDetails />
 
           <div className="show-details-container">
             {/* {show && show.title.toLowerCase() === title.toLowerCase() && (
               <ShowDetails show={show} />
             )} */}
+            {/* <ShowDetails /> */}
           </div>
         </div>
-        <ChatBot messages={messages} setMessages={setMessages} />
       </div>
     </div>
   );

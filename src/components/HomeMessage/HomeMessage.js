@@ -17,10 +17,12 @@ const HomeMessage = () => {
         <p className="homeMessage__text-quality">Region</p>
         <p className="homeMessage__text-quality">Ratings</p>
         <h1 className="homeMessage__explore">Find your show now!</h1>
-        <Link to="/search">
-          <ExploreButton buttonText="Explore" />
-        </Link>
-        <StreamingLogos />
+        <div className="homeMessage__button-container">
+          <Link to="/search">
+            <ExploreButton buttonText="Explore" />
+          </Link>
+          <StreamingLogos />
+        </div>
       </div>
     </>
   );

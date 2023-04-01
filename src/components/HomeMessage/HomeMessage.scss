@@ -3,13 +3,13 @@
 @use "../../styles/partials/mixins" as *;
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&family=Lato&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600&family=PT+Sans:wght@400;700&display=swap');
 .homeMessage {
 
   &__title{
     color: white;
-    font-family: Kaushan Script;
-    font-size: 48px;
+    font-family: Lato;
+    font-size: 52px;
     font-weight: 600;
 
     &-container{
@@ -27,7 +27,7 @@
     color: #edf0f8;
     // color: #F6F1F1;
     font-family: Lato;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 400;
     margin-bottom: 1.5rem;
     line-height: 2.75rem;
@@ -36,7 +36,7 @@
     // color: #ADB8D9; 
     color:#e4e6ec;
     font-family: Lato;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 400;
     margin-bottom: 0.5rem;
     }
@@ -46,7 +46,12 @@
     color: white;
     font-family: "Bebas Neue";
     font-size: 3rem;
-    margin-top: 1.5rem
+    margin-top:4rem;
     
+  }
+
+  &__button-container{
+    display: flex;
+    align-items: center;
   }
 }

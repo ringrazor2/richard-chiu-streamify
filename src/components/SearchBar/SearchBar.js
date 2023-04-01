@@ -7,7 +7,7 @@ const SearchBar = ({ handleSubmit, title, className }) => {
   // };
   return (
     <>
-      <form onSubmit={handleSubmit} className={`search-bar-form ${className}`}>
+      <form onSubmit={handleSubmit} className="search-bar-form">
         <div className="search-bar-container">
           <label>Search for your show</label>
           <div className="search-bar-Innercontainer">

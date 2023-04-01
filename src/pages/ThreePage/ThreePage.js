@@ -10,7 +10,7 @@ import ExampleModal from "../../components/ExampleModal/ExampleModal";
 import DraggableImage from "../../components/DraggableImage/DraggableImage";
 import DroppableBox from "../../components/DroppableBox/DroppableBox";
 
-const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
+const ThreePage = ({ show, title, handleSubmit3, showFetch }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [sampleOpen, setSampleOpen] = useState(false);
 
@@ -44,7 +44,7 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
           <div>
             <form
               className="search-bar-form three-search"
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit3}
             >
               <div className="search-bar-container">
                 <div className="search-bar-Innercontainer">
@@ -55,7 +55,7 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
                       name="title"
                     />
                   </div>
-                  <button className="search-icon-button" typ="submit">
+                  <button className="search-icon-button" type="submit">
                     <img
                       className="search-icon"
                       alt="search-icon"

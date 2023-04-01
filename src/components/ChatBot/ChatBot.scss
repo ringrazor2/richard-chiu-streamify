@@ -2,7 +2,7 @@
 .chat-page-chatBot{
     position: "relative";
     height: 70vh;
-    width: 30vw;
+    margin-right: 2.5rem;
   
   }
   
@@ -11,6 +11,11 @@
     
   }
   
+  .cs-main-container{
+    width: 450px;
+    height: 550px;
+    border-radius: 10px;
+  }
   .cs-message-list{
     background-color: linear-gradient(
       90deg,

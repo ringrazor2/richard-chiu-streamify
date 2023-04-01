@@ -9,18 +9,35 @@
 
   &-container {
     display: flex;
-    flex-wrap: wrap;
-    padding: 3.5rem 5rem;
-    justify-content: space-around;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    padding: 2.5rem 6rem;
+    // justify-content: space-between;
+    // width: 75%
   }
   &__message {
     color: white;
-    font-family: "Kaushan Script";
-    font-size: 48px;
+    font-family: "Lato";
+    font-size: 44px;
     font-weight: 600;
+    margin-top: 1rem;
 
     &-container{
       margin-right: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    &-2{
+      margin-left: 5rem;
     }
   }
+
+  &-main{
+    display: flex;
+
+  }
+  &__image{
+    height: 650px;
+  }
 }
+
