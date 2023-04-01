@@ -1,15 +1,19 @@
 .homePage {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background: url("../../assets/images/backgrounds/primary-background.svg") no-repeat
     center center fixed;
   background-size: cover;
   background-attachment: fixed;
+
+  &-main{
+    display: flex;
+    // height: 100%;
+    // width: 100%;
+    justify-content: space-between;
+  }
 }
 
 .home-screen {
-  position: absolute;
-  height: 900px;
-  top: 40px;
-  right: 30px;
+  height: 800px;
 }

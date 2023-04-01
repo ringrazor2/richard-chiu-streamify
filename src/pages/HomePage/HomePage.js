@@ -7,8 +7,10 @@ const HomePage = () => {
     <>
       <div className="homePage">
         <NavBar />
-        <HomeMessage className="homePage-textContainer" />
-        <img className="home-screen" src={screens}></img>
+        <div className="homePage-main">
+          <HomeMessage className="homePage-textContainer" />
+          <img className="home-screen" src={screens}></img>
+        </div>
       </div>
     </>
   );
