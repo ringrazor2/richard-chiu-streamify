@@ -93,7 +93,7 @@ const NavBar = () => {
           </div>
           <NavLink
             className="navBar__anchor login"
-            to="login"
+            to="/login"
             onClick={() => setActiveNavLink("")}
           >
             <img className="navBar__icons" src={user} alt="login icon"></img>

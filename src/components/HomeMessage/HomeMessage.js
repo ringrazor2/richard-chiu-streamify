@@ -18,7 +18,7 @@ const HomeMessage = () => {
         <p className="homeMessage__text-quality">Ratings</p>
         <h1 className="homeMessage__explore">Find your show now!</h1>
         <div className="homeMessage__button-container">
-          <Link to="/search">
+          <Link to="/signup">
             <ExploreButton buttonText="Explore" />
           </Link>
           <StreamingLogos />

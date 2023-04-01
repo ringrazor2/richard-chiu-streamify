@@ -6,6 +6,9 @@ import HomePage from "./pages/HomePage/HomePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import ChatPage from "./pages//ChatPage/ChatPage";
 import ThreePage from "./pages/ThreePage/ThreePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
+import GoogleLoginPage from "./pages/GoogleLogin/GoogleLogin";
 const App = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -104,11 +107,14 @@ const App = () => {
               formData={formData}
               setFormData={setFormData}
               title={title}
-              handleSubmit={handleSubmit3}
+              handleSubmit={handleSubmit}
               showFetch={showFetch}
             />
           }
         />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/googlelogin" element={<GoogleLoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   );
