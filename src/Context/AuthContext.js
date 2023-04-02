@@ -9,6 +9,7 @@ import {
   FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebase";
+// import { doc, setDoc, db } from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -18,6 +19,13 @@ export const AuthContextProvider = ({ children }) => {
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
+  // const signUp = (email, password, displayName) => {
+  //   createUserWithEmailAndPassword(auth, email, password);
+  //   return setDoc(doc(db, "users", email), {
+  //     watchList: [],
+  //   });
+  // };
 
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);

@@ -2,10 +2,8 @@ import "./SignUpPage.scss";
 import phoneScreens from "../../assets/images/shows/phone-img.svg";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
-import { UserAuth } from "../../Context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { GoogleButton } from "react-google-button";
 
 const SignUpPage = () => {
@@ -50,20 +48,6 @@ const SignUpPage = () => {
     }
   };
 
-  //   const validateEmail = (email) => {
-  //     const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  //     return regex.test(email);
-  //   };
-
-  //   const handleEmailChange = (e) => {
-  //     const email = e.target.value;
-  //     setEmailError(email);
-  //     if (!validateEmail(email)) {
-  //       setError("Please enter a valid email address");
-  //     } else {
-  //       setEmailError("");
-  //     }
-  //   };
   useEffect(() => {
     if (user != null) {
       navigate("/");
@@ -83,7 +67,6 @@ const SignUpPage = () => {
             name="email"
             placeholder="Email"
             value={email}
-            // onChange={handleEmailChange}
             onChange={(e) => setEmail(e.target.value)}
             required
           />

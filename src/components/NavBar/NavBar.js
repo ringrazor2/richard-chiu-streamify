@@ -5,9 +5,9 @@ import logo from "../../assets/images/icons/streamify-logo.svg";
 import home from "../../assets/images/icons/home-icon.png";
 import search from "../../assets/images/icons/search-icon.png";
 import chat from "../../assets/images/icons/chat-icon.png";
-import list from "../../assets/images/icons/list-icon.png";
+import grid from "../../assets/images/icons/grids-icon.png";
 import userIcon from "../../assets/images/icons/user-icon.png";
-import { UserAuth } from "../../Context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 
 const NavBar = () => {
   const { user } = UserAuth();
@@ -85,7 +85,7 @@ const NavBar = () => {
                 >
                   <img
                     className="navBar__icons"
-                    src={list}
+                    src={grid}
                     alt="list icon"
                   ></img>
                   3 x 3
