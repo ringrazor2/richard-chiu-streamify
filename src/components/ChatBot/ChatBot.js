@@ -75,9 +75,9 @@ const ChatBot = ({ messages, setMessages }) => {
             })}
             {typing ? <TypingIndicator content="ChatGPT is typing" /> : null}
             {messages.length > 0 ? (
-              <button className="clear-button" onClick={handleClearMessages}>
+              <p className="clear-button" onClick={handleClearMessages}>
                 Clear
-              </button>
+              </p>
             ) : null}
           </MessageList>
           <MessageInput

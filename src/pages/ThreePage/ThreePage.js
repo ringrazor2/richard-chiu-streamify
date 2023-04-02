@@ -1,5 +1,8 @@
 import "./ThreePage.scss";
 import { useState, useEffect } from "react";
+import { UserAuth } from "../../context/AuthContext";
+import { db } from "../../firebase";
+import { arrayUnion, doc, updateDoc } from "@firebase/firestore";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import InstructionModal from "../../components/InstructionModal/InstructionModal";
@@ -13,7 +16,11 @@ import DroppableBox from "../../components/DroppableBox/DroppableBox";
 const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [sampleOpen, setSampleOpen] = useState(false);
+  const [grid, setGrid] = useState([]);
+  const [clicked, setClicked] = useState(false);
+  const { user } = UserAuth();
 
+  const threePath = doc(db, "users", `${user?.email}`);
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -32,6 +39,28 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
     showFetch();
   }, [title]);
 
+  const handleDrop = (newGrid) => {
+    setGrid(newGrid);
+  };
+
+  const handleClear = async () => {
+    setGrid([]);
+    const grid = document.querySelectorAll(".box");
+    grid.forEach((box) => {
+      box.innerHTML = "";
+    });
+  };
+
+  const handleSave = async () => {
+    if (user?.email) {
+      setClicked(true);
+      // await updateDoc(threePath, {
+      //   threeByThree: arrayUnion({ ...grid }),
+      // });
+    }
+  };
+
+  console.log(grid);
   return (
     <div className="three-page">
       <NavBar />
@@ -75,22 +104,41 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
           <div className="three-left">
             <div className="threeBythree">
               <div className="row">
-                <DroppableBox></DroppableBox>
-                <DroppableBox></DroppableBox>
-                <DroppableBox></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
               </div>
               <div className="row">
-                <DroppableBox></DroppableBox>
-                <DroppableBox></DroppableBox>
-                <DroppableBox></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
               </div>
               <div className="row">
-                <DroppableBox></DroppableBox>
-                <DroppableBox></DroppableBox>
-                <DroppableBox></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                <DroppableBox handleDrop={handleDrop}></DroppableBox>
               </div>
             </div>
-            <button className="three-clearButton">Clear</button>
+            <div className="three-button-container">
+              <button
+                className="three-button three-button-clear"
+                onClick={handleClear}
+              >
+                Clear
+              </button>
+              {clicked ? (
+                <button className="three-button three-button-save three-button-save-active">
+                  Save
+                </button>
+              ) : (
+                <button
+                  className="three-button three-button-save"
+                  onClick={handleSave}
+                >
+                  Save
+                </button>
+              )}
+            </div>
           </div>
         </DndProvider>
       </main>

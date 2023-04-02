@@ -22,7 +22,7 @@ const App = () => {
 
   const options = {
     method: "GET",
-    url: `https://streaming-availability.p.rapidapi.com/v2/search/title`,
+    url: "https://streaming-availability.p.rapidapi.com/v2/search/title",
     params: {
       title: title,
       country: "us",
@@ -30,9 +30,9 @@ const App = () => {
       output_language: "en",
     },
     headers: {
-      // "X-RapidAPI-Key": "6f365c6cdcmsh8226eb0b5972b7bp187be7jsnf67e81afcd20",
+      "X-RapidAPI-Key": "6f365c6cdcmsh8226eb0b5972b7bp187be7jsnf67e81afcd20",
       // "X-RapidAPI-Key": "30a356aae7msh66d33873f28de99p18faa9jsn184f061401da",
-      "X-RapidAPI-Key": process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
+      // "X-RapidAPI-Key": process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
       "X-RapidAPI-Host": process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
       // "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
     },

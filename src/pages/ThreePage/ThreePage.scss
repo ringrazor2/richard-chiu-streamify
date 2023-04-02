@@ -75,25 +75,14 @@
   left: 220px;
 }
 
-.three-clearButton {
-  // background: linear-gradient(
-  //   40deg,
-  //   rgba(#c8d8e7, 0.7),
-  //   rgba(255, 255, 255, 0.8)
-  // );
-  // font-size: 1rem;
-  // font-weight: 400;
-  // color: red;
-  // padding: 0.75rem 2.3rem;
-  // border-radius: 20px;
-  // border: none;
+.three-button {
+
   width: 10em;
   position: relative;
   height: 2.7rem;
   border: 3px ridge #149CEA;
   outline: none;
   background-color: transparent;
-  color: rgb(202, 24, 24);
   transition: 1s;
   border-radius: 0.3em;
   font-size: 16px;
@@ -128,8 +117,28 @@
     box-shadow: inset 0px 0px 25px #1479EA;
 
   }
+
+  &-clear{
+    color: rgb(202, 24, 24);
+
+  }
+
+  &-save{
+    color: rgb(18, 157, 18);
+
+    &-active{
+      background-color: rgb(104, 168, 15);
+      color:white;
+      border: none;
+    }
+  }
 }
 
 .three-left{
   margin-left: 12.5rem;
+}
+
+.three-button-container{
+  display: flex;
+  justify-content: space-between;
 }
