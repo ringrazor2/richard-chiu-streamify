@@ -13,7 +13,7 @@ const SignUpPage = () => {
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState("");
 
-  const { user, createUser, googleSignIn, facebookSignIn } = UserAuth();
+  const { user, signUp, googleSignIn, facebookSignIn } = UserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ const SignUpPage = () => {
     }
 
     try {
-      await createUser(email, password);
+      await signUp(email, password);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -101,7 +101,7 @@ const SignUpPage = () => {
           <button className="signup-button">Sign up</button>
         </form>
 
-        <div class="right">
+        <div className="right">
           <div className="social-buttons-container">
             {/* <button
               class="social-signin facebook"
@@ -114,7 +114,7 @@ const SignUpPage = () => {
             <GoogleButton onClick={handleGoogleSignIn} />
           </div>
         </div>
-        <div class="or">OR</div>
+        <div className="or">OR</div>
       </div>
       <img className="signup-img2" src={phoneScreens} />
     </div>

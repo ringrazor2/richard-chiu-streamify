@@ -94,18 +94,20 @@ const NavBar = () => {
             </div>
           </div>
           {user ? (
-            <NavLink
-              className="navBar__anchor login"
-              to="/account"
-              onClick={() => setActiveNavLink("")}
-            >
-              <img
-                className="navBar__icons"
-                src={userIcon}
-                alt="login icon"
-              ></img>
-              Profile
-            </NavLink>
+            <div>
+              <NavLink
+                className="navBar__anchor login"
+                to="/account"
+                onClick={() => setActiveNavLink("")}
+              >
+                <img
+                  className="navBar__icons"
+                  src={userIcon}
+                  alt="login icon"
+                ></img>
+                Profile
+              </NavLink>
+            </div>
           ) : (
             <NavLink
               className="navBar__anchor login"

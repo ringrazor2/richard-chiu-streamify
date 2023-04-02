@@ -11,15 +11,17 @@ import {
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./ChatBot.scss";
 
-const chatKey = "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";
+// const chatKey = "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";
 
 const ChatBot = ({ messages, setMessages }) => {
   const [typing, setTyping] = useState(false);
   const [clearMessages, setClearMessages] = useState(false);
 
   const configuration = new Configuration({
-    organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
-    apiKey: chatKey,
+    // organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
+    organization: process.env.REACT_APP_OPENAI_ORG,
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+    // apiKey: chatKey,
   });
 
   const openai = new OpenAIApi(configuration);

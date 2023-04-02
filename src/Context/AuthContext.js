@@ -8,31 +8,40 @@ import {
   onAuthStateChanged,
   FacebookAuthProvider,
 } from "firebase/auth";
-import { auth } from "../firebase";
-// import { doc, setDoc, db } from "firebase/firestore";
+import { auth, db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
-
-  // const signUp = (email, password, displayName) => {
-  //   createUserWithEmailAndPassword(auth, email, password);
-  //   return setDoc(doc(db, "users", email), {
-  //     watchList: [],
-  //   });
+  // const createUser = (email, password) => {
+  //   return createUserWithEmailAndPassword(auth, email, password);
   // };
+
+  const signUp = async (email, password) => {
+    await createUserWithEmailAndPassword(auth, email, password);
+    await setDoc(doc(db, "users", email), {
+      faveList: [],
+      watchList: [],
+      threeByThree: [],
+    });
+  };
 
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    signInWithPopup(auth, provider).then(async (result) => {
+      const userEmail = result.user.email;
+      await setDoc(doc(db, "users", userEmail), {
+        faveList: [],
+        watchList: [],
+        threeByThree: [],
+      });
+    });
   };
 
   const facebookSignIn = () => {
@@ -59,7 +68,7 @@ export const AuthContextProvider = ({ children }) => {
         googleSignIn,
         logOut,
         user,
-        createUser,
+        signUp,
         facebookSignIn,
         signInWithEmailAndPassword,
         signIn,
