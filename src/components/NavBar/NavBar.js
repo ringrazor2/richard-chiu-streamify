@@ -6,9 +6,11 @@ import home from "../../assets/images/icons/home-icon.png";
 import search from "../../assets/images/icons/search-icon.png";
 import chat from "../../assets/images/icons/chat-icon.png";
 import list from "../../assets/images/icons/list-icon.png";
-import user from "../../assets/images/icons/user-icon.png";
+import userIcon from "../../assets/images/icons/user-icon.png";
+import { UserAuth } from "../../Context/AuthContext";
 
 const NavBar = () => {
+  const { user } = UserAuth();
   const [activeNavLink, setActiveNavLink] = useState("");
 
   const handleNavLinkClick = (navLink) => {
@@ -91,14 +93,33 @@ const NavBar = () => {
               </li>
             </div>
           </div>
-          <NavLink
-            className="navBar__anchor login"
-            to="/login"
-            onClick={() => setActiveNavLink("")}
-          >
-            <img className="navBar__icons" src={user} alt="login icon"></img>
-            Login
-          </NavLink>
+          {user ? (
+            <NavLink
+              className="navBar__anchor login"
+              to="/account"
+              onClick={() => setActiveNavLink("")}
+            >
+              <img
+                className="navBar__icons"
+                src={userIcon}
+                alt="login icon"
+              ></img>
+              Profile
+            </NavLink>
+          ) : (
+            <NavLink
+              className="navBar__anchor login"
+              to="/login"
+              onClick={() => setActiveNavLink("")}
+            >
+              <img
+                className="navBar__icons"
+                src={userIcon}
+                alt="login icon"
+              ></img>
+              Login
+            </NavLink>
+          )}
         </ul>
       </nav>
     </>

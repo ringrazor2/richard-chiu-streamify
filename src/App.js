@@ -1,15 +1,16 @@
 import "./App.scss";
 import { useState } from "react";
 import axios from "axios";
+import { AuthContextProvider } from "./Context/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import ChatPage from "./pages//ChatPage/ChatPage";
 import ThreePage from "./pages/ThreePage/ThreePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
 import Login from "./pages/Login/Login";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import GoogleLoginPage from "./pages/GoogleLogin/GoogleLogin";
+import Account from "./pages/Account/Account";
+import Protected from "./components/Protected/Protected";
 const App = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -83,42 +84,50 @@ const App = () => {
     }
   };
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/search"
-          element={
-            <SearchPage
-              show={show}
-              formData={formData}
-              setFormData={setFormData}
-              title={title}
-              handleSubmit={handleSubmit}
-              showFetch={showFetch}
-            />
-          }
-        />
-        <Route path="/chat" element={<ChatPage />} />
-        <Route
-          path="/3x3"
-          element={
-            <ThreePage
-              show={show}
-              formData={formData}
-              setFormData={setFormData}
-              title={title}
-              handleSubmit={handleSubmit}
-              showFetch={showFetch}
-            />
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logintest" element={<LoginPage />} />
-        <Route path="/googlelogin" element={<GoogleLoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/search"
+            element={
+              <SearchPage
+                show={show}
+                formData={formData}
+                setFormData={setFormData}
+                title={title}
+                handleSubmit={handleSubmit}
+                showFetch={showFetch}
+              />
+            }
+          />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route
+            path="/3x3"
+            element={
+              <ThreePage
+                show={show}
+                formData={formData}
+                setFormData={setFormData}
+                title={title}
+                handleSubmit={handleSubmit}
+                showFetch={showFetch}
+              />
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route
+            path="/account"
+            element={
+              <Protected>
+                <Account />
+              </Protected>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthContextProvider>
   );
 };
 

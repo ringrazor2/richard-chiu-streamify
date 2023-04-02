@@ -2,7 +2,9 @@ import "./HomeMessage.scss";
 import ExploreButton from "../ExploreButton/ExploreButton";
 import StreamingLogos from "../StreamingLogos/StreamingLogos";
 import { Link } from "react-router-dom";
+import { UserAuth } from "../../Context/AuthContext";
 const HomeMessage = () => {
+  const { user } = UserAuth();
   return (
     <>
       <div className="homeMessage-container">
@@ -18,7 +20,7 @@ const HomeMessage = () => {
         <p className="homeMessage__text-quality">Ratings</p>
         <h1 className="homeMessage__explore">Find your show now!</h1>
         <div className="homeMessage__button-container">
-          <Link to="/signup">
+          <Link to={user ? "/search" : "/signup"}>
             <ExploreButton buttonText="Explore" />
           </Link>
           <StreamingLogos />

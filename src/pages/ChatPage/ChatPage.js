@@ -95,7 +95,8 @@ const ChatPage = () => {
         <div className="chat-page__message-container">
           <h1 className="chat-page__message">Don't know what to watch?</h1>
           <h1 className="chat-page__message chat-page__message-2">
-            We got you! Ask Chat and get a recommendation
+            We got you! <span className="askChat">Ask Chat </span>and get a
+            recommendation
           </h1>
         </div>
         <div className="chat-page-main">
