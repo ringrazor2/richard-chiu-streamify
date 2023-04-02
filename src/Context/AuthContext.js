@@ -44,6 +44,19 @@ export const AuthContextProvider = ({ children }) => {
     });
   };
 
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currUser) => {
+      if (currUser) {
+        setUser(currUser);
+      } else {
+        setUser({});
+        logOut();
+      }
+      console.log("User", currUser);
+    });
+    return () => unSubscribe();
+  }, []);
+
   const facebookSignIn = () => {
     const provider = new FacebookAuthProvider();
     signInWithPopup(auth, provider);
