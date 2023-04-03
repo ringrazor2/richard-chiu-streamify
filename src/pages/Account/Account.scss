@@ -35,9 +35,10 @@ background: url("../../assets/images//backgrounds/primary-background.svg")
   &__profile-container{
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     margin-top: 3rem;
+    // background-color: rgb(50, 50, 141);
 
   }
 }

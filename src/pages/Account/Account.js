@@ -41,11 +41,11 @@ const Account = () => {
       <h2>{`Hi, ${user.displayName}`}</h2>
       <p className = "account-page__email">{`email: ${user.email}`}</p></div>
       
-      {/* <div className = "account-page__profile-container"> 
+      <div className = "account-page__profile-container"> 
 <button className = "signout-button">Favourites</button>
 <button className = "signout-button">Watch List</button>
 <button className = "signout-button">3x3</button>
-</div> */}
+</div>
       </div>
  </div>
   );
