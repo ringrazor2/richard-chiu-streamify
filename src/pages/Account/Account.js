@@ -32,28 +32,26 @@ const Account = () => {
     getUsers();
   }, []);
   return (
-    <>
-      <div className="max-w-[1140px] mx-auto">
-        <div className="flex justify-between items-center my-12 py-8 rounded-div"></div>
-        <div>
-          <h1 className="text-2xl font-bold">Account</h1>
-          <div>
-            <p> Welcome, {user?.email}</p>
-          </div>
+    <div className="account-page">
+      <div className="account-page__details">
+        <div className="account-page__heading">
+          <h1>Account</h1>
+          <button className="signout-button" onClick={handleSignOut}>
+            Sign Out
+          </button>
+        </div>
+        <div className="account-page__personal">
+          <h2>{`Hi, ${user.displayName}`}</h2>
+          <p className="account-page__email">{`email: ${user.email}`}</p>
+        </div>
+
+        <div className="account-page__profile-container">
+          <button className="signout-button">Favourites</button>
+          <button className="signout-button">Watch List</button>
+          <button className="signout-button">3x3</button>
         </div>
       </div>
-      <button
-        onClick={handleSignOut}
-        className="border px-6 py-2 rounded-2xl shadow-lg hover:shadow-2xl"
-      >
-        Sign Out
-      </button>
-
-      {/* <h1>{`Hi, ${user.email}`}</h1>
-      <p>{`email: ${user.email}`}</p>
-      <button onClick={handleSignOut}>LogOut</button>
-      <SavedShow /> */}
-    </>
+    </div>
   );
 };
 
