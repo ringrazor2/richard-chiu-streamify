@@ -31,12 +31,23 @@ const Account = () => {
     getUsers();
   }, []);
   return (
-    <>
-      <h1>{`Hi, ${user.displayName}`}</h1>
-      <p>{`email: ${user.email}`}</p>
-      <button onClick={handleSignOut}>LogOut</button>
-      <SavedShow />
-    </>
+    <div className = "account-page">
+      <div className = "account-page__details">
+        <div className = "account-page__heading">
+        <h1>Account</h1>       
+      <button className = "signout-button" onClick={handleSignOut}>Sign Out</button>
+      </div>
+     <div className = "account-page__personal">
+      <h2>{`Hi, ${user.displayName}`}</h2>
+      <p className = "account-page__email">{`email: ${user.email}`}</p></div>
+      
+      {/* <div className = "account-page__profile-container"> 
+<button className = "signout-button">Favourites</button>
+<button className = "signout-button">Watch List</button>
+<button className = "signout-button">3x3</button>
+</div> */}
+      </div>
+ </div>
   );
 };
 

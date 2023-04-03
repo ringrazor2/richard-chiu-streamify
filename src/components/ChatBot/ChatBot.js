@@ -19,7 +19,7 @@ const ChatBot = ({ messages, setMessages }) => {
 
   const configuration = new Configuration({
     organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
-    apiKey: chatKey,
+    apiKey: "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",
   });
 
   const openai = new OpenAIApi(configuration);
