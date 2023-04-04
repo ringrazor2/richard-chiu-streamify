@@ -28,7 +28,7 @@ const SavedShow = ({ show, deleteShow }) => {
               src={trash}
               className="trash-icon"
               id={show.imdbId}
-              onClick={deleteShow(show.imdbId)}
+              onClick={deleteShow}
             ></img>
           </div>
           <p className="show-card__overview">{show.overview}</p>

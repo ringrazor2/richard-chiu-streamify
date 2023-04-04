@@ -8,6 +8,7 @@ import { GoogleButton } from "react-google-button";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -40,13 +41,6 @@ const SignUpPage = () => {
       console.error(err);
     }
   };
-  const handleFacebookSignIn = async () => {
-    try {
-      await facebookSignIn();
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   useEffect(() => {
     if (user != null) {
@@ -61,6 +55,15 @@ const SignUpPage = () => {
         <form onSubmit={handleSubmit} className="signup-form">
           <h1 className="signup-title">Sign up</h1>
 
+          {/* <input
+            className="signup-input"
+            type="text"
+            name="displayName"
+            placeholder="Username"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            required
+          /> */}
           <input
             className={`signup-input ${emailError && "error-input"}`}
             type="email"
@@ -103,14 +106,6 @@ const SignUpPage = () => {
 
         <div className="right">
           <div className="social-buttons-container">
-            {/* <button
-              class="social-signin facebook"
-              onClick={handleFacebookSignIn}
-            >
-              Log in with facebook
-            </button> */}
-            {/* <button class="social-signin twitter">Log in with Twitter</button> */}
-            {/* <button class="social-signin google">Log in with Google+</button> */}
             <GoogleButton onClick={handleGoogleSignIn} />
           </div>
         </div>
