@@ -15,11 +15,13 @@ import apple from "../../assets/images/icons/apple-icon.webp";
 const SavedShow = ({ show, deleteShow }) => {
   return (
     <div className="show-card">
-      <img
-        className="show-card__image"
-        src={show.posterURLs[342]}
-        alt="show poster"
-      />
+      <Link to={show.youtubeTrailerVideoLink} target="_blank" rel="noreferrer">
+        <img
+          className="poster-image"
+          src={show.posterURLs[342]}
+          alt="show poster"
+        />
+      </Link>
       <div className="show-card__right">
         <div className="show-card__description-container">
           <div className="show-card__heading-container">

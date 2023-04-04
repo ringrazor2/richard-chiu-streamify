@@ -48,8 +48,8 @@ const ShowDetails = ({ show }) => {
     <>
       <div className="show-details">
         <div className="show-poster-container">
-          <a
-            href={show.youtubeTrailerVideoLink}
+          <Link
+            to={show.youtubeTrailerVideoLink}
             target="_blank"
             rel="noreferrer"
           >
@@ -58,7 +58,7 @@ const ShowDetails = ({ show }) => {
               src={show.posterURLs[342]}
               alt="show poster"
             />
-          </a>
+          </Link>
           <p className="show-info">
             <span className="show-subhead">Imdb Rating </span>
             {show.imdbRating}/100

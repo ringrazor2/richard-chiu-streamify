@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebase";
 import { doc, onSnapshot, updateDoc, deleteDoc } from "firebase/firestore";
 import SavedShow from "../../components/SavedShow/SavedShow";
+import ThreeByThree from "../../components/ThreeByThree/ThreeByThree";
 import logo from "../../assets/images/icons/streamify-logo.svg";
 import "./Account.scss";
 
@@ -32,13 +33,11 @@ const Account = () => {
     });
   }, []);
 
-  // if (!faveList || !watchList || !threeByThree) return <div>Loading...</div>;
-  const showPath = doc(db, "users", `${user.email}`);
   const deleteShow = async (e) => {
     let id = e.target.id;
     try {
       const filteredList = faveList.filter((show) => show.imdbId !== id);
-      await updateDoc(showPath, {
+      await updateDoc(doc(db, "users", `${user.email}`), {
         faveList: filteredList,
       });
     } catch {
@@ -46,6 +45,19 @@ const Account = () => {
     }
   };
 
+  const deleteGrid = async (e) => {
+    let id = e.target.id;
+    try {
+      const filteredList = threeByThree.filter((grid) => grid.id !== id);
+      await updateDoc(doc(db, "users", `${user.email}`), {
+        threeByThree: filteredList,
+      });
+    } catch {
+      console.log("Error deleting 3x3");
+    }
+  };
+
+  console.log(threeByThree);
   return (
     <div className="account-page">
       <Link className="logo-link account-logo" to="/">
@@ -67,28 +79,37 @@ const Account = () => {
         <div className="account-page__profile-container">
           <button
             className={
-              activeList === true
-                ? " signout-button button-active"
+              activeList === "favourites"
+                ? "signout-button button-active"
                 : "signout-button"
             }
-            onClick={faveList ? () => setActiveList(true) : null}
+            onClick={faveList ? () => setActiveList("favourites") : null}
           >
             Favourites
           </button>
           <button
             className={
-              activeList === false
-                ? " signout-button button-active"
+              activeList === "watchlist"
+                ? "signout-button button-active"
                 : "signout-button"
             }
-            onClick={watchList ? () => setActiveList(false) : null}
+            onClick={watchList ? () => setActiveList("watchlist") : null}
           >
             Watch List
           </button>
-          <button className="signout-button grid-button">3x3</button>
+          <button
+            className={
+              activeList === "threeByThree"
+                ? "signout-button threeButton button-active"
+                : "signout-button threeButton"
+            }
+            onClick={threeByThree ? () => setActiveList("threeByThree") : null}
+          >
+            3x3
+          </button>
         </div>
       </div>
-      {activeList !== null && activeList && faveList && faveList.length > 0 && (
+      {activeList === "favourites" && faveList && faveList.length > 0 && (
         <div className="profile-lists">
           {faveList.map((show) => {
             return (
@@ -101,17 +122,31 @@ const Account = () => {
           })}
         </div>
       )}
-      {activeList !== null &&
-        !activeList &&
-        watchList &&
-        watchList.length > 0 && (
-          <div className="profile-lists">
-            {watchList.map((show) => {
+      {activeList === "watchlist" && watchList && watchList.length > 0 && (
+        <div className="profile-lists">
+          {watchList.map((show) => {
+            return (
+              <SavedShow
+                show={show}
+                key={show.imdbId}
+                deleteShow={deleteShow}
+              />
+            );
+          })}
+        </div>
+      )}
+
+      {activeList === "threeByThree" &&
+        threeByThree &&
+        threeByThree.length > 0 && (
+          <div className="three-list">
+            {threeByThree.map((Obj) => {
               return (
-                <SavedShow
-                  show={show}
-                  key={show.imdbId}
-                  deleteShow={deleteShow}
+                <ThreeByThree
+                  className="profileThree"
+                  imageArray={Obj.imgArray}
+                  id={Obj.id}
+                  deleteGrid={deleteGrid}
                 />
               );
             })}

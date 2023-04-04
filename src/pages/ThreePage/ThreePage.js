@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import { arrayUnion, doc, updateDoc } from "@firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import InstructionModal from "../../components/InstructionModal/InstructionModal";
@@ -17,6 +18,7 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [sampleOpen, setSampleOpen] = useState(false);
   const [grid, setGrid] = useState([]);
+
   const [clicked, setClicked] = useState(false);
   const { user } = UserAuth();
 
@@ -51,12 +53,23 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
     });
   };
 
+  // const handleSave = async () => {
+  //   if (user?.email) {
+  //     setClicked(true);
+  //     await updateDoc(threePath, {
+  //       threeByThree: arrayUnion({ ...grid }),
+  //     });
+  //   }
+  // };
+
   const handleSave = async () => {
-    if (user?.email) {
+    if (user?.email && grid.length === 9) {
       setClicked(true);
-      // await updateDoc(threePath, {
-      //   threeByThree: arrayUnion({ ...grid }),
-      // });
+      await updateDoc(threePath, {
+        threeByThree: arrayUnion({ imgArray: [...grid], id: uuidv4() }),
+      });
+    } else {
+      console.log("Please fill all boxes with images");
     }
   };
 
