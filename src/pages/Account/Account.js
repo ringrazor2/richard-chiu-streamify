@@ -57,7 +57,6 @@ const Account = () => {
     }
   };
 
-  console.log(threeByThree);
   return (
     <div className="account-page">
       <Link className="logo-link account-logo" to="/">

@@ -23,6 +23,7 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   const { user } = UserAuth();
 
   const threePath = doc(db, "users", `${user?.email}`);
+
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -53,15 +54,6 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
     });
   };
 
-  // const handleSave = async () => {
-  //   if (user?.email) {
-  //     setClicked(true);
-  //     await updateDoc(threePath, {
-  //       threeByThree: arrayUnion({ ...grid }),
-  //     });
-  //   }
-  // };
-
   const handleSave = async () => {
     if (user?.email && grid.length === 9) {
       setClicked(true);
@@ -73,7 +65,6 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
     }
   };
 
-  console.log(grid);
   return (
     <div className="three-page">
       <NavBar />

@@ -3,16 +3,12 @@ body{
 
 }
 .account-page{
-// background: url("../../assets/images//backgrounds/primary-background.svg")
-//     no-repeat center center fixed;
-//   background-size: cover;
-// background: linear-gradient(226.22deg, #4643DF 2.04%, #0B0A47 100%);
   height: 100%;
   width: 100vw;
   background-attachment: fixed;
   display:flex;
   justify-content: center;
-//   align-items: center;
+
 
   &__details{
     background-color: rgb(37, 35, 35, 0.85);
@@ -44,13 +40,10 @@ body{
     width: 85%;
     margin: 0 auto;
     margin-top: 3rem;
-    // background-color: rgb(50, 50, 141);
-
   }
 }
 
 .signout-button {
-    // color: #5552E8;
     color: white;
     border: 2px solid #a9a9e7;
     border-radius: 10px;
@@ -75,7 +68,6 @@ body{
     padding: 0 2.7rem;
   }
   
-// **************************************************************
 
 .profile-lists {
   display: flex;
@@ -91,16 +83,6 @@ body{
   gap: 14px;
 }
 
-.trash-icon{
-  height: 25px;
-  cursor: pointer;
-}
-
-.account-logo{
-  position: absolute;
-  top: 1rem;
-  left: 7rem;
-}
 
 .profile-grid{
   display: flex;
@@ -124,5 +106,16 @@ body{
 
 .threeButton{
   padding: 0 2.5rem;
+}
+
+.trash-icon{
+  height: 25px;
+  cursor: pointer;
+}
+
+.account-logo{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 }
 

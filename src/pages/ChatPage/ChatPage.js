@@ -2,31 +2,20 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "../../components/NavBar/NavBar";
 import ChatBot from "../../components/ChatBot/ChatBot";
-import phoneDrop from "../../assets/images/shows/phone-img.svg";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
 import DummyDetails from "../../components/ShowDetails/DummyDetails";
 import "./ChatPage.scss";
 
 // get title from chatGPT and set formData to that title
-const ChatPage = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-  });
-
-  const [show, setShow] = useState({
-    title: "",
-    poster: "",
-    imdbRating: "",
-    genres: "",
-    overview: "",
-    region: "",
-    posterURLs: "",
-    streamingInfo: [],
-    streamingService: "",
-  });
-
-  const { title } = formData;
-  console.log(title);
+const ChatPage = ({
+  show,
+  formData,
+  setFormData,
+  title,
+  handleSubmit,
+  showFetch,
+}) => {
+  const [chatRec, setChatRec] = useState(null);
 
   const options = {
     method: "GET",
@@ -44,41 +33,7 @@ const ChatPage = () => {
   };
 
   useEffect(() => {
-    if (title) {
-      // Use the form data to search for titles
-      axios
-        .request(options)
-        .then((response) => {
-          const dataArr = response.data.result;
-          console.log(dataArr);
-          // Retrieve the specific data you need based on the form input matching the title
-
-          const matchingData = dataArr.find(
-            (result) => result.title.toLowerCase() === title.toLowerCase()
-          );
-          console.log(matchingData);
-          const genre = matchingData.genres
-            .map((genre) => genre.name)
-            .join(", ");
-
-          const streamingService = matchingData.streamingInfo.us
-            ? Object.keys(matchingData.streamingInfo.us)
-            : null;
-          console.log(streamingService);
-          setShow({
-            ...matchingData,
-            genre: genre,
-            streamingService: streamingService,
-          });
-
-          console.log(setShow);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-    } else {
-      setShow(null);
-    }
+    showFetch();
   }, [title]);
 
   const [messages, setMessages] = useState([

@@ -18,7 +18,6 @@ const App = () => {
   const [show, setShow] = useState(null);
 
   const { title } = formData;
-  console.log(title);
 
   const options = {
     method: "GET",
@@ -50,18 +49,16 @@ const App = () => {
     e.target.reset();
   };
 
-  const showFetch = () => {
+  const showFetch = (fx) => {
     if (title) {
       axios
         .request(options)
         .then((response) => {
           const dataArr = response.data.result;
-          console.log(dataArr);
 
           const matchingData = dataArr.find(
             (result) => result.title.toLowerCase() === title.toLowerCase()
           );
-          console.log(matchingData);
           const genre = matchingData.genres
             .map((genre) => genre.name)
             .join(", ");
@@ -69,14 +66,13 @@ const App = () => {
           const streamingService = matchingData.streamingInfo.us
             ? Object.keys(matchingData.streamingInfo.us)
             : null;
-          console.log(streamingService);
           setShow({
             ...matchingData,
             genre: genre,
             streamingService: streamingService,
           });
 
-          console.log(setShow);
+          console.log(matchingData);
         })
         .catch(function (error) {
           console.error(error);
@@ -103,7 +99,19 @@ const App = () => {
               />
             }
           />
-          <Route path="/chat" element={<ChatPage />} />
+          <Route
+            path="/chat"
+            element={
+              <ChatPage
+                show={show}
+                formData={formData}
+                setFormData={setFormData}
+                title={title}
+                handleSubmit={handleSubmit}
+                showFetch={showFetch}
+              />
+            }
+          />
           <Route
             path="/3x3"
             element={

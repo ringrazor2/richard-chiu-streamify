@@ -11,17 +11,13 @@ import {
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./ChatBot.scss";
 
-// const chatKey = "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";
-
 const ChatBot = ({ messages, setMessages }) => {
   const [typing, setTyping] = useState(false);
   const [clearMessages, setClearMessages] = useState(false);
 
   const configuration = new Configuration({
-    // organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
     organization: process.env.REACT_APP_OPENAI_ORG,
     apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-    // apiKey: chatKey,
   });
 
   const openai = new OpenAIApi(configuration);
@@ -32,9 +28,9 @@ const ChatBot = ({ messages, setMessages }) => {
 
     openai
       .createChatCompletion({
-        model: "gpt-3.5-turbo",
-        // prompt:
-        //   "I am going to give you three recent shows I watched and I want you to recommend me one show to watch",
+        model: "gpt-3.5-turbo-0301",
+        // prompt: `Please suggest one show recommendation to the user based off the user input`,
+        // maxTokens: 15,
         messages: [userMessage],
       })
       .then((res) => {
