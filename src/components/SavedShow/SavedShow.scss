@@ -1,0 +1,67 @@
+.show-card{
+    display: flex;
+    background-color: white;
+    width: 32%;
+    border-radius: 4px;
+    height: 300px;;
+  
+    &__image{
+      height: 300px;
+      width: 45%;
+    }
+  
+    &__description-container{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      padding: 1rem;
+      overflow: hidden;
+    }
+    &__right{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-bottom: 0;
+      justify-content: space-between;
+    }
+  
+    &__title{
+      color:black;
+      font-weight: bold;
+      font-size: 20px;
+  
+    }
+  
+    &__heading-container{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+  
+    &__overview{
+        font-size: 14px;
+    }
+    &__streamLogos{
+      display: flex;
+      background-color: rgb(207, 230, 238);
+      padding: 10px;
+    
+    }
+    &__stream-icon{
+      height: 30px;
+      margin-right: 10px;
+      border-radius: 4px;
+    }
+  
+    &__genre{
+      color: black;
+      font-size: 12px;
+    }
+  }
+  
+  .trash-icon{
+    height: 25px;
+    cursor: pointer;
+  }
