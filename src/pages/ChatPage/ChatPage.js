@@ -7,35 +7,9 @@ import DummyDetails from "../../components/ShowDetails/DummyDetails";
 import "./ChatPage.scss";
 
 // get title from chatGPT and set formData to that title
-const ChatPage = ({
-  show,
-  formData,
-  setFormData,
-  title,
-  handleSubmit,
-  showFetch,
-}) => {
-  const [chatRec, setChatRec] = useState(null);
-
-  const options = {
-    method: "GET",
-    url: `https://streaming-availability.p.rapidapi.com/v2/search/title`,
-    params: {
-      title: title,
-      country: "us",
-      type: "all",
-      output_language: "en",
-    },
-    headers: {
-      "X-RapidAPI-Key": "6f365c6cdcmsh8226eb0b5972b7bp187be7jsnf67e81afcd20",
-      "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
-    },
-  };
-
-  useEffect(() => {
-    showFetch();
-  }, [title]);
-
+const ChatPage = ({ options }) => {
+  const [chatInput, setChatInput] = useState(null);
+  const [chatShow, setChatShow] = useState(null);
   const [messages, setMessages] = useState([
     {
       message: "Tell me what kind of show you are looking for!",
@@ -43,6 +17,41 @@ const ChatPage = ({
     },
   ]);
 
+  const title = chatInput;
+  useEffect(() => {
+    const fetchData = async () => {
+      if (title) {
+        try {
+          const response = await axios.request(options);
+          const dataArr = response.data.result;
+          const matchingData = dataArr.find(
+            (result) => result.title.toLowerCase() === title.toLowerCase()
+          );
+          const genre = matchingData.genres
+            .map((genre) => genre.name)
+            .join(", ");
+          const streamingService = matchingData.streamingInfo.us
+            ? Object.keys(matchingData.streamingInfo.us)
+            : null;
+
+          setChatShow({
+            ...matchingData,
+            genre: genre,
+            streamingService: streamingService,
+          });
+          console.log(chatShow);
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        setChatShow(null);
+      }
+    };
+
+    fetchData();
+  }, [title]);
+
+  console.log(chatInput);
   return (
     <div className="chat-page">
       <NavBar />
@@ -55,15 +64,15 @@ const ChatPage = ({
           </h1>
         </div>
         <div className="chat-page-main">
-          {/* <img className="chat-page__image" src={phoneDrop}></img> */}
-          <ChatBot messages={messages} setMessages={setMessages} />
-          <DummyDetails />
-
+          <ChatBot
+            messages={messages}
+            setMessages={setMessages}
+            setChatInput={setChatInput}
+            chatInput={chatInput}
+          />
+          {/* <DummyDetails /> */}
           <div className="show-details-container">
-            {/* {show && show.title.toLowerCase() === title.toLowerCase() && (
-              <ShowDetails show={show} />
-            )} */}
-            {/* <ShowDetails /> */}
+            {chatShow && <ShowDetails show={chatShow} />}
           </div>
         </div>
       </div>

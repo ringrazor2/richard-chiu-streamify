@@ -11,7 +11,7 @@ import {
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./ChatBot.scss";
 
-const ChatBot = ({ messages, setMessages }) => {
+const ChatBot = ({ messages, setMessages, setChatInput, chatInput }) => {
   const [typing, setTyping] = useState(false);
   const [clearMessages, setClearMessages] = useState(false);
 
@@ -37,6 +37,7 @@ const ChatBot = ({ messages, setMessages }) => {
         setTyping(false);
         const botMessage = res.data.choices[0].message.content;
         console.log(botMessage);
+        setChatInput(botMessage);
         setMessages([
           ...messages,
           { message: message, sender: "user" },
@@ -71,9 +72,9 @@ const ChatBot = ({ messages, setMessages }) => {
             })}
             {typing ? <TypingIndicator content="ChatGPT is typing" /> : null}
             {messages.length > 0 ? (
-              <p className="clear-button" onClick={handleClearMessages}>
+              <button className="clear-button" onClick={handleClearMessages}>
                 Clear
-              </p>
+              </button>
             ) : null}
           </MessageList>
           <MessageInput
