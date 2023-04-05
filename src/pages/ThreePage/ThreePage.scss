@@ -19,7 +19,7 @@
     }
   &__title{
     color: white;
-    font-family: "Lato";
+    font-family: "Inter";
     font-size: 3rem;
     font-weight: 600;
   }
@@ -84,6 +84,7 @@
   position: relative;
   height: 2.7rem;
   border: 3px ridge #149CEA;
+
   outline: none;
   background-color: transparent;
   transition: 1s;
@@ -145,3 +146,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+
+
+

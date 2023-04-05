@@ -1,6 +1,8 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/global";
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto&display=swap');
+
 .chat-page {
   background: url("../../assets/images//backgrounds/primary-background.svg")
     no-repeat center center fixed;
@@ -14,10 +16,8 @@
   &-container {
     display: flex;
     flex-direction: column;
-    // flex-wrap: wrap;
     padding: 2.5rem 6rem;
-    // justify-content: space-between;
-    // width: 75%
+  
   }
   &__message {
     color: white;

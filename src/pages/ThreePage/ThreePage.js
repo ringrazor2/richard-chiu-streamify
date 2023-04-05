@@ -48,10 +48,11 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
 
   const handleClear = async () => {
     setGrid([]);
-    const grid = document.querySelectorAll(".box");
-    grid.forEach((box) => {
-      box.innerHTML = "";
-    });
+    window.location.reload(true);
+    //   const grid = document.querySelectorAll(".box");
+    //   grid.forEach((box) => {
+    //     box.innerHTML = "";
+    //   });
   };
 
   const handleSave = async () => {

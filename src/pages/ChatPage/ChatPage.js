@@ -7,7 +7,7 @@ import DummyDetails from "../../components/ShowDetails/DummyDetails";
 import "./ChatPage.scss";
 
 // get title from chatGPT and set formData to that title
-const ChatPage = ({ options }) => {
+const ChatPage = () => {
   const [chatInput, setChatInput] = useState(null);
   const [chatShow, setChatShow] = useState(null);
   const [messages, setMessages] = useState([
@@ -17,19 +17,37 @@ const ChatPage = ({ options }) => {
     },
   ]);
 
-  const title = chatInput;
   useEffect(() => {
     const fetchData = async () => {
-      if (title) {
+      if (chatInput) {
         try {
+          const options = {
+            method: "GET",
+            url: "https://streaming-availability.p.rapidapi.com/v2/search/title",
+            params: {
+              title: chatInput,
+              country: "us",
+              type: "all",
+              output_language: "en",
+            },
+            headers: {
+              "X-RapidAPI-Key":
+                process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
+              "X-RapidAPI-Host":
+                process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
+            },
+          };
           const response = await axios.request(options);
           const dataArr = response.data.result;
+          console.log(dataArr);
           const matchingData = dataArr.find(
-            (result) => result.title.toLowerCase() === title.toLowerCase()
+            (result) => result.title.toLowerCase() === chatInput.toLowerCase()
           );
+          console.log(matchingData);
           const genre = matchingData.genres
             .map((genre) => genre.name)
             .join(", ");
+          console.log(genre);
           const streamingService = matchingData.streamingInfo.us
             ? Object.keys(matchingData.streamingInfo.us)
             : null;
@@ -49,7 +67,7 @@ const ChatPage = ({ options }) => {
     };
 
     fetchData();
-  }, [title]);
+  }, [chatInput]);
 
   console.log(chatInput);
   return (
@@ -70,9 +88,11 @@ const ChatPage = ({ options }) => {
             setChatInput={setChatInput}
             chatInput={chatInput}
           />
-          {/* <DummyDetails /> */}
           <div className="show-details-container">
-            {chatShow && <ShowDetails show={chatShow} />}
+            {chatShow &&
+              chatInput.toLowerCase() === chatInput.toLowerCase() && (
+                <ShowDetails show={chatShow} />
+              )}
           </div>
         </div>
       </div>

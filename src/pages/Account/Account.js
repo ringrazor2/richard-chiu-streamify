@@ -33,12 +33,23 @@ const Account = () => {
     });
   }, []);
 
-  const deleteShow = async (e) => {
+  const deleteFaveShow = async (e) => {
     let id = e.target.id;
     try {
       const filteredList = faveList.filter((show) => show.imdbId !== id);
       await updateDoc(doc(db, "users", `${user.email}`), {
         faveList: filteredList,
+      });
+    } catch {
+      console.log("Error deleting show");
+    }
+  };
+  const deleteWatchShow = async (e) => {
+    let id = e.target.id;
+    try {
+      const filteredList = watchList.filter((show) => show.imdbId !== id);
+      await updateDoc(doc(db, "users", `${user.email}`), {
+        watchList: filteredList,
       });
     } catch {
       console.log("Error deleting show");
@@ -115,7 +126,7 @@ const Account = () => {
               <SavedShow
                 show={show}
                 key={show.imdbId}
-                deleteShow={deleteShow}
+                deleteShow={deleteFaveShow}
               />
             );
           })}
@@ -128,7 +139,7 @@ const Account = () => {
               <SavedShow
                 show={show}
                 key={show.imdbId}
-                deleteShow={deleteShow}
+                deleteShow={deleteWatchShow}
               />
             );
           })}

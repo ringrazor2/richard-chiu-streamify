@@ -49,7 +49,7 @@ const App = () => {
     e.target.reset();
   };
 
-  const showFetch = (fx) => {
+  const showFetch = () => {
     if (title) {
       axios
         .request(options)

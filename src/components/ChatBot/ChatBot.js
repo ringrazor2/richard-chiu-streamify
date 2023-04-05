@@ -11,7 +11,7 @@ import {
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import "./ChatBot.scss";
 
-const ChatBot = ({ messages, setMessages, setChatInput, chatInput }) => {
+const ChatBot = ({ messages, setMessages, setChatInput }) => {
   const [typing, setTyping] = useState(false);
   const [clearMessages, setClearMessages] = useState(false);
 
@@ -24,13 +24,16 @@ const ChatBot = ({ messages, setMessages, setChatInput, chatInput }) => {
 
   const handleSendMessage = async (message) => {
     setTyping(true);
-    const userMessage = { role: "user", content: message };
+    const userMessage = {
+      role: "user",
+      content:
+        "Recommend me one show with no quotes or periods based off what I am about to say, your answer should only be the show title and nothing else " +
+        message,
+    };
 
     openai
       .createChatCompletion({
         model: "gpt-3.5-turbo-0301",
-        // prompt: `Please suggest one show recommendation to the user based off the user input`,
-        // maxTokens: 15,
         messages: [userMessage],
       })
       .then((res) => {
@@ -50,7 +53,7 @@ const ChatBot = ({ messages, setMessages, setChatInput, chatInput }) => {
   };
 
   const handleClearMessages = () => {
-    setClearMessages(!clearMessages);
+    // setClearMessages(!clearMessages);
     setMessages([]);
   };
 

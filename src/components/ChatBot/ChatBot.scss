@@ -36,9 +36,23 @@
   .bot-message{
     margin-left: 3rem;
   }
+
+  .user-message{
+    // background-color: aqua;
+  }
 .clear-button{
     border: none;
     background-color: white;
     color: red;
     cursor: pointer;
 }
+
+.cs-message__content--user {
+  background-color: #d7efff;
+}
+
+.cs-message__content--bot {
+  background-color: #f5f5f5;
+  color: #555;
+}
+
