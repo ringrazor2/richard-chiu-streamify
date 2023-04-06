@@ -18,6 +18,8 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
   const configuration = new Configuration({
     organization: process.env.REACT_APP_OPENAI_ORG,
     apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+    apiKey: "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",
+    organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
   });
 
   const openai = new OpenAIApi(configuration);
