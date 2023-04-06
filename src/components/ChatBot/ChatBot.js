@@ -13,7 +13,6 @@ import "./ChatBot.scss";
 
 const ChatBot = ({ messages, setMessages, setChatInput }) => {
   const [typing, setTyping] = useState(false);
-  const [clearMessages, setClearMessages] = useState(false);
 
   const configuration = new Configuration({
     organization: process.env.REACT_APP_OPENAI_ORG,
@@ -55,7 +54,6 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
   };
 
   const handleClearMessages = () => {
-    // setClearMessages(!clearMessages);
     setMessages([]);
   };
 

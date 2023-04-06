@@ -146,7 +146,7 @@ const ShowDetails = ({ show }) => {
                   linkSrc = show.streamingInfo.us.apple[0].link;
                 }
                 return (
-                  <Link target="_blank" to={linkSrc}>
+                  <Link target="_blank" to={linkSrc} className="streamLink">
                     <img
                       key={index}
                       className="stream-icon"

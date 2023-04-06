@@ -53,7 +53,7 @@
 .stream-icon {
   height: 75px;
   width: 75px;
-  margin-right: 24px;
+  // margin-right: 24px;
   cursor: pointer;
 }
 
@@ -111,4 +111,8 @@
 
 .watchlist{
   height: 19px;
+}
+
+.streamLink{
+  margin-right: 1.5rem;
 }

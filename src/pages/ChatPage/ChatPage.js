@@ -6,7 +6,6 @@ import ShowDetails from "../../components/ShowDetails/ShowDetails";
 import DummyDetails from "../../components/ShowDetails/DummyDetails";
 import "./ChatPage.scss";
 
-// get title from chatGPT and set formData to that title
 const ChatPage = () => {
   const [chatInput, setChatInput] = useState(null);
   const [chatShow, setChatShow] = useState(null);
@@ -31,18 +30,17 @@ const ChatPage = () => {
               output_language: "en",
             },
             headers: {
-              // "X-RapidAPI-Key":
-              //   process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
-              // "X-RapidAPI-Host":
-              //   process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
               "X-RapidAPI-Key":
-                "6f365c6cdcmsh8226eb0b5972b7bp187be7jsnf67e81afcd20",
-              "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+                process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
+              "X-RapidAPI-Host":
+                process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
+              // "X-RapidAPI-Key":
+              //   "6f365c6cdcmsh8226eb0b5972b7bp187be7jsnf67e81afcd20",
+              // "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
             },
           };
           const response = await axios.request(options);
           const dataArr = response.data.result;
-          console.log(dataArr);
           const matchingData = dataArr.find(
             (result) => result.title.toLowerCase() === chatInput.toLowerCase()
           );
@@ -50,7 +48,6 @@ const ChatPage = () => {
           const genre = matchingData.genres
             .map((genre) => genre.name)
             .join(", ");
-          console.log(genre);
           const streamingService = matchingData.streamingInfo.us
             ? Object.keys(matchingData.streamingInfo.us)
             : null;
@@ -60,7 +57,6 @@ const ChatPage = () => {
             genre: genre,
             streamingService: streamingService,
           });
-          console.log(chatShow);
         } catch (error) {
           console.error(error);
         }
@@ -72,7 +68,6 @@ const ChatPage = () => {
     fetchData();
   }, [chatInput]);
 
-  console.log(chatInput);
   return (
     <div className="chat-page">
       <NavBar />
