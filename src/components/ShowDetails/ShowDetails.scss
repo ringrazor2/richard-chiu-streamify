@@ -3,7 +3,6 @@
 .show-details {
   display: flex;
   background-color: rgb(37, 35, 35);
-  // margin-top: 3rem;
   width: 85%;
   height: 550px;;
   padding: 2rem;
@@ -33,7 +32,6 @@
   color: white;
   font-size: 32px;
   font-weight: 550;
-  // margin-bottom: 1.5rem;
 }
 
 .show-synopsis-title {
@@ -53,7 +51,6 @@
 .stream-icon {
   height: 75px;
   width: 75px;
-  // margin-right: 24px;
   cursor: pointer;
 }
 
@@ -90,6 +87,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
+  justify-content: space-between;
 }
 .show-icon {
   height: 20px;
@@ -120,4 +118,18 @@
 .chat-details{
   width: 100%;
   height: auto;
+}
+.show-title-icon{
+  display: flex;
+  align-items: center;
+}
+
+.vpn-icon {
+  height: 30px;
+  cursor: pointer;
+
+}
+
+.vpn-a{
+  margin-right: 10px;
 }

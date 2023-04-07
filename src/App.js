@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { AuthContextProvider } from "./context/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Fuse from "fuse.js";
 import HomePage from "./pages/HomePage/HomePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import ChatPage from "./pages//ChatPage/ChatPage";
@@ -16,7 +17,7 @@ const App = () => {
   const [formData, setFormData] = useState({
     title: "",
   });
-  const [country, setCountry] = useState("jp");
+  const [country, setCountry] = useState("ca");
   const [show, setShow] = useState(null);
 
   const { title } = formData;
@@ -39,7 +40,6 @@ const App = () => {
     },
   };
 
-  console.log(country);
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormData({ title: e.target.elements.title.value });
@@ -132,7 +132,7 @@ const App = () => {
             path="/account"
             element={
               <Protected>
-                <Account />
+                <Account country={country} />
               </Protected>
             }
           />

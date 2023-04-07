@@ -52,7 +52,7 @@
     }
     &__stream-icon{
       height: 30px;
-      margin-right: 10px;
+      width: 30px;
       border-radius: 4px;
     }
   
@@ -65,4 +65,8 @@
   .trash-icon{
     height: 25px;
     cursor: pointer;
+  }
+
+  .stream-anchor{
+    margin-right: 10px;
   }

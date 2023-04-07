@@ -56,6 +56,10 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   const handleClear = async () => {
     setGrid([]);
     window.location.reload(true);
+    //   const grid = document.querySelectorAll(".box");
+    //   grid.forEach((box) => {
+    //     box.innerHTML = "";
+    //   });
   };
 
   const handleSave = async () => {
@@ -69,7 +73,6 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
     }
   };
 
-  console.log(grid);
   return (
     <>
       <div className="three-page">
@@ -114,19 +117,19 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
             <div className="three-left">
               <div className="threeBythree">
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(0)}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(1)}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(2)}></DroppableBox>
                 </div>
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(3)}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(4)}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(5)}></DroppableBox>
                 </div>
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
-                  <DroppableBox handleDrop={handleDrop}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(6)}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(7)}></DroppableBox>
+                  <DroppableBox handleDrop={handleBoxDrop(8)}></DroppableBox>
                 </div>
               </div>
               <div className="three-button-container">
