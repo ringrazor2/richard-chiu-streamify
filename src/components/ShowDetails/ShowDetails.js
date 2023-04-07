@@ -18,7 +18,7 @@ import faveIcon from "../../assets/images/icons/favorite-icon.png";
 import faveIconActive from "../../assets/images/icons/favourite-icon-active.png";
 import watchlistIcon from "../../assets/images/icons/watchlist-icon.png";
 import watchlistIconActive from "../../assets/images/icons/watchlist-icon-active.png";
-const ShowDetails = ({ show }) => {
+const ShowDetails = ({ show, className }) => {
   const [favedShow, setFavedShow] = useState(false);
   const [savedShow, setSavedShow] = useState(false);
   const { user } = UserAuth();
@@ -46,7 +46,7 @@ const ShowDetails = ({ show }) => {
   };
   return (
     <>
-      <div className="show-details">
+      <div className={`show-details ${className}`}>
         <div className="show-poster-container">
           <Link
             to={show.youtubeTrailerVideoLink}

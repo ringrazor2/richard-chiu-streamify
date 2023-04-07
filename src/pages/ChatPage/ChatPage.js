@@ -89,7 +89,7 @@ const ChatPage = () => {
           <div className="show-details-container">
             {chatShow &&
               chatInput.toLowerCase() === chatInput.toLowerCase() && (
-                <ShowDetails show={chatShow} />
+                <ShowDetails show={chatShow} className="chat-details" />
               )}
           </div>
         </div>
