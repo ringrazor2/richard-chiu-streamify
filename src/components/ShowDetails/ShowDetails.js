@@ -18,7 +18,7 @@ import faveIcon from "../../assets/images/icons/favorite-icon.png";
 import faveIconActive from "../../assets/images/icons/favourite-icon-active.png";
 import watchlistIcon from "../../assets/images/icons/watchlist-icon.png";
 import watchlistIconActive from "../../assets/images/icons/watchlist-icon-active.png";
-const ShowDetails = ({ show, className }) => {
+const ShowDetails = ({ show, className, country }) => {
   const [favedShow, setFavedShow] = useState(false);
   const [savedShow, setSavedShow] = useState(false);
   const { user } = UserAuth();
@@ -119,31 +119,31 @@ const ShowDetails = ({ show, className }) => {
                 let linkSrc = "";
                 if (service === "netflix") {
                   iconSrc = netflix;
-                  linkSrc = show.streamingInfo.ca.netflix[0].link;
+                  linkSrc = show.streamingInfo[country].netflix[0].link;
                 } else if (service === "prime") {
                   iconSrc = prime;
-                  linkSrc = show.streamingInfo.ca.prime[0].link;
+                  linkSrc = show.streamingInfo[country].prime[0].link;
                 } else if (service === "hbo") {
                   iconSrc = hbo;
-                  linkSrc = show.streamingInfo.ca.hbo[0].link;
+                  linkSrc = show.streamingInfo[country].hbo[0].link;
                 } else if (service === "crave") {
                   iconSrc = crave;
-                  linkSrc = show.streamingInfo.ca.crave[0].link;
+                  linkSrc = show.streamingInfo[country].crave[0].link;
                 } else if (service === "hulu") {
                   iconSrc = hulu;
-                  linkSrc = show.streamingInfo.ca.hulu[0].link;
+                  linkSrc = show.streamingInfo[country].hulu[0].link;
                 } else if (service === "disney") {
                   iconSrc = disneyPlus;
-                  linkSrc = show.streamingInfo.ca.disney[0].link;
+                  linkSrc = show.streamingInfo[country].disney[0].link;
                 } else if (service === "crunchyroll") {
                   iconSrc = crunchyroll;
-                  linkSrc = show.streamingInfo.ca.crunchyroll[0].link;
+                  linkSrc = show.streamingInfo[country].crunchyroll[0].link;
                 } else if (service === "peacock") {
                   iconSrc = peacock;
-                  linkSrc = show.streamingInfo.ca.peacock[0].link;
+                  linkSrc = show.streamingInfo[country].peacock[0].link;
                 } else if (service === "apple") {
                   iconSrc = apple;
-                  linkSrc = show.streamingInfo.ca.apple[0].link;
+                  linkSrc = show.streamingInfo[country].apple[0].link;
                 }
                 return (
                   <Link target="_blank" to={linkSrc} className="streamLink">

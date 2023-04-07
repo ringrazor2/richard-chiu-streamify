@@ -12,6 +12,11 @@
   width: 85%;
   align-self: center;
   margin-bottom: 3rem;
+
+  &__heading{
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .search-bar-container {

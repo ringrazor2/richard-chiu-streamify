@@ -1,6 +1,6 @@
 import "./SearchBar.scss";
 import search from "../../assets/images/icons/search-icon2.png";
-const SearchBar = ({ handleSubmit, title, className }) => {
+const SearchBar = ({ handleSubmit, title, country }) => {
   // const handleInputChange = (event) => {
   //   const { name, value } = event.target;
   //   setFormData((formData) => ({ ...formData, [name]: value }));
@@ -9,7 +9,16 @@ const SearchBar = ({ handleSubmit, title, className }) => {
     <>
       <form onSubmit={handleSubmit} className="search-bar-form">
         <div className="search-bar-container">
-          <label>Search for your show</label>
+          <div className="search-bar-form__heading">
+            <label>Search for your show</label>
+            <select className="country-input" name="country">
+              <option value="ca">Canada</option>
+              <option value="us">United States of America</option>
+              <option value="jp">Japan</option>
+              <option value="kr">Korea</option>
+              <option value="gb">Great Britain</option>
+            </select>
+          </div>
           <div className="search-bar-Innercontainer">
             <div className="search-bar-input-container">
               <input

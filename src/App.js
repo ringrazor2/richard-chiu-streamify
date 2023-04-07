@@ -16,6 +16,7 @@ const App = () => {
   const [formData, setFormData] = useState({
     title: "",
   });
+  const [country, setCountry] = useState("jp");
   const [show, setShow] = useState(null);
 
   const { title } = formData;
@@ -25,7 +26,7 @@ const App = () => {
     url: "https://streaming-availability.p.rapidapi.com/v2/search/title",
     params: {
       title: title,
-      country: "ca",
+      country: country,
       type: "all",
       output_language: "en",
     },
@@ -38,9 +39,11 @@ const App = () => {
     },
   };
 
+  console.log(country);
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormData({ title: e.target.elements.title.value });
+    setCountry(e.target.country.value);
     e.target.reset();
   };
 
@@ -58,8 +61,8 @@ const App = () => {
             .map((genre) => genre.name)
             .join(", ");
 
-          const streamingService = matchingData.streamingInfo.ca
-            ? Object.keys(matchingData.streamingInfo.ca)
+          const streamingService = matchingData.streamingInfo[country]
+            ? Object.keys(matchingData.streamingInfo[country])
             : null;
           setShow({
             ...matchingData,
@@ -68,6 +71,7 @@ const App = () => {
           });
 
           console.log(matchingData);
+          console.log(streamingService);
         })
         .catch(function (error) {
           console.error(error);
@@ -89,6 +93,7 @@ const App = () => {
                 formData={formData}
                 setFormData={setFormData}
                 title={title}
+                country={country}
                 handleSubmit={handleSubmit}
                 showFetch={showFetch}
               />

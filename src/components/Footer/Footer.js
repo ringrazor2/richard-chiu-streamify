@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import linkedin from "../../assets/images//icons//linkedin-icon.png";
 import github from "../../assets/images//icons//github-icon.png";
-import facebook from "../../assets/images//icons//facebook-icon.png";
+
 import "./Footer.scss";
 const Footer = () => {
   return (

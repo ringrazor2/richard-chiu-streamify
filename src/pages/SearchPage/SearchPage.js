@@ -13,6 +13,7 @@ const SearchPage = ({
   title,
   handleSubmit,
   showFetch,
+  country,
 }) => {
   useEffect(() => {
     showFetch();
@@ -29,7 +30,7 @@ const SearchPage = ({
             setFormData={setFormData}
           />
           {show && show.title.toLowerCase() === title.toLowerCase() && (
-            <ShowDetails show={show} />
+            <ShowDetails show={show} country={country} />
           )}
         </div>
       </div>
