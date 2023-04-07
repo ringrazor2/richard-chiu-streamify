@@ -1,0 +1,27 @@
+.footer
+{
+    display: flex;
+  background-color:#26272b;
+  padding: 2rem 1.25rem;
+justify-content: center;
+align-items: center;
+  font-size: 1rem;
+  color:#737373;
+
+  &__socials{
+    margin-left: 1.5rem;
+  
+
+  &-img{
+    height: 30px;
+   
+    cursor: pointer;
+  }}
+  &__anch{
+    margin-left: 10px;
+  }
+}
+
+
+
+

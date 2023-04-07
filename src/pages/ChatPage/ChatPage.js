@@ -3,7 +3,7 @@ import axios from "axios";
 import NavBar from "../../components/NavBar/NavBar";
 import ChatBot from "../../components/ChatBot/ChatBot";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
-import DummyDetails from "../../components/ShowDetails/DummyDetails";
+import Footer from "../../components/Footer/Footer";
 import "./ChatPage.scss";
 
 const ChatPage = () => {
@@ -69,32 +69,35 @@ const ChatPage = () => {
   }, [chatInput]);
 
   return (
-    <div className="chat-page">
-      <NavBar />
-      <div className="chat-page-container">
-        <div className="chat-page__message-container">
-          <h1 className="chat-page__message">Don't know what to watch?</h1>
-          <h1 className="chat-page__message chat-page__message-2">
-            We got you! <span className="askChat">Ask Chat </span>and get a
-            recommendation
-          </h1>
-        </div>
-        <div className="chat-page-main">
-          <ChatBot
-            messages={messages}
-            setMessages={setMessages}
-            setChatInput={setChatInput}
-            chatInput={chatInput}
-          />
-          <div className="show-details-container">
-            {chatShow &&
-              chatInput.toLowerCase() === chatInput.toLowerCase() && (
-                <ShowDetails show={chatShow} className="chat-details" />
-              )}
+    <>
+      <div className="chat-page">
+        <NavBar />
+        <div className="chat-page-container">
+          <div className="chat-page__message-container">
+            <h1 className="chat-page__message">Don't know what to watch?</h1>
+            <h1 className="chat-page__message chat-page__message-2">
+              We got you! <span className="askChat">Ask Chat </span>and get a
+              recommendation
+            </h1>
+          </div>
+          <div className="chat-page-main">
+            <ChatBot
+              messages={messages}
+              setMessages={setMessages}
+              setChatInput={setChatInput}
+              chatInput={chatInput}
+            />
+            <div className="show-details-container">
+              {chatShow &&
+                chatInput.toLowerCase() === chatInput.toLowerCase() && (
+                  <ShowDetails show={chatShow} className="chat-details" />
+                )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

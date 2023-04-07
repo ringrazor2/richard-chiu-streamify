@@ -25,7 +25,7 @@ const App = () => {
     url: "https://streaming-availability.p.rapidapi.com/v2/search/title",
     params: {
       title: title,
-      country: "us",
+      country: "ca",
       type: "all",
       output_language: "en",
     },
@@ -58,8 +58,8 @@ const App = () => {
             .map((genre) => genre.name)
             .join(", ");
 
-          const streamingService = matchingData.streamingInfo.us
-            ? Object.keys(matchingData.streamingInfo.us)
+          const streamingService = matchingData.streamingInfo.ca
+            ? Object.keys(matchingData.streamingInfo.ca)
             : null;
           setShow({
             ...matchingData,

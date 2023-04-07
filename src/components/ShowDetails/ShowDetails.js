@@ -119,31 +119,31 @@ const ShowDetails = ({ show, className }) => {
                 let linkSrc = "";
                 if (service === "netflix") {
                   iconSrc = netflix;
-                  linkSrc = show.streamingInfo.us.netflix[0].link;
+                  linkSrc = show.streamingInfo.ca.netflix[0].link;
                 } else if (service === "prime") {
                   iconSrc = prime;
-                  linkSrc = show.streamingInfo.us.prime[0].link;
+                  linkSrc = show.streamingInfo.ca.prime[0].link;
                 } else if (service === "hbo") {
                   iconSrc = hbo;
-                  linkSrc = show.streamingInfo.us.hbo[0].link;
+                  linkSrc = show.streamingInfo.ca.hbo[0].link;
                 } else if (service === "crave") {
                   iconSrc = crave;
-                  linkSrc = show.streamingInfo.us.crave[0].link;
+                  linkSrc = show.streamingInfo.ca.crave[0].link;
                 } else if (service === "hulu") {
                   iconSrc = hulu;
-                  linkSrc = show.streamingInfo.us.hulu[0].link;
+                  linkSrc = show.streamingInfo.ca.hulu[0].link;
                 } else if (service === "disney") {
                   iconSrc = disneyPlus;
-                  linkSrc = show.streamingInfo.us.disney[0].link;
+                  linkSrc = show.streamingInfo.ca.disney[0].link;
                 } else if (service === "crunchyroll") {
                   iconSrc = crunchyroll;
-                  linkSrc = show.streamingInfo.us.crunchyroll[0].link;
+                  linkSrc = show.streamingInfo.ca.crunchyroll[0].link;
                 } else if (service === "peacock") {
                   iconSrc = peacock;
-                  linkSrc = show.streamingInfo.us.peacock[0].link;
+                  linkSrc = show.streamingInfo.ca.peacock[0].link;
                 } else if (service === "apple") {
                   iconSrc = apple;
-                  linkSrc = show.streamingInfo.us.apple[0].link;
+                  linkSrc = show.streamingInfo.ca.apple[0].link;
                 }
                 return (
                   <Link target="_blank" to={linkSrc} className="streamLink">
