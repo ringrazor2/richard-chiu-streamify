@@ -35,6 +35,8 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
     openai
       .createChatCompletion({
         model: "gpt-3.5-turbo-0301",
+        // content:
+        //   "You are HelpfulGPT, a chatbot that gives the user a title of a show in plain text with no extra words or characters",
         messages: [userMessage],
       })
       .then((res) => {

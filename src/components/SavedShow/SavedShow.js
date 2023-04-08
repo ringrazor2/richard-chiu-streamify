@@ -13,7 +13,7 @@ import peacock from "../../assets/images/icons/peakcock-icon.png";
 import apple from "../../assets/images/icons/apple-icon.webp";
 import showtime from "../../assets/images/icons/showTime-icon.jpg";
 
-const SavedShow = ({ show, deleteShow }) => {
+const SavedShow = ({ show, deleteShow, country }) => {
   function getIconSrc(service) {
     switch (service) {
       case "netflix":
@@ -86,6 +86,7 @@ const SavedShow = ({ show, deleteShow }) => {
                 </Link>
               );
             })}
+          <p>{show.countries[0] || "us"}</p>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-// require("dotenv").config();
 import "./SearchPage.scss";
 import { useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";

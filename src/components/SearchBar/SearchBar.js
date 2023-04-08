@@ -32,6 +32,7 @@ const SearchBar = ({ handleSubmit, title, country }) => {
               <option value="fr">France </option>
               <option value="es">Spain</option>
               <option value="br">Brazil</option>
+              <option value="ie">Ireland</option>
             </select>
           </div>
           <div className="search-bar-Innercontainer">

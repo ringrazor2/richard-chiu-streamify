@@ -71,7 +71,6 @@ const App = () => {
           });
 
           console.log(matchingData);
-          console.log(streamingService);
         })
         .catch(function (error) {
           console.error(error);
