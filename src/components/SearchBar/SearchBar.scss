@@ -12,6 +12,13 @@
   width: 85%;
   align-self: center;
   margin-bottom: 3rem;
+
+  &__heading{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+  }
 }
 
 .search-bar-container {
@@ -46,10 +53,10 @@
 label {
   font-family: "Hind", sans-serif;
   display: block;
-  margin-bottom: 12px;
   background: linear-gradient(45deg, rgb(34, 32, 32), #3c4b66);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-left: 8px;
 }
 
 .search-bar-input-container {
@@ -79,6 +86,20 @@ label {
     background-color: lighten(#e3edf7, 3%);
     border: 1px solid #a04ad5;
   }
+}
+
+.search-bar__country-input{
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  padding: 0 1em;
+  color: #fff;
+  background: none;
+  background-image: none;
+  color:  #3c4b66;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .InputContainer {

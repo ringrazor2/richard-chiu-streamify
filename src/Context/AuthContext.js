@@ -16,10 +16,6 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  // const createUser = (email, password) => {
-  //   return createUserWithEmailAndPassword(auth, email, password);
-  // };
-
   const signUp = async (email, password) => {
     await createUserWithEmailAndPassword(auth, email, password);
     await setDoc(doc(db, "users", email), {

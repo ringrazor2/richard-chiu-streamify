@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./NavBar.scss";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/icons/streamify-logo.svg";
 import home from "../../assets/images/icons/home-icon.png";
 import search from "../../assets/images/icons/search-icon.png";
@@ -10,11 +10,21 @@ import userIcon from "../../assets/images/icons/user-icon.png";
 import { UserAuth } from "../../context/AuthContext";
 
 const NavBar = () => {
-  const { user } = UserAuth();
+  const { user, logOut } = UserAuth();
   const [activeNavLink, setActiveNavLink] = useState("");
 
   const handleNavLinkClick = (navLink) => {
     setActiveNavLink(navLink);
+  };
+
+  const navigate = useNavigate();
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+      navigate("/signup");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -91,22 +101,44 @@ const NavBar = () => {
                   3 x 3
                 </NavLink>
               </li>
+              {/* <li>
+                <NavLink
+                  className={`navBar__anchor ${
+                    activeNavLink === "contact" ? "active" : ""
+                  }`}
+                  to="/3x3"
+                  onClick={() => handleNavLinkClick("contact")}
+                >
+                  Contact
+                </NavLink>
+              </li> */}
             </div>
           </div>
           {user ? (
-            <div>
-              <NavLink
-                className="navBar__anchor login"
-                to="/account"
-                onClick={() => setActiveNavLink("")}
-              >
-                <img
-                  className="navBar__icons"
-                  src={userIcon}
-                  alt="login icon"
-                ></img>
-                Profile
-              </NavLink>
+            <div className="account-tab">
+              <div>
+                <NavLink
+                  className="navBar__anchor"
+                  to="/account"
+                  onClick={() => setActiveNavLink("")}
+                >
+                  <img
+                    className="navBar__icons"
+                    src={userIcon}
+                    alt="login icon"
+                  ></img>
+                  Profile
+                </NavLink>
+              </div>
+              <div>
+                <div
+                  className="navBar__anchor"
+                  to="/account"
+                  onClick={handleSignOut}
+                >
+                  Sign Out
+                </div>
+              </div>
             </div>
           ) : (
             <NavLink

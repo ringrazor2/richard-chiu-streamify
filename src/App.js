@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { AuthContextProvider } from "./context/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Fuse from "fuse.js";
 import HomePage from "./pages/HomePage/HomePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import ChatPage from "./pages//ChatPage/ChatPage";
@@ -11,10 +12,12 @@ import Login from "./pages/Login/Login";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import Account from "./pages/Account/Account";
 import Protected from "./components/Protected/Protected";
+
 const App = () => {
   const [formData, setFormData] = useState({
     title: "",
   });
+  const [country, setCountry] = useState("ca");
   const [show, setShow] = useState(null);
 
   const { title } = formData;
@@ -24,7 +27,7 @@ const App = () => {
     url: "https://streaming-availability.p.rapidapi.com/v2/search/title",
     params: {
       title: title,
-      country: "us",
+      country: country,
       type: "all",
       output_language: "en",
     },
@@ -33,19 +36,14 @@ const App = () => {
       // "X-RapidAPI-Key": "30a356aae7msh66d33873f28de99p18faa9jsn184f061401da",
       "X-RapidAPI-Key": process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
       "X-RapidAPI-Host": process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
-      // "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+      "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
     },
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormData({ title: e.target.elements.title.value });
-    e.target.reset();
-  };
-
-  const handleSubmit3 = (e) => {
-    e.preventDefault();
-    setFormData({ title: e.target.elements.title.value });
+    setCountry(e.target.country.value);
     e.target.reset();
   };
 
@@ -63,8 +61,8 @@ const App = () => {
             .map((genre) => genre.name)
             .join(", ");
 
-          const streamingService = matchingData.streamingInfo.us
-            ? Object.keys(matchingData.streamingInfo.us)
+          const streamingService = matchingData.streamingInfo[country]
+            ? Object.keys(matchingData.streamingInfo[country])
             : null;
           setShow({
             ...matchingData,
@@ -73,6 +71,7 @@ const App = () => {
           });
 
           console.log(matchingData);
+          console.log(streamingService);
         })
         .catch(function (error) {
           console.error(error);
@@ -94,6 +93,7 @@ const App = () => {
                 formData={formData}
                 setFormData={setFormData}
                 title={title}
+                country={country}
                 handleSubmit={handleSubmit}
                 showFetch={showFetch}
               />
@@ -132,7 +132,7 @@ const App = () => {
             path="/account"
             element={
               <Protected>
-                <Account />
+                <Account country={country} />
               </Protected>
             }
           />

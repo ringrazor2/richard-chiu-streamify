@@ -14,11 +14,16 @@ import hulu from "../../assets/images/icons/hulu-icon.png";
 import crunchyroll from "../../assets/images/icons/crunchyroll-icon.png";
 import peacock from "../../assets/images/icons/peakcock-icon.png";
 import apple from "../../assets/images/icons/apple-icon.webp";
+import showtime from "../../assets/images/icons/showTime-icon.jpg";
 import faveIcon from "../../assets/images/icons/favorite-icon.png";
 import faveIconActive from "../../assets/images/icons/favourite-icon-active.png";
 import watchlistIcon from "../../assets/images/icons/watchlist-icon.png";
 import watchlistIconActive from "../../assets/images/icons/watchlist-icon-active.png";
-const ShowDetails = ({ show }) => {
+import nordvpnIcon from "../../assets/images/icons/nordvpn-icon.jpg";
+import expressvpnIcon from "../../assets/images/icons/expressVpn-icon.png";
+import piaIcon from "../../assets/images/icons/pia-icon.png";
+
+const ShowDetails = ({ show, className, country }) => {
   const [favedShow, setFavedShow] = useState(false);
   const [savedShow, setSavedShow] = useState(false);
   const { user } = UserAuth();
@@ -44,9 +49,36 @@ const ShowDetails = ({ show }) => {
       console.log("Please log in to save shows");
     }
   };
+
+  function getIconSrc(service) {
+    switch (service) {
+      case "netflix":
+        return netflix;
+      case "prime":
+        return prime;
+      case "hbo":
+        return hbo;
+      case "crave":
+        return crave;
+      case "hulu":
+        return hulu;
+      case "disney":
+        return disneyPlus;
+      case "crunchyroll":
+        return crunchyroll;
+      case "peacock":
+        return peacock;
+      case "apple":
+        return apple;
+      case "showtime":
+        return showtime;
+      default:
+        return notFound;
+    }
+  }
   return (
     <>
-      <div className="show-details">
+      <div className={`show-details ${className}`}>
         <div className="show-poster-container">
           <Link
             to={show.youtubeTrailerVideoLink}
@@ -78,36 +110,65 @@ const ShowDetails = ({ show }) => {
         </div>
         <div className="show-text-container">
           <div className="show-heading-container">
-            <h2 className="show-title">{show.title}</h2>
-            <div className="show-icons">
-              {favedShow ? (
+            <div className="show-title-icon">
+              <h2 className="show-title">{show.title}</h2>
+              <div className="show-icons">
+                {favedShow ? (
+                  <img
+                    src={faveIconActive}
+                    alt="fave icon"
+                    className="show-icon-active"
+                  />
+                ) : (
+                  <img
+                    src={faveIcon}
+                    alt="fave icon"
+                    className="show-icon"
+                    onClick={faveShow}
+                  />
+                )}
+                {savedShow ? (
+                  <img
+                    src={watchlistIconActive}
+                    alt="watchlist icon"
+                    className="show-icon-active watchlist"
+                  />
+                ) : (
+                  <img
+                    src={watchlistIcon}
+                    alt="watchlist icon"
+                    className="show-icon watchlist"
+                    onClick={saveShow}
+                  />
+                )}
+              </div>
+            </div>
+            <div className="show-vpn">
+              <Link className="vpn-a" to="https://nordvpn.com/" target="_blank">
                 <img
-                  src={faveIconActive}
-                  alt="fave icon"
-                  className="show-icon-active"
+                  src={nordvpnIcon}
+                  alt="nordvpn icon"
+                  className="vpn-icon"
                 />
-              ) : (
+              </Link>
+              <Link
+                className="vpn-a"
+                to="https://privateinternetaccess.com/"
+                target="_blank"
+              >
+                <img src={piaIcon} alt="nordvpn icon" className="vpn-icon" />
+              </Link>
+              <Link
+                className="vpn-a"
+                to="https://www.expressvpn.com/"
+                target="_blank"
+              >
                 <img
-                  src={faveIcon}
-                  alt="fave icon"
-                  className="show-icon"
-                  onClick={faveShow}
+                  src={expressvpnIcon}
+                  alt="express vpn icon"
+                  className="vpn-icon"
                 />
-              )}
-              {savedShow ? (
-                <img
-                  src={watchlistIconActive}
-                  alt="watchlist icon"
-                  className="show-icon-active watchlist"
-                />
-              ) : (
-                <img
-                  src={watchlistIcon}
-                  alt="watchlist icon"
-                  className="show-icon watchlist"
-                  onClick={saveShow}
-                />
-              )}
+              </Link>
             </div>
           </div>
           <h3 className="show-synopsis-title">Synopsis </h3>
@@ -117,36 +178,15 @@ const ShowDetails = ({ show }) => {
               show.streamingService.map((service, index) => {
                 let iconSrc = "";
                 let linkSrc = "";
-                if (service === "netflix") {
-                  iconSrc = netflix;
-                  linkSrc = show.streamingInfo.us.netflix[0].link;
-                } else if (service === "prime") {
-                  iconSrc = prime;
-                  linkSrc = show.streamingInfo.us.prime[0].link;
-                } else if (service === "hbo") {
-                  iconSrc = hbo;
-                  linkSrc = show.streamingInfo.us.hbo[0].link;
-                } else if (service === "crave") {
-                  iconSrc = crave;
-                  linkSrc = show.streamingInfo.us.crave[0].link;
-                } else if (service === "hulu") {
-                  iconSrc = hulu;
-                  linkSrc = show.streamingInfo.us.hulu[0].link;
-                } else if (service === "disney") {
-                  iconSrc = disneyPlus;
-                  linkSrc = show.streamingInfo.us.disney[0].link;
-                } else if (service === "crunchyroll") {
-                  iconSrc = crunchyroll;
-                  linkSrc = show.streamingInfo.us.crunchyroll[0].link;
-                } else if (service === "peacock") {
-                  iconSrc = peacock;
-                  linkSrc = show.streamingInfo.us.peacock[0].link;
-                } else if (service === "apple") {
-                  iconSrc = apple;
-                  linkSrc = show.streamingInfo.us.apple[0].link;
+                for (const country in show.streamingInfo) {
+                  if (show.streamingInfo[country][service]) {
+                    iconSrc = getIconSrc(service);
+                    linkSrc = show.streamingInfo[country][service][0].link;
+                    break;
+                  }
                 }
                 return (
-                  <Link target="_blank" to={linkSrc}>
+                  <Link target="_blank" to={linkSrc} className="streamLink">
                     <img
                       key={index}
                       className="stream-icon"
@@ -156,9 +196,7 @@ const ShowDetails = ({ show }) => {
                   </Link>
                 );
               })}
-            <p className="stream-region">
-              Region: {(show.countries && show.countries[0]) || "US"}
-            </p>
+            <p className="stream-region">Region: {country || "US"}</p>
           </div>
         </div>
       </div>

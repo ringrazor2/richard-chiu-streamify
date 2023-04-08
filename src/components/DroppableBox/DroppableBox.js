@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useDrop } from "react-dnd";
 
-const DroppableBox = ({ handleDrop }) => {
+const DroppableBox = ({ handleDrop, index }) => {
   const [droppedItem, setDroppedItem] = useState(null);
 
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: "image",
     drop: (item) => {
       setDroppedItem(item.src);
-      handleDrop((prevGrid) => [...prevGrid, item.src]);
+      handleDrop(index, item.src);
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),

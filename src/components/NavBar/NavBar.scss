@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: space-between;
     width: 60%;
-    margin-left: 5rem;
+    margin-left: 2rem;
   }
 
   &__links {
@@ -91,13 +91,13 @@ nav ul li {
 }
 
 .login {
-  margin-right: 2rem;
+  margin-right: 5rem;
 }
 
 .logo {
   height: 52px;
   margin-right: 1rem;
-  margin-left: 2rem;
+  margin-left: 5rem;
 }
 
 .active {
@@ -106,4 +106,10 @@ nav ul li {
   font-family: "Lato";
   text-decoration: underline;
   text-underline-offset: 8px;;
+}
+
+.account-tab{
+  display: flex;
+  margin-right: 5rem;
+  cursor: pointer;
 }

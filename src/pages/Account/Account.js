@@ -8,7 +8,7 @@ import ThreeByThree from "../../components/ThreeByThree/ThreeByThree";
 import logo from "../../assets/images/icons/streamify-logo.svg";
 import "./Account.scss";
 
-const Account = () => {
+const Account = ({ country }) => {
   const [faveList, setFaveList] = useState(null);
   const [watchList, setWatchList] = useState(null);
   const [threeByThree, setThreeByThree] = useState(null);
@@ -68,6 +68,7 @@ const Account = () => {
     }
   };
 
+  console.log(user);
   return (
     <div className="account-page">
       <Link className="logo-link account-logo" to="/">
@@ -82,8 +83,11 @@ const Account = () => {
           </button>
         </div>
         <div className="account-page__personal">
-          <h2>{`Hi, ${user.displayName || "User"}`}</h2>
-          <p className="account-page__email">{`email: ${user.email}`}</p>
+          <div className="account-page__personal-container">
+            <h2>{`Hi, ${user.displayName || user.email}`}</h2>
+            <p className="account-page__email">{`email: ${user.email}`}</p>
+          </div>
+          <image src={user.photoURL}></image>
         </div>
 
         <div className="account-page__profile-container">
@@ -127,6 +131,7 @@ const Account = () => {
                 show={show}
                 key={show.imdbId}
                 deleteShow={deleteFaveShow}
+                country={country}
               />
             );
           })}
@@ -140,6 +145,7 @@ const Account = () => {
                 show={show}
                 key={show.imdbId}
                 deleteShow={deleteWatchShow}
+                country={country}
               />
             );
           })}

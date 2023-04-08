@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
-
-// get type of subscription or paid
+import Footer from "../../components/Footer/Footer";
 
 const SearchPage = ({
   show,
@@ -14,25 +13,29 @@ const SearchPage = ({
   title,
   handleSubmit,
   showFetch,
+  country,
 }) => {
   useEffect(() => {
     showFetch();
   }, [title]);
 
   return (
-    <div className="search-page">
-      <NavBar />
-      <div className="search-container">
-        <SearchBar
-          handleSubmit={handleSubmit}
-          formData={formData}
-          setFormData={setFormData}
-        />
-        {show && show.title.toLowerCase() === title.toLowerCase() && (
-          <ShowDetails show={show} />
-        )}
+    <>
+      <div className="search-page">
+        <NavBar />
+        <div className="search-container">
+          <SearchBar
+            handleSubmit={handleSubmit}
+            formData={formData}
+            setFormData={setFormData}
+          />
+          {show && show.title.toLowerCase() === title.toLowerCase() && (
+            <ShowDetails show={show} country={country} />
+          )}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
