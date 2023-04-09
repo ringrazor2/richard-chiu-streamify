@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "richard-chiu-capstone-bs2023"
-  }
+  },
+  "targets": {
+    "richard-chiu-capstone-bs2023": {
+      "hosting": {
+        "develop": [
+          "richardchiustreamify.com"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
