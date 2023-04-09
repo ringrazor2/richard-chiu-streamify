@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { GoogleButton } from "react-google-button";
+import { auth } from "../../firebase";
+import { fetchSignInMethodsForEmail } from "firebase/auth";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -14,12 +16,17 @@ const SignUpPage = () => {
   const [error, setError] = useState("");
   const [emailError, setEmailError] = useState("");
 
-  const { user, signUp, googleSignIn, facebookSignIn } = UserAuth();
+  const { user, signUp, googleSignIn } = UserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const methods = await fetchSignInMethodsForEmail(auth, email);
+    if (methods.length > 0) {
+      setEmailError("An account with this email already exists");
+      return;
+    }
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -83,7 +90,8 @@ const SignUpPage = () => {
             required
           />
 
-          {error && <p className="error-message">{error}</p>}
+          {(error && <p className="error-message">{error}</p>) ||
+            (emailError && <p className="error-message">{emailError}</p>)}
 
           <p className="login-message">
             Already have an account?

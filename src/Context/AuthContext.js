@@ -6,7 +6,6 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  FacebookAuthProvider,
   fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import { auth, db } from "../firebase";
@@ -18,17 +17,17 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   const signUp = async (email, password) => {
-    const methods = await fetchSignInMethodsForEmail(auth, email);
-    if (methods.length > 0) {
-      throw new Error("An account with this email already exists");
+    try {
+      const docRef = doc(db, "users", email);
+      await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(docRef, {
+        faveList: [],
+        watchList: [],
+        threeByThree: [],
+      });
+    } catch (err) {
+      console.error(err);
     }
-
-    await createUserWithEmailAndPassword(auth, email, password);
-    await setDoc(doc(db, "users", email), {
-      faveList: [],
-      watchList: [],
-      threeByThree: [],
-    });
   };
 
   const signIn = (email, password) => {
@@ -59,15 +58,9 @@ export const AuthContextProvider = ({ children }) => {
         setUser({});
         logOut();
       }
-      console.log("User", currUser);
     });
     return () => unSubscribe();
   }, []);
-
-  const facebookSignIn = () => {
-    const provider = new FacebookAuthProvider();
-    signInWithPopup(auth, provider);
-  };
 
   const logOut = () => {
     signOut(auth).then(() => {
@@ -78,7 +71,6 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currUser) => {
       setUser(currUser);
-      console.log("User", currUser);
     });
     return () => unSubscribe();
   }, []);
@@ -90,7 +82,6 @@ export const AuthContextProvider = ({ children }) => {
         logOut,
         user,
         signUp,
-        facebookSignIn,
         signInWithEmailAndPassword,
         signIn,
       }}

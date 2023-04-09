@@ -140,6 +140,14 @@
   justify-content: space-between;
 }
 
+.three-button-error-container{
+  display: flex;
+  flex-direction: column;
+}
 
 
-
+.three-error{
+  color: red;
+  align-self: flex-end;
+  margin-top: 10px;
+}

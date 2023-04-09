@@ -24,9 +24,7 @@ const DroppableBox = ({ handleDrop, index }) => {
           className="three-page__show"
           alt="dropped image"
         />
-      ) : (
-        <p></p>
-      )}
+      ) : null}
     </div>
   );
 };

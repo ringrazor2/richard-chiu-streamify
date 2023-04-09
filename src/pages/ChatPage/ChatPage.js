@@ -34,9 +34,6 @@ const ChatPage = () => {
                 process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
               "X-RapidAPI-Host":
                 process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
-              // "X-RapidAPI-Key":
-              //   "6f365c6cdcmsh8226eb0b5972b7bp187be7jsnf67e81afcd20",
-              // "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
             },
           };
           const response = await axios.request(options);
@@ -44,7 +41,6 @@ const ChatPage = () => {
           const matchingData = dataArr.find(
             (result) => result.title.toLowerCase() === chatInput.toLowerCase()
           );
-          console.log(matchingData);
           const genre = matchingData.genres
             .map((genre) => genre.name)
             .join(", ");

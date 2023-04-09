@@ -41,7 +41,7 @@ const Account = ({ country }) => {
         faveList: filteredList,
       });
     } catch {
-      console.log("Error deleting show");
+      console.error("Error deleting show");
     }
   };
   const deleteWatchShow = async (e) => {
@@ -52,7 +52,7 @@ const Account = ({ country }) => {
         watchList: filteredList,
       });
     } catch {
-      console.log("Error deleting show");
+      console.error("Error deleting show");
     }
   };
 
@@ -64,7 +64,7 @@ const Account = ({ country }) => {
         threeByThree: filteredList,
       });
     } catch {
-      console.log("Error deleting 3x3");
+      console.error("Error deleting 3x3");
     }
   };
 

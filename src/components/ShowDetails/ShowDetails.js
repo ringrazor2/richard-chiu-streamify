@@ -36,7 +36,7 @@ const ShowDetails = ({ show, className, country }) => {
         faveList: arrayUnion({ ...show }),
       });
     } else {
-      console.log("Please log in to save shows");
+      console.error("Please log in to save shows");
     }
   };
   const saveShow = async () => {
@@ -46,7 +46,7 @@ const ShowDetails = ({ show, className, country }) => {
         watchList: arrayUnion({ ...show }),
       });
     } else {
-      console.log("Please log in to save shows");
+      console.error("Please log in to save shows");
     }
   };
 
@@ -77,133 +77,127 @@ const ShowDetails = ({ show, className, country }) => {
     }
   }
   return (
-    <>
-      <div className={`show-details ${className}`}>
-        <div className="show-poster-container">
-          <Link
-            to={show.youtubeTrailerVideoLink}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              className="poster-image"
-              src={show.posterURLs[342]}
-              alt="show poster"
-            />
-          </Link>
-          <p className="show-info">
-            <span className="show-subhead">Imdb Rating </span>
-            {show.imdbRating}/100
-          </p>
-          <p className="show-info">
-            <span className="show-subhead">Type </span>
-            {show.type}
-          </p>
-          <p className="show-info">
-            <span className="show-subhead">Year </span>
-            {show.year || show.firstAirYear}
-          </p>
-          <p className="show-info genres">
-            <span className="show-subhead">Genres </span>
-            {show.genre && show.genre.length > 0 ? show.genre : "General"}
-          </p>
+    <div className={`show-details ${className}`}>
+      <div className="show-poster-container">
+        <Link to={show.youtubeTrailerVideoLink} target="_blank">
+          <img
+            className="poster-image"
+            src={show.posterURLs[342]}
+            alt="show poster"
+          />
+        </Link>
+        <p className="show-info">
+          <span className="show-subhead">Imdb Rating </span>
+          {show.imdbRating}/100
+        </p>
+        <p className="show-info">
+          <span className="show-subhead">Type </span>
+          {show.type}
+        </p>
+        <p className="show-info">
+          <span className="show-subhead">Year </span>
+          {show.year || show.firstAirYear}
+        </p>
+        <p className="show-info genres">
+          <span className="show-subhead">Genres </span>
+          {show.genre && show.genre.length > 0 ? show.genre : "General"}
+        </p>
+      </div>
+      <div className="show-text-container">
+        <div className="show-heading-container">
+          <div className="show-title-icon">
+            <h2 className="show-title">{show.title}</h2>
+            <div className="show-icons">
+              {favedShow ? (
+                <img
+                  src={faveIconActive}
+                  alt="fave icon"
+                  className="show-icon-active"
+                />
+              ) : (
+                <img
+                  src={faveIcon}
+                  alt="fave icon"
+                  className="show-icon"
+                  onClick={faveShow}
+                />
+              )}
+              {savedShow ? (
+                <img
+                  src={watchlistIconActive}
+                  alt="watchlist icon"
+                  className="show-icon-active watchlist"
+                />
+              ) : (
+                <img
+                  src={watchlistIcon}
+                  alt="watchlist icon"
+                  className="show-icon watchlist"
+                  onClick={saveShow}
+                />
+              )}
+            </div>
+          </div>
+          <div className="show-vpn">
+            <Link className="vpn-a" to="https://nordvpn.com/" target="_blank">
+              <img
+                src={nordvpnIcon}
+                alt="nordvpn icon"
+                className="vpn-icon"
+                title="nord vpn"
+              />
+            </Link>
+            <Link
+              className="vpn-a"
+              to="https://privateinternetaccess.com/"
+              target="_blank"
+            >
+              <img src={piaIcon} alt="nordvpn icon" className="vpn-icon" />
+            </Link>
+            <Link
+              className="vpn-a"
+              to="https://www.expressvpn.com/"
+              target="_blank"
+              title="express vpn"
+            >
+              <img
+                src={expressvpnIcon}
+                alt="express vpn icon"
+                className="vpn-icon"
+                title="private internet access"
+              />
+            </Link>
+          </div>
         </div>
-        <div className="show-text-container">
-          <div className="show-heading-container">
-            <div className="show-title-icon">
-              <h2 className="show-title">{show.title}</h2>
-              <div className="show-icons">
-                {favedShow ? (
-                  <img
-                    src={faveIconActive}
-                    alt="fave icon"
-                    className="show-icon-active"
-                  />
-                ) : (
-                  <img
-                    src={faveIcon}
-                    alt="fave icon"
-                    className="show-icon"
-                    onClick={faveShow}
-                  />
-                )}
-                {savedShow ? (
-                  <img
-                    src={watchlistIconActive}
-                    alt="watchlist icon"
-                    className="show-icon-active watchlist"
-                  />
-                ) : (
-                  <img
-                    src={watchlistIcon}
-                    alt="watchlist icon"
-                    className="show-icon watchlist"
-                    onClick={saveShow}
-                  />
-                )}
-              </div>
-            </div>
-            <div className="show-vpn">
-              <Link className="vpn-a" to="https://nordvpn.com/" target="_blank">
-                <img
-                  src={nordvpnIcon}
-                  alt="nordvpn icon"
-                  className="vpn-icon"
-                  title="nord vpn"
-                />
-              </Link>
-              <Link
-                className="vpn-a"
-                to="https://privateinternetaccess.com/"
-                target="_blank"
-              >
-                <img src={piaIcon} alt="nordvpn icon" className="vpn-icon" />
-              </Link>
-              <Link
-                className="vpn-a"
-                to="https://www.expressvpn.com/"
-                target="_blank"
-                title="express vpn"
-              >
-                <img
-                  src={expressvpnIcon}
-                  alt="express vpn icon"
-                  className="vpn-icon"
-                  title="private internet access"
-                />
-              </Link>
-            </div>
-          </div>
-          <h3 className="show-synopsis-title">Synopsis </h3>
-          <p className="show-synopsis">{show.overview}</p>
-          <div className="stream-info">
-            {show.streamingService &&
-              show.streamingService.map((service, index) => {
-                let iconSrc = "";
-                let linkSrc = "";
-                for (const country in show.streamingInfo) {
-                  if (show.streamingInfo[country][service]) {
-                    iconSrc = getIconSrc(service);
-                    linkSrc = show.streamingInfo[country][service][0].link;
-                    break;
-                  }
+        <h3 className="show-synopsis-title">Synopsis </h3>
+        <p className="show-synopsis">{show.overview}</p>
+        <div className="stream-info">
+          {show.streamingService &&
+            show.streamingService.map((service, index) => {
+              let iconSrc = "";
+              let linkSrc = "";
+              for (const country in show.streamingInfo) {
+                if (show.streamingInfo[country][service]) {
+                  iconSrc = getIconSrc(service);
+                  linkSrc = show.streamingInfo[country][service][0].link;
+                  break;
                 }
-                return (
-                  <Link target="_blank" to={linkSrc} className="streamLink">
-                    <img
-                      key={index}
-                      className="stream-icon"
-                      src={iconSrc || notFound}
-                      alt={`${service} icon`}
-                    />
-                  </Link>
-                );
-              })}
-            <p className="stream-region">Region: {country || "US"}</p>
-          </div>
+              }
+              return (
+                <Link target="_blank" to={linkSrc} className="streamLink">
+                  <img
+                    key={index}
+                    className="stream-icon"
+                    src={iconSrc || notFound}
+                    alt={`${service} icon`}
+                  />
+                </Link>
+              );
+            })}
+          <p className="stream-region">Region: {country || "US"}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

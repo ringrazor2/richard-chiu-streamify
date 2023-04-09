@@ -17,8 +17,6 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
   const configuration = new Configuration({
     organization: process.env.REACT_APP_OPENAI_ORG,
     apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-    apiKey: "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",
-    organization: "org-Cy51ALBHr7gC4LmhLeb3JfdT",
   });
 
   const openai = new OpenAIApi(configuration);
@@ -35,19 +33,27 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
     openai
       .createChatCompletion({
         model: "gpt-3.5-turbo-0301",
-        // content:
-        //   "You are HelpfulGPT, a chatbot that gives the user a title of a show in plain text with no extra words or characters",
         messages: [userMessage],
       })
       .then((res) => {
         setTyping(false);
+
         const botMessage = res.data.choices[0].message.content;
-        console.log(botMessage);
-        setChatInput(botMessage);
+
+        let cleanBotMessage = botMessage;
+
+        if (botMessage.includes('"')) {
+          cleanBotMessage = botMessage.replace(/"/g, "");
+        }
+        if (botMessage.includes(".")) {
+          cleanBotMessage = botMessage.replace(/\./g, "");
+        }
+
+        setChatInput(cleanBotMessage);
         setMessages([
           ...messages,
           { message: message, sender: "user" },
-          { message: botMessage, sender: "ChatGPT" },
+          { message: cleanBotMessage, sender: "ChatGPT" },
         ]);
       })
       .catch((err) => {
@@ -65,15 +71,7 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
         <ChatContainer className="chat-container">
           <MessageList className="message-list" scrollBehavior="smooth">
             {messages.map((message, i) => {
-              return (
-                <Message
-                  key={i}
-                  model={message}
-                  contentClassName={
-                    message.sender === "user" ? "user-message" : "bot-message"
-                  }
-                />
-              );
+              return <Message key={i} model={message} />;
             })}
             {typing ? <TypingIndicator content="ChatGPT is typing" /> : null}
             {messages.length > 0 ? (

@@ -10,47 +10,45 @@ const SearchBar = ({ handleSubmit, title, country }) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="search-bar-form">
-        <div className="search-bar-container">
-          <div className="search-bar-form__heading">
-            <label>Search for your show</label>
-            <select
-              className="search-bar__country-input"
-              name="country"
-              value={selectedCountry}
-              onChange={handleCountryChange}
-            >
-              <option value="ca">Canada</option>
-              <option value="us">USA</option>
-              <option value="jp">Japan</option>
-              <option value="kr">Korea</option>
-              <option value="gb">Great Britain</option>
-              <option value="in">India</option>
-              <option value="au">Australia </option>
-              <option value="be">Belgium </option>
-              <option value="fr">France </option>
-              <option value="es">Spain</option>
-              <option value="br">Brazil</option>
-              <option value="ie">Ireland</option>
-            </select>
-          </div>
-          <div className="search-bar-Innercontainer">
-            <div className="search-bar-input-container">
-              <input
-                placeholder="Search"
-                className="search-bar-input"
-                name="title"
-                value={title}
-              />
-            </div>
-            <button className="search-icon-button" type="submit">
-              <img className="search-icon" alt="search-icon" src={search}></img>
-            </button>
-          </div>
+    <form onSubmit={handleSubmit} className="search-bar-form">
+      <div className="search-bar-container">
+        <div className="search-bar-form__heading">
+          <label>Search for your show</label>
+          <select
+            className="search-bar__country-input"
+            name="country"
+            value={selectedCountry}
+            onChange={handleCountryChange}
+          >
+            <option value="ca">Canada</option>
+            <option value="us">USA</option>
+            <option value="jp">Japan</option>
+            <option value="kr">Korea</option>
+            <option value="gb">Great Britain</option>
+            <option value="in">India</option>
+            <option value="au">Australia </option>
+            <option value="be">Belgium </option>
+            <option value="fr">France </option>
+            <option value="es">Spain</option>
+            <option value="br">Brazil</option>
+            <option value="ie">Ireland</option>
+          </select>
         </div>
-      </form>
-    </>
+        <div className="search-bar-Innercontainer">
+          <div className="search-bar-input-container">
+            <input
+              placeholder="Search"
+              className="search-bar-input"
+              name="title"
+              value={title}
+            />
+          </div>
+          <button className="search-icon-button" type="submit">
+            <img className="search-icon" alt="search-icon" src={search}></img>
+          </button>
+        </div>
+      </div>
+    </form>
   );
 };
 

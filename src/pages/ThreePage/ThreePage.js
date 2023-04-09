@@ -19,6 +19,7 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [sampleOpen, setSampleOpen] = useState(false);
   const [grid, setGrid] = useState([]);
+  const [threeError, setThreeError] = useState("");
 
   const [clicked, setClicked] = useState(false);
   const { user } = UserAuth();
@@ -57,11 +58,12 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   const handleSave = async () => {
     if (user?.email && grid.length === 9) {
       setClicked(true);
+      setThreeError("");
       await updateDoc(threePath, {
         threeByThree: arrayUnion({ imgArray: [...grid], id: uuidv4() }),
       });
     } else {
-      console.log("Please fill all boxes with images");
+      setThreeError("Please fill all boxes with images");
     }
   };
 
@@ -124,25 +126,28 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
                   <DroppableBox handleDrop={handleDrop} index={8} />
                 </div>
               </div>
-              <div className="three-button-container">
-                <button
-                  className="three-button three-button-clear"
-                  onClick={handleClear}
-                >
-                  Clear
-                </button>
-                {clicked ? (
-                  <button className="three-button three-button-save three-button-save-active">
-                    Save
-                  </button>
-                ) : (
+              <div className="three-button-error-container">
+                <div className="three-button-container">
                   <button
-                    className="three-button three-button-save"
-                    onClick={handleSave}
+                    className="three-button three-button-clear"
+                    onClick={handleClear}
                   >
-                    Save
+                    Clear
                   </button>
-                )}
+                  {clicked ? (
+                    <button className="three-button three-button-save three-button-save-active">
+                      Save
+                    </button>
+                  ) : (
+                    <button
+                      className="three-button three-button-save"
+                      onClick={handleSave}
+                    >
+                      Save
+                    </button>
+                  )}
+                </div>
+                <p className="three-error">{threeError}</p>
               </div>
             </div>
           </DndProvider>
