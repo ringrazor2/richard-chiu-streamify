@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebase";
-import { doc, onSnapshot, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import SavedShow from "../../components/SavedShow/SavedShow";
 import ThreeByThree from "../../components/ThreeByThree/ThreeByThree";
 import logo from "../../assets/images/icons/streamify-logo.svg";
@@ -19,7 +19,7 @@ const Account = ({ country }) => {
   const handleSignOut = async () => {
     try {
       await logOut();
-      navigate("/signup");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
@@ -68,7 +68,6 @@ const Account = ({ country }) => {
     }
   };
 
-  console.log(user);
   return (
     <div className="account-page">
       <Link className="logo-link account-logo" to="/">
@@ -77,14 +76,16 @@ const Account = ({ country }) => {
       </Link>
       <div className="account-page__details">
         <div className="account-page__heading">
-          <h1>Account</h1>
+          <h1 className="account-page__title">Account</h1>
           <button className="signout-button" onClick={handleSignOut}>
             Sign Out
           </button>
         </div>
         <div className="account-page__personal">
           <div className="account-page__personal-container">
-            <h2>{`Hi, ${user.displayName || user.email}`}</h2>
+            <h2 className="account-page__email">{`Hi, ${
+              user.displayName || user.email
+            }`}</h2>
             <p className="account-page__email">{`email: ${user.email}`}</p>
           </div>
           <image src={user.photoURL}></image>

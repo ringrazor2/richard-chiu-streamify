@@ -1,13 +1,9 @@
-@use "../../styles/partials/global" as *;
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
-
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&family=Lato&family=Roboto:wght@300;400&display=swap");
 
 .explore-button {
   background-color: #f0ecfc;
   background-image: linear-gradient(315deg, #f0ecfc 0%, #cda2ef 74%);
-  line-height: 42px;
+  line-height: 2.625rem;
   padding: 0;
   border: none;
   width: 200px;
@@ -22,7 +18,7 @@
     height: 100%;
     font-weight: 500;
     font-family: "Roboto";
-    font-size: 24px;
+    font-size: 1.5rem;
     color: black;
 
     &:before,

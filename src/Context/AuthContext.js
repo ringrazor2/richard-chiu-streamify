@@ -7,9 +7,10 @@ import {
   signOut,
   onAuthStateChanged,
   FacebookAuthProvider,
+  fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import { auth, db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -17,6 +18,11 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   const signUp = async (email, password) => {
+    const methods = await fetchSignInMethodsForEmail(auth, email);
+    if (methods.length > 0) {
+      throw new Error("An account with this email already exists");
+    }
+
     await createUserWithEmailAndPassword(auth, email, password);
     await setDoc(doc(db, "users", email), {
       faveList: [],
@@ -28,16 +34,21 @@ export const AuthContextProvider = ({ children }) => {
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const googleSignIn = () => {
+
+  const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then(async (result) => {
-      const userEmail = result.user.email;
-      await setDoc(doc(db, "users", userEmail), {
+    const result = await signInWithPopup(auth, provider);
+    const userEmail = result.user.email;
+    const docRef = doc(db, "users", userEmail);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      await setDoc(docRef, {
         faveList: [],
         watchList: [],
         threeByThree: [],
       });
-    });
+    }
   };
 
   useEffect(() => {
@@ -63,6 +74,7 @@ export const AuthContextProvider = ({ children }) => {
       console.log("sign out successful");
     });
   };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currUser) => {
       setUser(currUser);

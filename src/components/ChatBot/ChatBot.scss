@@ -12,8 +12,8 @@
   }
   
   .cs-main-container{
-    width: 450px;
-    height: 550px;
+    width: 28.125rem;
+    height: 34.4rem;
     border-radius: 10px;
   }
   .cs-message-list{
@@ -26,7 +26,7 @@
     );
   }
   .cs-message__content, .cs-message-input__content-editor-wrapper, .cs-message-input__content-editor{
-    background-color: lavender !important;
+    background-color: lavender;
   }
   
   .cs-message__html-content, .cs-message-input__content-editor{
@@ -37,9 +37,6 @@
     margin-left: 3rem;
   }
 
-  .user-message{
-    // background-color: aqua;
-  }
 .clear-button{
     border: none;
     background-color: white;
@@ -47,12 +44,4 @@
     cursor: pointer;
 }
 
-.cs-message__content--user {
-  background-color: #d7efff;
-}
-
-.cs-message__content--bot {
-  background-color: #f5f5f5;
-  color: #555;
-}
 

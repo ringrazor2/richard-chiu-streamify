@@ -9,9 +9,8 @@
 
   &__title{
     color: white;
-    font-family: Lato;
     font-family: Inter;
-    font-size: 52px;
+    font-size: 3.25rem;
     font-weight: 600;
 
     &-container{
@@ -27,18 +26,16 @@
 
   &__text{
     color: #edf0f8;
-    // color: #F6F1F1;
     font-family: Lato;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
     line-height: 2.75rem;
 
     &-quality{
-    // color: #ADB8D9; 
     color:#e4e6ec;
     font-family: Lato;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 400;
     margin-bottom: 0.5rem;
     }

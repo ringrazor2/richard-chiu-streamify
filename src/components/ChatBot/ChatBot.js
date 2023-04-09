@@ -69,7 +69,7 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
                 <Message
                   key={i}
                   model={message}
-                  className={
+                  contentClassName={
                     message.sender === "user" ? "user-message" : "bot-message"
                   }
                 />

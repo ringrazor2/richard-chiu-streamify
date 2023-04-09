@@ -86,7 +86,7 @@ const SavedShow = ({ show, deleteShow, country }) => {
                 </Link>
               );
             })}
-          <p>{show.countries[0] || "us"}</p>
+          <p className="show-card__country">{show.countries[0] || "us"}</p>
         </div>
       </div>
     </div>

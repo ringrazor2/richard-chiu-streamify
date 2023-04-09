@@ -149,6 +149,7 @@ const ShowDetails = ({ show, className, country }) => {
                   src={nordvpnIcon}
                   alt="nordvpn icon"
                   className="vpn-icon"
+                  title="nord vpn"
                 />
               </Link>
               <Link
@@ -162,11 +163,13 @@ const ShowDetails = ({ show, className, country }) => {
                 className="vpn-a"
                 to="https://www.expressvpn.com/"
                 target="_blank"
+                title="express vpn"
               >
                 <img
                   src={expressvpnIcon}
                   alt="express vpn icon"
                   className="vpn-icon"
+                  title="private internet access"
                 />
               </Link>
             </div>

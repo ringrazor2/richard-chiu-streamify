@@ -3,7 +3,6 @@ import { useState } from "react";
 import axios from "axios";
 import { AuthContextProvider } from "./context/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Fuse from "fuse.js";
 import HomePage from "./pages/HomePage/HomePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import ChatPage from "./pages//ChatPage/ChatPage";

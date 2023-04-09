@@ -1,13 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&family=Lato&display=swap");
-
-
 .three-page {
     background: url("../../assets/images//backgrounds/primary-background.svg")
       no-repeat center center fixed;
     background-size: cover;
-    height: 150vh;
+    height: 130vh;
     width: 100vw;
-    max-width: 2000px;
+    max-width: 125rem;
     margin: 0 auto;
     position: relative;
     
@@ -25,8 +22,8 @@
   }
 
   &__show{
-  height: 225px;
-  width: 175px;
+  height: 14rem;
+  width: 10.935rem;
   object-fit: cover;
   cursor: pointer;
 
@@ -44,7 +41,7 @@
 
    
 .three-search{
-  width: 435px;;
+  width: 27.18rem;
   margin-top: 2rem;
   margin-bottom: 3rem;
 }
@@ -55,7 +52,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // margin-left: 12rem;
   margin-top: 2rem;
 }
 
@@ -67,15 +63,15 @@
 }
 
 .box {
-  height: 225px;
-  width: 175px;
+  height: 14.0625rem;
+  width: 10.9375rem;
   border: 1px solid white;
 }
 
 .positionImg{
   position: absolute;
-  top: 425px;
-  left: 220px;
+  top: 26.5625rem;
+  left: 13.75rem;
 }
 
 .three-button {
@@ -84,12 +80,11 @@
   position: relative;
   height: 2.7rem;
   border: 3px ridge #149CEA;
-
   outline: none;
   background-color: transparent;
   transition: 1s;
-  border-radius: 0.3em;
-  font-size: 16px;
+  border-radius: 5px;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   margin-top: 1rem;
@@ -101,7 +96,6 @@
   left: 3%;
   width: 95%;
   height: 40%;
-  // background-color: #212121;
   transition: 0.5s;
   transform-origin: center;
   }
@@ -114,7 +108,6 @@
   left: 3%;
   width: 95%;
   height: 40%;
-  // background-color: #212121;
   transition: 0.5s;
   }
   &:hover{

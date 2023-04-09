@@ -101,17 +101,6 @@ const NavBar = () => {
                   3 x 3
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink
-                  className={`navBar__anchor ${
-                    activeNavLink === "contact" ? "active" : ""
-                  }`}
-                  to="/3x3"
-                  onClick={() => handleNavLinkClick("contact")}
-                >
-                  Contact
-                </NavLink>
-              </li> */}
             </div>
           </div>
           {user ? (

@@ -30,7 +30,7 @@ const SignUpPage = () => {
       navigate("/");
     } catch (err) {
       console.log(err);
-      setError("Failed to sign up. Please try again later.");
+      setError(err);
     }
   };
 
@@ -55,15 +55,6 @@ const SignUpPage = () => {
         <form onSubmit={handleSubmit} className="signup-form">
           <h1 className="signup-title">Sign up</h1>
 
-          {/* <input
-            className="signup-input"
-            type="text"
-            name="displayName"
-            placeholder="Username"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-            required
-          /> */}
           <input
             className={`signup-input ${emailError && "error-input"}`}
             type="email"

@@ -4,7 +4,6 @@
   display: flex;
   background-color: rgb(37, 35, 35);
   width: 85%;
-  height: 550px;;
   padding: 2rem;
   border-radius: 6px;
   font-family:'PT Sans';
@@ -18,8 +17,8 @@
 
 .poster-image {
   margin-bottom: 2rem;
-  height: 300px;
-  width: 200px;
+  height: 18.75rem;
+  width: 12.5rem;
   object-fit: cover;
 }
 
@@ -30,29 +29,30 @@
 
 .show-title {
   color: white;
-  font-size: 32px;
-  font-weight: 550;
+  font-size: 2.625rem;
+  font-weight: 600;
 }
 
 .show-synopsis-title {
   color: white;
-  font-size: 24px;
+  font-size: 2.0625rem;
   font-weight: 550;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .show-synopsis {
   margin-bottom: 2rem;
-  line-height: 24px;
-  font-size: 18px;
-  color: #acbdce;
+  line-height: 1.9rem;
+  font-size: 1.3125rem;
+  color: #e1e6eb;
+
 }
 
 .stream-icon {
-  height: 75px;
-  width: 75px;
+  height: 4.7rem;
+  width: 4.7rem;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .stream-info {
@@ -61,46 +61,46 @@
 }
 
 .stream-region {
-  margin-top: 10px;
+  margin-top: 0.625rem;
   color: white;
 }
 
 .show-info {
   display: flex;
-  width: 200px;
-  font-size: 12px;
-  margin-bottom: 5px;
+  width: 12.5rem;
+  font-size: 1rem;
+  margin-bottom: 0.32rem;
   justify-content: space-between;
-  color: #acbdce;
+  color: #e1e6eb;
+
 }
 
 .show-subhead {
-  margin-right: 14px;
+  margin-right: 0.875rem;
 }
 
 .genres{
-    margin-top: 12px;
-    width: 203px;
+    margin-top: 0.75rem;
 }
 
 
 .show-heading-container{
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
   justify-content: space-between;
 }
 .show-icon {
-  height: 20px;
-  width: 20px;
-  margin-right: 10px;
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.625rem;
   cursor: pointer;
   filter: brightness(0) invert(1); 
 }
 .show-icon-active{
-  height: 20px;
-  width: 20px;
-  margin-right: 10px;
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.625rem;
   cursor: pointer;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .watchlist{
-  height: 19px;
+  height: 1.19rem;
 }
 
 .streamLink{
@@ -127,11 +127,12 @@
 }
 
 .vpn-icon {
-  height: 30px;
+  height: 2.5rem;
   cursor: pointer;
+  border-radius: 4px;
 
 }
 
 .vpn-a{
-  margin-right: 10px;
+  margin-right: 0.94rem;
 }

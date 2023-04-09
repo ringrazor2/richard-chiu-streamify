@@ -45,7 +45,7 @@
   justify-content: center;
   border: none;
   border-radius: 8px;
-  margin-left: 12px;
+  margin-left: 0.75rem;
   box-shadow: -2px -2px 4px rgba(#a04ad5, 0.6), 1px 1px 4px #a04ad5;
   cursor: pointer;
 }
@@ -56,7 +56,7 @@ label {
   background: linear-gradient(45deg, rgb(34, 32, 32), #3c4b66);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-left: 8px;
+  margin-left: 0.5rem;
 }
 
 .search-bar-input-container {
@@ -132,6 +132,6 @@ label {
 }
 
 .search-icon {
-  height: 24px;
-  width: 24px;
+  height: 1.5rem;
+  width: 1.5rem;
 }
