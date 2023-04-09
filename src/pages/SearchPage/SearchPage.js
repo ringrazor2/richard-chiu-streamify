@@ -1,8 +1,9 @@
 import "./SearchPage.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
+import SearchError from "../../components/SearchError/SearchError";
 import Footer from "../../components/Footer/Footer";
 
 const SearchPage = ({
@@ -13,9 +14,16 @@ const SearchPage = ({
   handleSubmit,
   showFetch,
   country,
+  matchingShow,
+  setMatchingShow,
 }) => {
   useEffect(() => {
     showFetch();
+    if (show && show.title.toLowerCase() === title.toLowerCase()) {
+      setMatchingShow(true);
+    } else {
+      setMatchingShow(false);
+    }
   }, [title]);
 
   return (
@@ -28,8 +36,10 @@ const SearchPage = ({
             formData={formData}
             setFormData={setFormData}
           />
-          {show && show.title.toLowerCase() === title.toLowerCase() && (
+          {!matchingShow ? (
             <ShowDetails show={show} country={country} />
+          ) : (
+            <SearchError title={title} />
           )}
         </div>
       </div>

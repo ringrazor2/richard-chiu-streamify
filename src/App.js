@@ -18,6 +18,7 @@ const App = () => {
   });
   const [country, setCountry] = useState("ca");
   const [show, setShow] = useState(null);
+  const [matchingShow, setMatchingShow] = useState(true);
 
   const { title } = formData;
 
@@ -54,18 +55,23 @@ const App = () => {
           const matchingData = dataArr.find(
             (result) => result.title.toLowerCase() === title.toLowerCase()
           );
-          const genre = matchingData.genres
-            .map((genre) => genre.name)
-            .join(", ");
 
-          const streamingService = matchingData.streamingInfo[country]
-            ? Object.keys(matchingData.streamingInfo[country])
-            : null;
-          setShow({
-            ...matchingData,
-            genre: genre,
-            streamingService: streamingService,
-          });
+          if (matchingData) {
+            const genre = matchingData.genres
+              .map((genre) => genre.name)
+              .join(", ");
+
+            const streamingService = matchingData.streamingInfo[country]
+              ? Object.keys(matchingData.streamingInfo[country])
+              : null;
+            setShow({
+              ...matchingData,
+              genre: genre,
+              streamingService: streamingService,
+            });
+          } else {
+            setMatchingShow(null);
+          }
         })
         .catch(function (error) {
           console.error(error);
@@ -90,6 +96,8 @@ const App = () => {
                 country={country}
                 handleSubmit={handleSubmit}
                 showFetch={showFetch}
+                matchingShow={matchingShow}
+                setMatchingShow={setMatchingShow}
               />
             }
           />
