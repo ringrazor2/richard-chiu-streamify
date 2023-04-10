@@ -1,7 +1,7 @@
 import "./ShowDetails.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { UserAuth } from "../../removeCapital/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import { arrayUnion, doc, updateDoc } from "@firebase/firestore";
 import notFound from "../../assets/images/icons/notfound-icon.png";

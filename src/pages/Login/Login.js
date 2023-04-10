@@ -1,7 +1,7 @@
 import "./Login.scss";
 import phoneScreens from "../../assets/images/shows/phone-img.svg";
 import React, { useState } from "react";
-import { UserAuth } from "../../removeCapital/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 
 import GoogleButton from "react-google-button";

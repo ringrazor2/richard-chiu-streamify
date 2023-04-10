@@ -2,7 +2,7 @@ import "./HomeMessage.scss";
 import ExploreButton from "../ExploreButton/ExploreButton";
 import StreamingLogos from "../StreamingLogos/StreamingLogos";
 import { Link } from "react-router-dom";
-import { UserAuth } from "../../removeCapital/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 const HomeMessage = () => {
   const { user } = UserAuth();
   return (

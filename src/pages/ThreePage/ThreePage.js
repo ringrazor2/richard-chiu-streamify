@@ -1,6 +1,6 @@
 import "./ThreePage.scss";
 import { useState, useEffect } from "react";
-import { UserAuth } from "../../removeCapital/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import { arrayUnion, doc, updateDoc } from "@firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
