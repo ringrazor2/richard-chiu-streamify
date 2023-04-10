@@ -20,8 +20,6 @@ const SearchPage = ({
   matchingShow,
   setMatchingShow,
   isLoading,
-  render,
-  setRender,
 }) => {
   useEffect(() => {
     showFetch();
