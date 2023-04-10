@@ -1,5 +1,5 @@
 import "./SearchPage.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";

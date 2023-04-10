@@ -20,7 +20,17 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   const [sampleOpen, setSampleOpen] = useState(false);
   const [grid, setGrid] = useState([]);
   const [threeError, setThreeError] = useState("");
-
+  const [droppedItems, setDroppedItems] = useState([
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
   const [clicked, setClicked] = useState(false);
   const { user } = UserAuth();
 
@@ -46,13 +56,16 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
 
   const handleDrop = (index, newImage) => {
     const updatedGrid = [...grid];
+    const updatedItems = [...droppedItems];
     updatedGrid[index] = newImage;
+    updatedItems[index] = newImage;
+    setDroppedItems(updatedItems);
     setGrid(updatedGrid);
   };
 
   const handleClear = async () => {
     setGrid([]);
-    window.location.reload(true);
+    setDroppedItems([null, null, null, null, null, null, null, null, null]);
   };
 
   const handleSave = async () => {
@@ -111,19 +124,64 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
             <div className="three-left">
               <div className="threeBythree">
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop} index={0} />
-                  <DroppableBox handleDrop={handleDrop} index={1} />
-                  <DroppableBox handleDrop={handleDrop} index={2} />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={0}
+                    droppedItem={droppedItems[0]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={1}
+                    droppedItem={droppedItems[1]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={2}
+                    droppedItem={droppedItems[2]}
+                    setDroppedItems={setDroppedItems}
+                  />
                 </div>
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop} index={3} />
-                  <DroppableBox handleDrop={handleDrop} index={4} />
-                  <DroppableBox handleDrop={handleDrop} index={5} />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={3}
+                    droppedItem={droppedItems[3]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={4}
+                    droppedItem={droppedItems[4]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={5}
+                    droppedItem={droppedItems[5]}
+                    setDroppedItems={setDroppedItems}
+                  />
                 </div>
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop} index={6} />
-                  <DroppableBox handleDrop={handleDrop} index={7} />
-                  <DroppableBox handleDrop={handleDrop} index={8} />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={6}
+                    droppedItem={droppedItems[6]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={7}
+                    droppedItem={droppedItems[7]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={8}
+                    droppedItem={droppedItems[8]}
+                    setDroppedItems={setDroppedItems}
+                  />
                 </div>
               </div>
               <div className="three-button-error-container">

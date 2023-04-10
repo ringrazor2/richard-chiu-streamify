@@ -4,11 +4,13 @@
   background: url("../../assets/images//backgrounds/primary-background.svg")
     no-repeat center center fixed;
   background-size: cover;
-  height: 125vh;
+  height: 100%;
   width: 100vw;
   background-attachment: fixed;
   max-width: 125rem;
   margin: 0 auto;
+  max-height: 60rem;
+
 
   &-container {
     display: flex;
