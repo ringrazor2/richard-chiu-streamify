@@ -3,7 +3,7 @@ import phoneScreens from "../../assets/images/shows/phone-img.svg";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../../removeCapital/AuthContext";
 import { GoogleButton } from "react-google-button";
 import { auth } from "../../firebase";
 import { fetchSignInMethodsForEmail } from "firebase/auth";

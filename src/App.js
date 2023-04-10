@@ -1,7 +1,7 @@
 import "./App.scss";
 import { useState } from "react";
 import axios from "axios";
-import { AuthContextProvider } from "./context/AuthContext";
+import { AuthContextProvider } from "./removeCapital/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
@@ -84,7 +84,6 @@ const App = () => {
     } else {
       setShow(null);
       setIsLoading(false);
-      // setMatchingShow(true);
     }
   };
   {

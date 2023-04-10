@@ -7,7 +7,7 @@ import search from "../../assets/images/icons/search-icon.png";
 import chat from "../../assets/images/icons/chat-icon.png";
 import grid from "../../assets/images/icons/grids-icon.png";
 import userIcon from "../../assets/images/icons/user-icon.png";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../../removeCapital/AuthContext";
 
 const NavBar = () => {
   const { user, logOut } = UserAuth();

@@ -19,8 +19,6 @@ const SearchPage = ({
   setMatchingShow,
   isLoading,
 }) => {
-  // const [matchingShow, setMatchingShow] = useState(false);
-
   useEffect(() => {
     showFetch();
     if (show && show.title.toLowerCase() === title.toLowerCase()) {

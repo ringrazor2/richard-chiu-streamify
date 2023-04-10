@@ -6,8 +6,9 @@ const SearchError = ({ title }) => {
       <div className="search-error">
         <h1 className="search-error__title">404</h1>
         <h3 className="search-error__message">
-          Sorry we couldn't find <span className="error-title">"{title}"</span>{" "}
-          please check the spelling and try again.
+          Sorry we couldn't find{" "}
+          <span className="error-title">"{title || "the show"}"</span> please
+          check the spelling and try again.
         </h3>
         <div className="search-error__ghost-container">
           <div className="search-error__ghost">

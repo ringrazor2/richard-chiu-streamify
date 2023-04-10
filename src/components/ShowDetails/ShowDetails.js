@@ -1,7 +1,7 @@
 import "./ShowDetails.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../../removeCapital/AuthContext";
 import { db } from "../../firebase";
 import { arrayUnion, doc, updateDoc } from "@firebase/firestore";
 import notFound from "../../assets/images/icons/notfound-icon.png";
@@ -20,7 +20,7 @@ import faveIconActive from "../../assets/images/icons/favourite-icon-active.png"
 import watchlistIcon from "../../assets/images/icons/watchlist-icon.png";
 import watchlistIconActive from "../../assets/images/icons/watchlist-icon-active.png";
 import nordvpnIcon from "../../assets/images/icons/nordvpn-icon.jpg";
-import expressvpnIcon from "../../assets/images/icons/expressVpn-icon.png";
+import cyberghost from "../../assets/images/icons/cyberghost-icon.jpeg";
 import piaIcon from "../../assets/images/icons/pia-icon.png";
 
 const ShowDetails = ({ show, className, country }) => {
@@ -140,11 +140,17 @@ const ShowDetails = ({ show, className, country }) => {
           </div>
           <div className="show-vpn">
             <Link className="vpn-a" to="https://nordvpn.com/" target="_blank">
+              <img src={nordvpnIcon} alt="nordvpn icon" className="vpn-icon" />
+            </Link>
+            <Link
+              className="vpn-a"
+              to="https://cyberghostvpn.com"
+              target="_blank"
+            >
               <img
-                src={nordvpnIcon}
-                alt="nordvpn icon"
+                src={cyberghost}
+                alt="cyberghost vpn icon"
                 className="vpn-icon"
-                title="nord vpn"
               />
             </Link>
             <Link
@@ -153,19 +159,6 @@ const ShowDetails = ({ show, className, country }) => {
               target="_blank"
             >
               <img src={piaIcon} alt="nordvpn icon" className="vpn-icon" />
-            </Link>
-            <Link
-              className="vpn-a"
-              to="https://www.expressvpn.com/"
-              target="_blank"
-              title="express vpn"
-            >
-              <img
-                src={expressvpnIcon}
-                alt="express vpn icon"
-                className="vpn-icon"
-                title="private internet access"
-              />
             </Link>
           </div>
         </div>
