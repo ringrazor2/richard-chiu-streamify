@@ -19,6 +19,7 @@ const App = () => {
   const [country, setCountry] = useState("ca");
   const [show, setShow] = useState(null);
   const [matchingShow, setMatchingShow] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { title } = formData;
 
@@ -47,6 +48,7 @@ const App = () => {
 
   const showFetch = () => {
     if (title) {
+      setIsLoading(true);
       axios
         .request(options)
         .then((response) => {
@@ -57,6 +59,7 @@ const App = () => {
           );
 
           if (matchingData) {
+            setIsLoading(false);
             const genre = matchingData.genres
               .map((genre) => genre.name)
               .join(", ");
@@ -70,16 +73,22 @@ const App = () => {
               streamingService: streamingService,
             });
           } else {
-            setMatchingShow(null);
+            setMatchingShow(true);
+            setIsLoading(false);
           }
         })
         .catch(function (error) {
           console.error(error);
+          setIsLoading(false);
         });
     } else {
       setShow(null);
+      setIsLoading(false);
+      // setMatchingShow(true);
     }
   };
+  {
+  }
   return (
     <AuthContextProvider>
       <BrowserRouter>
@@ -98,6 +107,7 @@ const App = () => {
                 showFetch={showFetch}
                 matchingShow={matchingShow}
                 setMatchingShow={setMatchingShow}
+                isLoading={isLoading}
               />
             }
           />

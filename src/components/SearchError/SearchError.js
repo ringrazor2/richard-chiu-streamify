@@ -6,24 +6,24 @@ const SearchError = ({ title }) => {
       <div className="search-error">
         <h1 className="search-error__title">404</h1>
         <h3 className="search-error__message">
-          Sorry we couldn't find the show title, please check the spelling and
-          try again.
+          Sorry we couldn't find <span className="error-title">"{title}"</span>{" "}
+          please check the spelling and try again.
         </h3>
-        <div class="search-error__ghost-container">
-          <div class="search-error__ghost">
-            <div class="one"></div>
-            <div class="two"></div>
-            <div class="three"></div>
-            <div class="four"></div>
+        <div className="search-error__ghost-container">
+          <div className="search-error__ghost">
+            <div className="one"></div>
+            <div className="two"></div>
+            <div className="three"></div>
+            <div className="four"></div>
           </div>
-          <div class="search-error__ghost-face">
-            <div class="face">
-              <div class="eye"></div>
-              <div class="eye-right"></div>
-              <div class="mouth"></div>
+          <div className="search-error__ghost-face">
+            <div className="face">
+              <div className="eye"></div>
+              <div className="eye-right"></div>
+              <div className="mouth"></div>
             </div>
           </div>
-          <div class="shadow"></div>
+          <div className="shadow"></div>
         </div>
       </div>
     </>

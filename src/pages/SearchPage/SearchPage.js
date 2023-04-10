@@ -5,6 +5,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
 import SearchError from "../../components/SearchError/SearchError";
 import Footer from "../../components/Footer/Footer";
+import Loading from "../../components/Loading/Loading";
 
 const SearchPage = ({
   show,
@@ -16,7 +17,10 @@ const SearchPage = ({
   country,
   matchingShow,
   setMatchingShow,
+  isLoading,
 }) => {
+  // const [matchingShow, setMatchingShow] = useState(false);
+
   useEffect(() => {
     showFetch();
     if (show && show.title.toLowerCase() === title.toLowerCase()) {
@@ -36,10 +40,18 @@ const SearchPage = ({
             formData={formData}
             setFormData={setFormData}
           />
-          {!matchingShow ? (
-            <ShowDetails show={show} country={country} />
+          {isLoading ? (
+            <Loading />
           ) : (
-            <SearchError title={title} />
+            <>
+              {show ? (
+                matchingShow === false ? (
+                  <ShowDetails show={show} country={country} />
+                ) : (
+                  <SearchError title={title} />
+                )
+              ) : null}
+            </>
           )}
         </div>
       </div>
