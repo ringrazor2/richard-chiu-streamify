@@ -9,15 +9,19 @@ import Loading from "../../components/Loading/Loading";
 
 const SearchPage = ({
   show,
+  setShow,
   formData,
   setFormData,
   title,
   handleSubmit,
   showFetch,
   country,
+  setCountry,
   matchingShow,
   setMatchingShow,
   isLoading,
+  render,
+  setRender,
 }) => {
   useEffect(() => {
     showFetch();
@@ -26,7 +30,7 @@ const SearchPage = ({
     } else {
       setMatchingShow(false);
     }
-  }, [title]);
+  }, [title, country]);
 
   return (
     <>
@@ -37,6 +41,9 @@ const SearchPage = ({
             handleSubmit={handleSubmit}
             formData={formData}
             setFormData={setFormData}
+            country={country}
+            setCountry={setCountry}
+            setShow={setShow}
           />
           {isLoading ? (
             <Loading />

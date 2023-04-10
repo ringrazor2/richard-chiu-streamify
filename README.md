@@ -1,5 +1,9 @@
 Richard Chiu Capstone 2023 - Streamify
 
+hosted on: https://richard-chiu-capstone-bs2023.web.app/
+
+Site is designed for desktop use: Ideally 1400px - 2000px width. Use these dimensions for best user experience.
+
 Streamify is a web application that helps users find where to watch movies and TV shows across multiple streaming platforms, including Netflix, Disney Plus, and Amazon Prime. It utilizes AI technology to provide new show recommendations through a chatbot prompt. Users can create an account to save their favourite movies and TV shows for quick access.
 
 Getting Started

@@ -20,6 +20,7 @@ const App = () => {
   const [show, setShow] = useState(null);
   const [matchingShow, setMatchingShow] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [render, setRender] = useState(false);
 
   const { title } = formData;
 
@@ -72,6 +73,7 @@ const App = () => {
               genre: genre,
               streamingService: streamingService,
             });
+            setRender(true);
           } else {
             setMatchingShow(true);
             setIsLoading(false);
@@ -84,6 +86,7 @@ const App = () => {
     } else {
       setShow(null);
       setIsLoading(false);
+      // setRender(false);
     }
   };
   {
@@ -98,32 +101,23 @@ const App = () => {
             element={
               <SearchPage
                 show={show}
+                setShow={setShow}
                 formData={formData}
                 setFormData={setFormData}
                 title={title}
                 country={country}
+                setCountry={setCountry}
                 handleSubmit={handleSubmit}
                 showFetch={showFetch}
                 matchingShow={matchingShow}
                 setMatchingShow={setMatchingShow}
                 isLoading={isLoading}
+                render={render}
+                setRender={setRender}
               />
             }
           />
-          <Route
-            path="/chat"
-            element={
-              <ChatPage
-                options={options}
-                show={show}
-                formData={formData}
-                setFormData={setFormData}
-                title={title}
-                handleSubmit={handleSubmit}
-                showFetch={showFetch}
-              />
-            }
-          />
+          <Route path="/chat" element={<ChatPage />} />
           <Route
             path="/3x3"
             element={
