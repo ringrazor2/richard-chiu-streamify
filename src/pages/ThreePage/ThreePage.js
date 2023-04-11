@@ -1,4 +1,3 @@
-import "./ThreePage.scss";
 import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
@@ -14,8 +13,10 @@ import ExampleModal from "../../components/ExampleModal/ExampleModal";
 import DraggableImage from "../../components/DraggableImage/DraggableImage";
 import DroppableBox from "../../components/DroppableBox/DroppableBox";
 import Footer from "../../components/Footer/Footer";
+import { showFetch } from "../../utilities/script";
+import "./ThreePage.scss";
 
-const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
+const ThreePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [sampleOpen, setSampleOpen] = useState(false);
   const [grid, setGrid] = useState([]);
@@ -32,6 +33,37 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
     null,
   ]);
   const [clicked, setClicked] = useState(false);
+  const [formData, setFormData] = useState({
+    title: "",
+  });
+  const [country, setCountry] = useState("ca");
+  const [show, setShow] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { title } = formData;
+
+  const options = {
+    method: "GET",
+    url: "https://streaming-availability.p.rapidapi.com/v2/search/title",
+    params: {
+      title: title,
+      country: country,
+      type: "all",
+      output_language: "en",
+    },
+    headers: {
+      "X-RapidAPI-Key": process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
+      "X-RapidAPI-Host": process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
+      "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+    },
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormData({ title: e.target.elements.title.value });
+    e.target.reset();
+  };
+
   const { user } = UserAuth();
 
   const threePath = doc(db, "users", `${user?.email}`);
@@ -51,7 +83,7 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   };
 
   useEffect(() => {
-    showFetch();
+    showFetch(title, country, setShow, setIsLoading);
   }, [title]);
 
   const handleDrop = (index, newImage) => {

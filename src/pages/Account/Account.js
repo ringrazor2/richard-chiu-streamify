@@ -8,7 +8,7 @@ import ThreeByThree from "../../components/ThreeByThree/ThreeByThree";
 import logo from "../../assets/images/icons/streamify-logo.svg";
 import "./Account.scss";
 
-const Account = ({ country }) => {
+const Account = () => {
   const [faveList, setFaveList] = useState(null);
   const [watchList, setWatchList] = useState(null);
   const [threeByThree, setThreeByThree] = useState(null);
@@ -131,7 +131,6 @@ const Account = ({ country }) => {
                 show={show}
                 key={show.imdbId}
                 deleteShow={deleteFaveShow}
-                country={country}
               />
             );
           })}
@@ -145,7 +144,6 @@ const Account = ({ country }) => {
                 show={show}
                 key={show.imdbId}
                 deleteShow={deleteWatchShow}
-                country={country}
               />
             );
           })}

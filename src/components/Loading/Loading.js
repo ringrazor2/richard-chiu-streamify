@@ -1,8 +1,8 @@
 import "./Loading.scss";
 
-const Loading = () => {
+const Loading = ({ loadingClass }) => {
   return (
-    <div className="loading-container">
+    <div className={`loading-container ${loadingClass}`}>
       <div className="dot-spinner">
         <div className="dot-spinner__dot"></div>
         <div className="dot-spinner__dot"></div>
