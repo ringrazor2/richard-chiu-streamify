@@ -88,7 +88,6 @@ const Account = ({ country }) => {
             }`}</h2>
             <p className="account-page__email">{`email: ${user.email}`}</p>
           </div>
-          <image src={user.photoURL}></image>
         </div>
 
         <div className="account-page__profile-container">
@@ -164,6 +163,7 @@ const Account = ({ country }) => {
                   imageArray={Obj.imgArray}
                   id={Obj.id}
                   deleteGrid={deleteGrid}
+                  key={Obj.id}
                 />
               );
             })}

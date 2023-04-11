@@ -17,17 +17,10 @@ const SearchPage = ({
   showFetch,
   country,
   setCountry,
-  matchingShow,
-  setMatchingShow,
   isLoading,
 }) => {
   useEffect(() => {
     showFetch();
-    if (show && show.title.toLowerCase() === title.toLowerCase()) {
-      setMatchingShow(true);
-    } else {
-      setMatchingShow(false);
-    }
   }, [title, country]);
 
   return (
@@ -43,17 +36,15 @@ const SearchPage = ({
             setCountry={setCountry}
             setShow={setShow}
           />
+
           {isLoading ? (
             <Loading />
           ) : (
             <>
-              {show ? (
-                matchingShow === false ? (
-                  <ShowDetails show={show} country={country} />
-                ) : (
-                  <SearchError title={title} />
-                )
+              {show && title ? (
+                <ShowDetails show={show} country={country} key={show.id} />
               ) : null}
+              {!show && title ? <SearchError title={title} /> : null}
             </>
           )}
         </div>

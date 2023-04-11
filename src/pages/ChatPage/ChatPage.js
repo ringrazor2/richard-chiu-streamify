@@ -38,9 +38,7 @@ const ChatPage = () => {
           };
           const response = await axios.request(options);
           const dataArr = response.data.result;
-          const matchingData = dataArr.find(
-            (result) => result.title.toLowerCase() === chatInput.toLowerCase()
-          );
+          const matchingData = dataArr[0];
           const genre = matchingData.genres
             .map((genre) => genre.name)
             .join(", ");

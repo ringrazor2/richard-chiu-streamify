@@ -18,9 +18,7 @@ const App = () => {
   });
   const [country, setCountry] = useState("ca");
   const [show, setShow] = useState(null);
-  const [matchingShow, setMatchingShow] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [render, setRender] = useState(false);
 
   const { title } = formData;
 
@@ -54,11 +52,7 @@ const App = () => {
         .request(options)
         .then((response) => {
           const dataArr = response.data.result;
-
-          const matchingData = dataArr.find(
-            (result) => result.title.toLowerCase() === title.toLowerCase()
-          );
-
+          const matchingData = dataArr[0];
           if (matchingData) {
             setIsLoading(false);
             const genre = matchingData.genres
@@ -73,10 +67,9 @@ const App = () => {
               genre: genre,
               streamingService: streamingService,
             });
-            setRender(true);
           } else {
-            setMatchingShow(true);
             setIsLoading(false);
+            setShow(null);
           }
         })
         .catch(function (error) {
@@ -86,11 +79,9 @@ const App = () => {
     } else {
       setShow(null);
       setIsLoading(false);
-      // setRender(false);
     }
   };
-  {
-  }
+
   return (
     <AuthContextProvider>
       <BrowserRouter>
@@ -109,11 +100,7 @@ const App = () => {
                 setCountry={setCountry}
                 handleSubmit={handleSubmit}
                 showFetch={showFetch}
-                matchingShow={matchingShow}
-                setMatchingShow={setMatchingShow}
                 isLoading={isLoading}
-                render={render}
-                setRender={setRender}
               />
             }
           />
