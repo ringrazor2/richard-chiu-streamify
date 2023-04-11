@@ -7,8 +7,13 @@
   padding: 2rem;
   border-radius: 6px;
   font-family:'PT Sans';
+  max-height: 40.625rem;
 }
 
+.chatRec-show{
+ min-height: 34.375rem;
+  width: 85%;
+}
 .show-poster-container {
   display: flex;
   flex-direction: column;
@@ -45,6 +50,7 @@
   line-height: 1.9rem;
   font-size: 1.3125rem;
   color: #e1e6eb;
+  overflow-y: auto;
 
 }
 

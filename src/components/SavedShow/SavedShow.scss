@@ -6,7 +6,7 @@
     width: 32%;
     border-radius: 4px;
     height: 18.75rem;
-   font-family: "Helvetica Neue";
+   font-family: "Roboto";
   
     &__image{
       height: 18.75rem;
@@ -19,7 +19,7 @@
       height: 100%;
       width: 100%;
       padding: 1rem;
-      overflow: scroll;
+      overflow: auto;
       border: none;
     }
     &__right{

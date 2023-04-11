@@ -1,7 +1,5 @@
 @use "../../styles/partials/global" as *;
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&display=swap");
+
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&family=Lato&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600&family=PT+Sans:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto&display=swap');
@@ -22,6 +20,7 @@
     flex-direction: column;
     padding: 4rem 0 0 7rem;
     width: 35%;
+    margin-bottom: 3rem;
   }
 
   &__text{

@@ -9,6 +9,7 @@ body{
   display:flex;
   justify-content: center;
   max-width: 125rem;
+  max-height: 60rem;
   margin: 0 auto;
 
   &__details{
@@ -87,12 +88,14 @@ body{
   position: absolute;
   color: black;
   width: 90%;
+  max-width: 125rem;
   top: 22rem;
   box-shadow:4px 4px 20px  rgb(28, 28, 28) ;
   padding: 2rem;
   border-radius: 6px;
   gap: 0.875rem;
   font-size: 2rem;
+  margin: 0 auto;
 }
 
 
@@ -106,10 +109,12 @@ body{
   position: absolute;
   color: black;
   width: 65%;
+  max-width: 125rem;
   top: 22rem;
   box-shadow:4px 4px 20px  rgb(28, 28, 28) ;
   padding: 2rem;
   border-radius: 6px;
+  margin: 0 auto;
 }
 .profileThree {
   margin: 0 auto;

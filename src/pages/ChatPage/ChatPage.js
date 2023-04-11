@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import NavBar from "../../components/NavBar/NavBar";
 import ChatBot from "../../components/ChatBot/ChatBot";
 import ShowDetails from "../../components/ShowDetails/ShowDetails";
 import Footer from "../../components/Footer/Footer";
+import { showFetch } from "../../utilities/script";
+import Loading from "../../components/Loading/Loading";
+import SearchError from "../../components/SearchError/SearchError";
 import "./ChatPage.scss";
 
 const ChatPage = () => {
   const [chatInput, setChatInput] = useState(null);
   const [chatShow, setChatShow] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([
     {
       message: "Tell me what kind of show you are looking for!",
@@ -17,51 +20,7 @@ const ChatPage = () => {
   ]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (chatInput) {
-        try {
-          const options = {
-            method: "GET",
-            url: "https://streaming-availability.p.rapidapi.com/v2/search/title",
-            params: {
-              title: chatInput,
-              country: "us",
-              type: "all",
-              output_language: "en",
-            },
-            headers: {
-              "X-RapidAPI-Key":
-                process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
-              "X-RapidAPI-Host":
-                process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
-            },
-          };
-          const response = await axios.request(options);
-          const dataArr = response.data.result;
-          const matchingData = dataArr.find(
-            (result) => result.title.toLowerCase() === chatInput.toLowerCase()
-          );
-          const genre = matchingData.genres
-            .map((genre) => genre.name)
-            .join(", ");
-          const streamingService = matchingData.streamingInfo.us
-            ? Object.keys(matchingData.streamingInfo.us)
-            : null;
-
-          setChatShow({
-            ...matchingData,
-            genre: genre,
-            streamingService: streamingService,
-          });
-        } catch (error) {
-          console.error(error);
-        }
-      } else {
-        setChatShow(null);
-      }
-    };
-
-    fetchData();
+    showFetch(chatInput, "us", setChatShow, setIsLoading);
   }, [chatInput]);
 
   return (
@@ -83,12 +42,24 @@ const ChatPage = () => {
               setChatInput={setChatInput}
               chatInput={chatInput}
             />
-            <div className="show-details-container">
-              {chatShow &&
-                chatInput.toLowerCase() === chatInput.toLowerCase() && (
-                  <ShowDetails show={chatShow} className="chat-details" />
-                )}
-            </div>
+
+            {isLoading ? (
+              <Loading loadingClass="chat-loading" />
+            ) : (
+              <>
+                {chatShow && chatInput ? (
+                  <ShowDetails
+                    show={chatShow}
+                    country={"us"}
+                    key={chatShow.id}
+                    className="chatRec-show"
+                  />
+                ) : null}
+                {!chatShow && chatInput ? (
+                  <SearchError title={chatInput} />
+                ) : null}
+              </>
+            )}
           </div>
         </div>
       </div>

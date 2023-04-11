@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { useDrop } from "react-dnd";
 
-const DroppableBox = ({ handleDrop, index }) => {
-  const [droppedItem, setDroppedItem] = useState(null);
-
+const DroppableBox = ({ handleDrop, index, droppedItem, setDroppedItems }) => {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: "image",
     drop: (item) => {
-      setDroppedItem(item.src);
+      setDroppedItems(item.src);
       handleDrop(index, item.src);
     },
     collect: (monitor) => ({

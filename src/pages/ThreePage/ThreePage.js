@@ -1,4 +1,3 @@
-import "./ThreePage.scss";
 import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
@@ -14,14 +13,57 @@ import ExampleModal from "../../components/ExampleModal/ExampleModal";
 import DraggableImage from "../../components/DraggableImage/DraggableImage";
 import DroppableBox from "../../components/DroppableBox/DroppableBox";
 import Footer from "../../components/Footer/Footer";
+import { showFetch } from "../../utilities/script";
+import "./ThreePage.scss";
 
-const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
+const ThreePage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [sampleOpen, setSampleOpen] = useState(false);
   const [grid, setGrid] = useState([]);
   const [threeError, setThreeError] = useState("");
-
+  const [droppedItems, setDroppedItems] = useState([
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
   const [clicked, setClicked] = useState(false);
+  const [formData, setFormData] = useState({
+    title: "",
+  });
+  const [country, setCountry] = useState("ca");
+  const [show, setShow] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { title } = formData;
+
+  const options = {
+    method: "GET",
+    url: "https://streaming-availability.p.rapidapi.com/v2/search/title",
+    params: {
+      title: title,
+      country: country,
+      type: "all",
+      output_language: "en",
+    },
+    headers: {
+      "X-RapidAPI-Key": process.env.REACT_APP_STREAMING_AVAILABILITY_API_KEY,
+      "X-RapidAPI-Host": process.env.REACT_APP_STREAMING_AVAILABILITY_HOST,
+      "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+    },
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormData({ title: e.target.elements.title.value });
+    e.target.reset();
+  };
+
   const { user } = UserAuth();
 
   const threePath = doc(db, "users", `${user?.email}`);
@@ -41,18 +83,21 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
   };
 
   useEffect(() => {
-    showFetch();
+    showFetch(title, country, setShow, setIsLoading);
   }, [title]);
 
   const handleDrop = (index, newImage) => {
     const updatedGrid = [...grid];
+    const updatedItems = [...droppedItems];
     updatedGrid[index] = newImage;
+    updatedItems[index] = newImage;
+    setDroppedItems(updatedItems);
     setGrid(updatedGrid);
   };
 
   const handleClear = async () => {
     setGrid([]);
-    window.location.reload(true);
+    setDroppedItems([null, null, null, null, null, null, null, null, null]);
   };
 
   const handleSave = async () => {
@@ -111,19 +156,64 @@ const ThreePage = ({ show, title, handleSubmit, showFetch }) => {
             <div className="three-left">
               <div className="threeBythree">
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop} index={0} />
-                  <DroppableBox handleDrop={handleDrop} index={1} />
-                  <DroppableBox handleDrop={handleDrop} index={2} />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={0}
+                    droppedItem={droppedItems[0]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={1}
+                    droppedItem={droppedItems[1]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={2}
+                    droppedItem={droppedItems[2]}
+                    setDroppedItems={setDroppedItems}
+                  />
                 </div>
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop} index={3} />
-                  <DroppableBox handleDrop={handleDrop} index={4} />
-                  <DroppableBox handleDrop={handleDrop} index={5} />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={3}
+                    droppedItem={droppedItems[3]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={4}
+                    droppedItem={droppedItems[4]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={5}
+                    droppedItem={droppedItems[5]}
+                    setDroppedItems={setDroppedItems}
+                  />
                 </div>
                 <div className="row">
-                  <DroppableBox handleDrop={handleDrop} index={6} />
-                  <DroppableBox handleDrop={handleDrop} index={7} />
-                  <DroppableBox handleDrop={handleDrop} index={8} />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={6}
+                    droppedItem={droppedItems[6]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={7}
+                    droppedItem={droppedItems[7]}
+                    setDroppedItems={setDroppedItems}
+                  />
+                  <DroppableBox
+                    handleDrop={handleDrop}
+                    index={8}
+                    droppedItem={droppedItems[8]}
+                    setDroppedItems={setDroppedItems}
+                  />
                 </div>
               </div>
               <div className="three-button-error-container">

@@ -10,7 +10,6 @@ import { fetchSignInMethodsForEmail } from "firebase/auth";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
-  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -96,7 +95,7 @@ const SignUpPage = () => {
           <p className="login-message">
             Already have an account?
             <Link to="/login">
-              <span className="login-link"> Sign in</span>
+              <span className="login-link"> Log in</span>
             </Link>
           </p>
 
