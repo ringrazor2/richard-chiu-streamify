@@ -22,6 +22,7 @@ const SignUpPage = () => {
     e.preventDefault();
 
     const methods = await fetchSignInMethodsForEmail(auth, email);
+   
     if (methods.length > 0) {
       setEmailError("An account with this email already exists");
       return;

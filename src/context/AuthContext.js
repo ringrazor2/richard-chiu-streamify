@@ -6,7 +6,6 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
