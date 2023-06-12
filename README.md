@@ -22,19 +22,27 @@ Streamify is a web application that helps users find where to watch movies and T
 - Streaming service icon will take you directly to the show on that service
 - icons next to title will save show to account
 
+### Search
+
 ![Search Page](./public/streamify-pics/search.png)
 
 - ask chat for a show you want with prompts
 - chat will output a show and generate a card for ease of access
+
+### Chat
 
 ![Chat Page](./public/streamify-pics/chat.png)
 
 - search for a show, drag and drop!
 - pick a theme such as comedy shows - arrange, save, and show to your friends
 
+## 3x3
+
 ![Grid Page](./public/streamify-pics/grid.png)
 
 - watch list, favourites, and 3x3 will be saved to account if logged in
+
+### Account
 
 ![List Page](./public/streamify-pics/list.png)
 
