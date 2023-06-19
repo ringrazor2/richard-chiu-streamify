@@ -8,25 +8,24 @@
   &__title{
     color: white;
     font-family: Inter;
-    font-size: 3.25rem;
+    // font-size: 3.25rem;
     font-weight: 600;
 
     &-container{
-      margin-bottom: 3rem;
+      // margin-bottom: 3rem;
     }
   }
   &-container {
     display: flex;
     flex-direction: column;
-    padding: 4rem 0 0 7rem;
-    width: 35%;
+    // padding: 4rem 0 0 7rem;
+    // width: 35%;
     margin-bottom: 3rem;
   }
 
   &__text{
     color: #edf0f8;
     font-family: Lato;
-    font-size: 2rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
     line-height: 2.75rem;
@@ -43,13 +42,8 @@
   &__explore{
     color: white;
     font-family: "Bebas Neue";
-    font-size: 3rem;
     margin-top:4rem;
     
   }
 
-  &__button-container{
-    display: flex;
-    align-items: center;
-  }
 }

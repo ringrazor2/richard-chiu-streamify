@@ -32,7 +32,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className=" relative">
+    <header className="w-full">
       <button
         className="flex-col justify-center items-center lg:hidden p-8"
         onClick={handleClick}

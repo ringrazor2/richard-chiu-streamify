@@ -7,29 +7,37 @@ import crave from "../../assets/images/icons/crave-icon.png";
 import hbo from "../../assets/images/icons/hbo-icon.png";
 const StreamingLogos = () => {
   return (
-    <div className="streaming-logos">
+    <div className="streaming-logos mt-4 lg:mt-[1.875rem] lg:ml-[1.25rem]">
       <Link to="https://www.netflix.com" target="_blank">
-        <img className="streaming-logo" alt="netflix logo" src={netflix}></img>
+        <img
+          className="streaming-logo mr-[10px]"
+          alt="netflix logo"
+          src={netflix}
+        ></img>
       </Link>
       <Link to="https://www.primevideo.com" target="_blank">
         <img
-          className="streaming-logo"
+          className="streaming-logo mr-[10px]"
           alt="prime video logo"
           src={primeVideo}
         ></img>
       </Link>
       <Link to="https:www.disneyplus.com" target="_blank">
         <img
-          className="streaming-logo"
+          className="streaming-logo mr-[10px]"
           alt="disney plus logo"
           src={disneyPlus}
         ></img>
       </Link>
       <Link to="https://www.crave.com" target="_blank">
-        <img className="streaming-logo" alt="crave logo" src={crave}></img>
+        <img
+          className="streaming-logo mr-[10px]"
+          alt="crave logo"
+          src={crave}
+        ></img>
       </Link>
       <Link to="http://www.hbomax.com" target="_blank">
-        <img className="streaming-logo" alt="hbo logo" src={hbo}></img>
+        <img className="streaming-logo mr-0" alt="hbo logo" src={hbo}></img>
       </Link>
     </div>
   );

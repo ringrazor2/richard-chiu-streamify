@@ -15,7 +15,7 @@ const Footer = () => {
               </p>
             </div>
 
-            <div className="footer__socials">
+            {/* <div className="footer__socials">
               <Link to="https://linkedin.com/in/richardchiu94/" target="_blank">
                 <img
                   src={linkedin}
@@ -41,7 +41,7 @@ const Footer = () => {
                 className="footer__socials-img qr"
                 alt="contact QR"
               ></img>
-            </div>
+            </div> */}
           </div>
         </div>
       </footer>

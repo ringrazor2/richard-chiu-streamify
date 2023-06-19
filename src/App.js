@@ -1,6 +1,7 @@
 import "./App.scss";
 import { AuthContextProvider } from "./context/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar/NavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import ChatPage from "./pages//ChatPage/ChatPage";
