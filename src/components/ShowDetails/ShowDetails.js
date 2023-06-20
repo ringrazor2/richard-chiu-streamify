@@ -77,16 +77,18 @@ const ShowDetails = ({ show, className, country }) => {
     }
   }
   return (
-    <div className={`show-details ${className}`}>
-      <div className="show-poster-container">
+    <div
+      className={` ${className} flex w-[85%] p-4 lg:p-8 rounded-md bg-zinc-900 max-h-[520px] overflow-auto`}
+    >
+      <div className="flex flex-col text-xs lg:text-[1rem] mr-4 lg:mr-8">
         <Link to={show.youtubeTrailerVideoLink} target="_blank">
           <img
-            className="poster-image"
+            className="poster-image h-[200px] mb-2 lg:h-[300px] lg:mr-12 lg:w-[200px] w-[140px]"
             src={show.posterURLs[342]}
             alt="show poster"
           />
         </Link>
-        <p className="show-info">
+        <p className="show-info w-[140px] lg-w-[200px] lg:text-[16px] flex justify-between ">
           <span className="show-subhead">Imdb Rating </span>
           {show.imdbRating}/100
         </p>
@@ -102,12 +104,62 @@ const ShowDetails = ({ show, className, country }) => {
           <span className="show-subhead">Genres </span>
           {show.genre && show.genre.length > 0 ? show.genre : "General"}
         </p>
+        <div className="lg:hidden flex mt-8">
+          <Link className="vpn-a" to="https://nordvpn.com/" target="_blank">
+            <img src={nordvpnIcon} alt="nordvpn icon" className="vpn-icon" />
+          </Link>
+          <Link
+            className="vpn-a"
+            to="https://cyberghostvpn.com"
+            target="_blank"
+          >
+            <img
+              src={cyberghost}
+              alt="cyberghost vpn icon"
+              className="vpn-icon"
+            />
+          </Link>
+          <Link
+            className="vpn-a"
+            to="https://privateinternetaccess.com/"
+            target="_blank"
+          >
+            <img src={piaIcon} alt="nordvpn icon" className="vpn-icon" />
+          </Link>
+        </div>
+        <div className="lg:hidden flex mt-8 overflow-auto">
+          {show.streamingService &&
+            show.streamingService.map((service, index) => {
+              let iconSrc = "";
+              let linkSrc = "";
+              for (const country in show.streamingInfo) {
+                if (show.streamingInfo[country][service]) {
+                  iconSrc = getIconSrc(service);
+                  linkSrc = show.streamingInfo[country][service][0].link;
+                  break;
+                }
+              }
+              return (
+                <Link target="_blank" to={linkSrc} className="lg:mr-6">
+                  <img
+                    key={index}
+                    className="lg:h-[4.7rem] lg:w-[4.7rem] lg:rounded-xl h-10 rounded mr-6"
+                    src={iconSrc || notFound}
+                    alt={`${service} icon`}
+                  />
+                </Link>
+              );
+            })}
+        </div>
+        <p className="stream-region">Region: {country || "US"}</p>
       </div>
-      <div className="show-text-container">
-        <div className="show-heading-container">
-          <div className="show-title-icon">
-            <h2 className="show-title">{show.title}</h2>
-            <div className="show-icons">
+      <div className="flex flex-col">
+        <div className="flex flex-col lg:flex-row lg:mb-[1.2rem] lg:justify-between">
+          <div className="flex">
+            <h2 className="show-title text-3xl lg:text-[2.625rem]">
+              {show.title}
+            </h2>
+            <div className=" flex mr-2 lg:mx-8">
               {favedShow ? (
                 <img
                   src={faveIconActive}
@@ -138,7 +190,7 @@ const ShowDetails = ({ show, className, country }) => {
               )}
             </div>
           </div>
-          <div className="show-vpn">
+          <div className="hidden lg:flex">
             <Link className="vpn-a" to="https://nordvpn.com/" target="_blank">
               <img src={nordvpnIcon} alt="nordvpn icon" className="vpn-icon" />
             </Link>
@@ -162,9 +214,13 @@ const ShowDetails = ({ show, className, country }) => {
             </Link>
           </div>
         </div>
-        <h3 className="show-synopsis-title">Synopsis </h3>
-        <p className="show-synopsis">{show.overview}</p>
-        <div className="stream-info">
+        <h3 className="show-title text-white lg:text-3xl text-2xl my-5">
+          Synopsis{" "}
+        </h3>
+        <p className="text-white text-sm lg:mb-8 lg:text-[21px] overflow-auto mb-4 lg:leading-7">
+          {show.overview}
+        </p>
+        <div className=" hidden lg:flex">
           {show.streamingService &&
             show.streamingService.map((service, index) => {
               let iconSrc = "";
@@ -177,10 +233,10 @@ const ShowDetails = ({ show, className, country }) => {
                 }
               }
               return (
-                <Link target="_blank" to={linkSrc} className="streamLink">
+                <Link target="_blank" to={linkSrc} className="lg:mr-2">
                   <img
                     key={index}
-                    className="stream-icon"
+                    className="lg:h-[4.7rem] lg:w-[4.7rem] lg:rounded-xl h-10 rounded mr-6"
                     src={iconSrc || notFound}
                     alt={`${service} icon`}
                   />

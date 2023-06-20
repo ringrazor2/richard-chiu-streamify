@@ -3,46 +3,43 @@
 .show-details {
   display: flex;
   background-color: rgb(37, 35, 35);
-  width: 85%;
-  padding: 2rem;
-  border-radius: 6px;
   font-family:'PT Sans';
-  max-height: 40.625rem;
+  // max-height: 40.625rem;
 }
 
 .chatRec-show{
  min-height: 34.375rem;
   width: 85%;
 }
-.show-poster-container {
-  display: flex;
-  flex-direction: column;
-  margin-right: 3rem;
-}
+// .show-poster-container {
+//   display: flex;
+//   flex-direction: column;
+//   margin-right: 3rem;
+// }
 
 .poster-image {
-  margin-bottom: 2rem;
-  height: 18.75rem;
-  width: 12.5rem;
+  // margin-bottom: 2rem;
+  // height: 18.75rem;
+  // width: 12.5rem;
   object-fit: cover;
 }
 
 .show-text-container {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 }
 
 .show-title {
   color: white;
-  font-size: 2.625rem;
+  // font-size: 2.625rem;
   font-weight: 600;
 }
 
 .show-synopsis-title {
   color: white;
-  font-size: 2.0625rem;
+  // font-size: 2.0625rem;
   font-weight: 550;
-  margin-bottom: 1.5rem;
+  // margin-bottom: 1.5rem;
 }
 
 .show-synopsis {
@@ -72,11 +69,11 @@
 }
 
 .show-info {
-  display: flex;
-  width: 12.5rem;
-  font-size: 1rem;
-  margin-bottom: 0.32rem;
-  justify-content: space-between;
+  // display: flex;
+  // width: 12.5rem;
+  // font-size: 1rem;
+  // margin-bottom: 0.32rem;
+  // justify-content: space-between;
   color: #e1e6eb;
 
 }
@@ -91,15 +88,15 @@
 
 
 .show-heading-container{
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.2rem;
-  justify-content: space-between;
+  // display: flex;
+  // align-items: center;
+  // margin-bottom: 1.2rem;
+  // justify-content: space-between;
 }
 .show-icon {
   height: 1.25rem;
   width: 1.25rem;
-  margin-right: 0.625rem;
+  // margin-right: 0.625rem;
   cursor: pointer;
   filter: brightness(0) invert(1); 
 }
@@ -129,7 +126,7 @@
 }
 .show-title-icon{
   display: flex;
-  align-items: center;
+  // align-items: center;
 }
 
 .vpn-icon {
