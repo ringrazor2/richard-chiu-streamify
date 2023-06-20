@@ -25,17 +25,19 @@ const ChatPage = () => {
 
   return (
     <>
-      <div className="chat-page">
+      <div className="lg:bg-backDrop ">
         <NavBar />
-        <div className="chat-page-container">
-          <div className="chat-page__message-container">
-            <h1 className="chat-page__message">Don't know what to watch?</h1>
-            <h1 className="chat-page__message chat-page__message-2">
-              We got you! <span className="askChat">Ask Chat </span>and get a
-              recommendation
-            </h1>
+        <div className="flex flex-col lg:py-[2.5rem] lg:px-[6rem] items-center lg:items-start">
+          <div className="hidden lg:block">
+            <div className="chat-page__message-container">
+              <h1 className="chat-page__message">Don't know what to watch?</h1>
+              <h1 className="chat-page__message chat-page__message-2">
+                We got you! <span className="askChat">Ask Chat </span>and get a
+                recommendation
+              </h1>
+            </div>
           </div>
-          <div className="chat-page-main">
+          <div className="flex flex-col lg:flex-row ">
             <ChatBot
               messages={messages}
               setMessages={setMessages}
@@ -52,7 +54,7 @@ const ChatPage = () => {
                     show={chatShow}
                     country={"us"}
                     key={chatShow.id}
-                    className="chatRec-show"
+                    className="lg:min-h-[550px] w-[450px] mt-8 lg:mt-0"
                   />
                 ) : null}
                 {!chatShow && chatInput ? (
@@ -63,7 +65,7 @@ const ChatPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

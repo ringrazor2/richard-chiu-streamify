@@ -7,7 +7,7 @@ import crave from "../../assets/images/icons/crave-icon.png";
 import hbo from "../../assets/images/icons/hbo-icon.png";
 const StreamingLogos = () => {
   return (
-    <div className="streaming-logos mt-4 lg:mt-[1.875rem] lg:ml-[1.25rem]">
+    <div className="streaming-logos lg:mt-[1.875rem] lg:ml-[1.25rem]">
       <Link to="https://www.netflix.com" target="_blank">
         <img
           className="streaming-logo mr-[10px]"

@@ -80,10 +80,10 @@ const ShowDetails = ({ show, className, country }) => {
     <div
       className={` ${className} flex w-[85%] p-4 lg:p-8 rounded-md bg-zinc-900 max-h-[520px] overflow-auto`}
     >
-      <div className="flex flex-col text-xs lg:text-[1rem] mr-4 lg:mr-8">
+      <div className="flex flex-col text-xs lg:text-[1rem] mr-4 lg:mr-6 ">
         <Link to={show.youtubeTrailerVideoLink} target="_blank">
           <img
-            className="poster-image h-[200px] mb-2 lg:h-[300px] lg:mr-12 lg:w-[200px] w-[140px]"
+            className=" object-cover w-[140px]  mb-2 lg:h-[300px] lg:mr-12 lg:w-[200px] rounded-sm max-w-auto"
             src={show.posterURLs[342]}
             alt="show poster"
           />
@@ -92,16 +92,16 @@ const ShowDetails = ({ show, className, country }) => {
           <span className="show-subhead">Imdb Rating </span>
           {show.imdbRating}/100
         </p>
-        <p className="show-info">
+        <p className="show-info w-[140px] lg-w-[200px] lg:text-[16px] flex justify-between">
           <span className="show-subhead">Type </span>
           {show.type}
         </p>
-        <p className="show-info">
+        <p className="show-info w-[140px] lg-w-[200px] lg:text-[16px] flex justify-between">
           <span className="show-subhead">Year </span>
           {show.year || show.firstAirYear}
         </p>
-        <p className="show-info genres">
-          <span className="show-subhead">Genres </span>
+        <p className="show-info genres w-[140px] lg-w-[200px] lg:text-[16px] flex justify-between">
+          <span className="show-subhead flex-end">Genres </span>
           {show.genre && show.genre.length > 0 ? show.genre : "General"}
         </p>
         <div className="lg:hidden flex mt-8">
@@ -151,7 +151,7 @@ const ShowDetails = ({ show, className, country }) => {
               );
             })}
         </div>
-        <p className="stream-region">Region: {country || "US"}</p>
+        <p className="mt-2.5 lg:hidden text-white">Region: {country || "US"}</p>
       </div>
       <div className="flex flex-col">
         <div className="flex flex-col lg:flex-row lg:mb-[1.2rem] lg:justify-between">

@@ -5,10 +5,12 @@ import HomeMessage from "../../components/HomeMessage/HomeMessage";
 import NavBar from "../../components/NavBar/NavBar";
 import screens from "../../assets/images/screens.svg";
 import Footer from "../../components/Footer/Footer";
+// import bg from "../../assets/images/backgrounds/primary-background.svg"
+
 const HomePage = () => {
   return (
     <>
-      <div className="homePage relative">
+      <div className=" bg-backDrop relative">
         <NavBar />
         <div className="homePage-main lg:flex">
           <div className="lg:hidden absolute top-0 left-20">
@@ -29,8 +31,9 @@ const HomePage = () => {
             <img className="home-screen" src={screens}></img>
           </div>
         </div>
-
-        <HomeMessage className="homePage-textContainer" />
+        <div className="lg:hidden">
+          <HomeMessage />
+        </div>
         <Footer />
       </div>
     </>

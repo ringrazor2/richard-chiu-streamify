@@ -66,9 +66,9 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
   };
 
   return (
-    <div className="chat-page-chatBot">
+    <div className="relative lg:mr-10 w-full ">
       <MainContainer>
-        <ChatContainer className="chat-container">
+        <ChatContainer className="chat-container h-[300px]">
           <MessageList className="message-list" scrollBehavior="smooth">
             {messages.map((message, i) => {
               return <Message key={i} model={message} />;
