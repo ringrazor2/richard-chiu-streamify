@@ -2,22 +2,20 @@
 
 .search-error {
     background-color: rgb(37, 35, 35);
-    width: 65%;
     border-radius: 6px;
-    padding: 0 3rem;
+    // padding: 0 3rem;
 
     &__title{
     font-family: 'Abril Fatface', serif;
   color: #EDEDED;;
   text-align: center;
-  font-size: 8rem;
+
   margin: 0;
   text-shadow: -1px 0 #BFC0C0, 0 1px #BFC0C0, 1px 0 #BFC0C0, 0 -1px #BFC0C0;
     }
 
     &__message{
         font-family: "Lato";
-        font-size: 2rem;
         text-transform: uppercase;
         text-align: center;
         color: #BFC0C0;

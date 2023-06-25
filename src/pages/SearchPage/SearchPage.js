@@ -48,9 +48,16 @@ const SearchPage = () => {
           ) : (
             <>
               {show && title ? (
-                <ShowDetails show={show} country={country} key={show.id} />
+                <ShowDetails
+                  show={show}
+                  country={country}
+                  key={show.id}
+                  className="w-[85%]"
+                />
               ) : null}
-              {!show && title ? <SearchError title={title} /> : null}
+              {!show && title ? (
+                <SearchError title={title} className="w-[85%]" />
+              ) : null}
             </>
           )}
         </div>

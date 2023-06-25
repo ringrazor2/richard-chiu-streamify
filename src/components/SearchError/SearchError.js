@@ -1,11 +1,13 @@
 import "./SearchError.scss";
 
-const SearchError = ({ title }) => {
+const SearchError = ({ title, className }) => {
   return (
     <>
-      <div className="search-error">
-        <h1 className="search-error__title">404</h1>
-        <h3 className="search-error__message">
+      <div
+        className={`search-error lg:w-[65%] mt-8 flex-col justify-center lg:px-[3rem] px-3 ${className}`}
+      >
+        <h1 className="search-error__title lg:text-[8rem] text-[5rem]">404</h1>
+        <h3 className="search-error__message lg:text-[2rem] text-lg">
           Sorry we couldn't find
           <span className="error-title"> "{title || "the show"}"</span> please
           check the spelling and try again.

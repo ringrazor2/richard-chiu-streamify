@@ -25,9 +25,9 @@ const ChatPage = () => {
 
   return (
     <>
-      <div className="lg:bg-backDrop ">
+      <div className="lg:bg-backDrop px-3 pb-6 ">
         <NavBar />
-        <div className="flex flex-col lg:py-[2.5rem] lg:px-[6rem] items-center lg:items-start">
+        <div className="flex flex-col lg:py-[2.5rem] lg:px-[6rem] items-center lg:items-start justify-center w-full">
           <div className="hidden lg:block">
             <div className="chat-page__message-container">
               <h1 className="chat-page__message">Don't know what to watch?</h1>
@@ -54,7 +54,7 @@ const ChatPage = () => {
                     show={chatShow}
                     country={"us"}
                     key={chatShow.id}
-                    className="lg:min-h-[550px] w-[450px] mt-8 lg:mt-0"
+                    className="lg:min-h-[550px] mt-8 lg:mt-0"
                   />
                 ) : null}
                 {!chatShow && chatInput ? (

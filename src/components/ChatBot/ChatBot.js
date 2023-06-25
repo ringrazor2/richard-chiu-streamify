@@ -67,26 +67,28 @@ const ChatBot = ({ messages, setMessages, setChatInput }) => {
 
   return (
     <div className="relative lg:mr-10 w-full ">
-      <MainContainer>
-        <ChatContainer className="chat-container h-[300px]">
-          <MessageList className="message-list" scrollBehavior="smooth">
-            {messages.map((message, i) => {
-              return <Message key={i} model={message} />;
-            })}
-            {typing ? <TypingIndicator content="ChatGPT is typing" /> : null}
-            {messages.length > 0 ? (
-              <button className="clear-button" onClick={handleClearMessages}>
-                Clear
-              </button>
-            ) : null}
-          </MessageList>
-          <MessageInput
-            placeholder="Type message here"
-            onSend={handleSendMessage}
-            attachButton={false}
-          />
-        </ChatContainer>
-      </MainContainer>
+      <div className="lg:w-[500px] h-[300px] lg:h-[550px]">
+        <MainContainer className="">
+          <ChatContainer className="chat-container">
+            <MessageList className="message-list" scrollBehavior="smooth">
+              {messages.map((message, i) => {
+                return <Message key={i} model={message} />;
+              })}
+              {typing ? <TypingIndicator content="ChatGPT is typing" /> : null}
+              {messages.length > 0 ? (
+                <button className="clear-button" onClick={handleClearMessages}>
+                  Clear
+                </button>
+              ) : null}
+            </MessageList>
+            <MessageInput
+              placeholder="Type message here"
+              onSend={handleSendMessage}
+              attachButton={false}
+            />
+          </ChatContainer>
+        </MainContainer>
+      </div>
     </div>
   );
 };

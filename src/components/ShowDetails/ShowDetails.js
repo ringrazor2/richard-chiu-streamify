@@ -78,12 +78,12 @@ const ShowDetails = ({ show, className, country }) => {
   }
   return (
     <div
-      className={` ${className} flex w-[85%] p-4 lg:p-8 rounded-md bg-zinc-900 max-h-[520px] overflow-auto`}
+      className={`  flex p-4 lg:p-8 rounded-md bg-zinc-900 max-h-[520px] overflow-auto ${className}`}
     >
       <div className="flex flex-col text-xs lg:text-[1rem] mr-4 lg:mr-6 ">
         <Link to={show.youtubeTrailerVideoLink} target="_blank">
           <img
-            className=" object-cover w-[140px]  mb-2 lg:h-[300px] lg:mr-12 lg:w-[200px] rounded-sm max-w-auto"
+            className=" object-cover w-[140px] mb-2 lg:mr-12 rounded-sm max-w-auto"
             src={show.posterURLs[342]}
             alt="show poster"
           />
@@ -159,7 +159,7 @@ const ShowDetails = ({ show, className, country }) => {
             <h2 className="show-title text-3xl lg:text-[2.625rem]">
               {show.title}
             </h2>
-            <div className=" flex mr-2 lg:mx-8">
+            <div className=" flex mx-3 lg:mx-8">
               {favedShow ? (
                 <img
                   src={faveIconActive}
