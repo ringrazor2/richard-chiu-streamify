@@ -14,22 +14,22 @@
   align-items: center;
 }
 .signup-container {
-  // position: relative;
-  width: 37.5rem;
-  height: 25rem;
+  position: relative;
+  // width: 37.5rem;
+  // height: 25rem;
   background: #FFF;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .signup-form {
-  position: absolute;
+  // position: absolute;
   top: 0;
   left: 0;
   box-sizing: border-box;
-  padding: 2.5rem;
+  // padding: 2.5rem;
   width: 18.75rem;
-  height: 25rem;
+  // height: 25rem;
 }
 
 .signup-title {
@@ -97,9 +97,9 @@
   top: 0;
   right: 0;
   box-sizing: border-box;
-  padding: 40px;
+  // padding: 40px;
   width: 18.75rem;
-  height: 25rem;
+  // height: 25rem;
   background: url('https://goo.gl/YbktSj');
   background-size: cover;
   background-position: center;
@@ -107,9 +107,8 @@
 }
 
 .social-buttons-container {
-    margin-top: 7.18rem;
+    // margin-top: 8.18rem;
 }
-
 
 .social-signin {
   margin-bottom: 1.25rem;
