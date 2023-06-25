@@ -22,7 +22,7 @@ const SignUpPage = () => {
     e.preventDefault();
 
     const methods = await fetchSignInMethodsForEmail(auth, email);
-   
+
     if (methods.length > 0) {
       setEmailError("An account with this email already exists");
       return;
@@ -58,57 +58,121 @@ const SignUpPage = () => {
   return (
     <div className="signup-page">
       <img className="signup-img" src={phoneScreens} />
-      <div className="signup-container">
-        <form onSubmit={handleSubmit} className="signup-form">
-          <h1 className="signup-title">Sign up</h1>
+      <div className="lg:hidden">
+        <div className="signup-container flex flex-col lg:w-[37.5rem] lg:h-[25rem]">
+          <form
+            onSubmit={handleSubmit}
+            className="signup-form lg:p-9 p-5 pb-0 lg:h-[25rem]"
+          >
+            <h1 className="signup-title">Sign up</h1>
 
-          <input
-            className={`signup-input ${emailError && "error-input"}`}
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            className={`signup-input ${error && "error-input"}`}
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <input
-            className={`signup-input ${error && "error-input"}`}
-            type="password"
-            name="password2"
-            placeholder="Confirm password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
+            <input
+              className={`signup-input ${emailError && "error-input"}`}
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              className={`signup-input ${error && "error-input"}`}
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <input
+              className={`signup-input ${error && "error-input"}`}
+              type="password"
+              name="password2"
+              placeholder="Confirm password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
 
-          {(error && <p className="error-message">{error}</p>) ||
-            (emailError && <p className="error-message">{emailError}</p>)}
+            {(error && <p className="error-message">{error}</p>) ||
+              (emailError && <p className="error-message">{emailError}</p>)}
 
-          <p className="login-message">
-            Already have an account?
-            <Link to="/login">
-              <span className="login-link"> Log in</span>
-            </Link>
-          </p>
+            <p className="login-message">
+              Already have an account?
+              <Link to="/login">
+                <span className="login-link"> Log in</span>
+              </Link>
+            </p>
 
-          <button className="signup-button">Sign up</button>
-        </form>
+            <button className="signup-button">Sign up</button>
+          </form>
 
-        <div className="right">
-          <div className="social-buttons-container">
-            <GoogleButton onClick={handleGoogleSignIn} />
+          <div className="right lg:h-[25rem] p-5">
+            <div className="social-buttons-container">
+              <GoogleButton onClick={handleGoogleSignIn} />
+            </div>
           </div>
+          {/* <div className="or">OR</div> */}
         </div>
-        <div className="or">OR</div>
+        <img className="signup-img2" src={phoneScreens} />
+      </div>
+
+      <div className="hidden lg:block">
+        <div className="signup-container lg:w-[37.5rem] lg:h-[25rem]">
+          <form
+            onSubmit={handleSubmit}
+            className="signup-form lg:p-9 p-5 pb-0 lg:h-[25rem] lg:absolute"
+          >
+            <h1 className="signup-title">Sign up</h1>
+
+            <input
+              className={`signup-input ${emailError && "error-input"}`}
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              className={`signup-input ${error && "error-input"}`}
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <input
+              className={`signup-input ${error && "error-input"}`}
+              type="password"
+              name="password2"
+              placeholder="Confirm password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+
+            {(error && <p className="error-message">{error}</p>) ||
+              (emailError && <p className="error-message">{emailError}</p>)}
+
+            <p className="login-message">
+              Already have an account?
+              <Link to="/login">
+                <span className="login-link"> Log in</span>
+              </Link>
+            </p>
+
+            <button className="signup-button">Sign up</button>
+          </form>
+
+          <div className="right lg:h-[25rem] p-5 lg:absolute lg:p-10">
+            <div className="social-buttons-container lg:mt-[8.5rem]">
+              <GoogleButton onClick={handleGoogleSignIn} />
+            </div>
+          </div>
+          <div className="or">OR</div>
+        </div>
       </div>
       <img className="signup-img2" src={phoneScreens} />
     </div>
