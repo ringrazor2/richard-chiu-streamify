@@ -16,11 +16,11 @@ const HomePage = () => {
           <div className="lg:hidden absolute top-0 left-20">
             <Link className="logo-link" to="/">
               <img
-                className="h-[4rem] mr-4 ml-6"
+                className="h-[4rem] lg:mr-4 lg:ml-6 mr-2"
                 src={logo}
                 alt="site logo"
               ></img>
-              <h1 className="site__title text-[3rem] ">STREAMIFY</h1>
+              <h1 className="site__title text-[3rem] mr-2">STREAMIFY</h1>
             </Link>
           </div>
 

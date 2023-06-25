@@ -144,7 +144,7 @@ const NavBar = () => {
                 </div>
                 <div>
                   <div
-                    className="navBar__anchor-mobile--2"
+                    className="navBar__anchor-mobile--2 cursor-pointer"
                     to="/account"
                     onClick={handleSignOut}
                   >

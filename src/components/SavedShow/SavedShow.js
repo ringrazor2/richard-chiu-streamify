@@ -42,10 +42,10 @@ const SavedShow = ({ show, deleteShow }) => {
   }
 
   return (
-    <div className="show-card">
+    <div className="show-card lg:w-[32%] lg:h-[18.75rem] w-[100%] h-[300px] ">
       <Link to={show.youtubeTrailerVideoLink} target="_blank" rel="noreferrer">
         <img
-          className="poster-image"
+          className="poster-image lg:max-h-[300px] lg:max-w-[200px]"
           src={show.posterURLs[342]}
           alt="show poster"
         />

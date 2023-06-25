@@ -3,6 +3,7 @@ import { UserAuth } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebase";
 import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import NavBar from "../../components/NavBar/NavBar";
 import SavedShow from "../../components/SavedShow/SavedShow";
 import ThreeByThree from "../../components/ThreeByThree/ThreeByThree";
 import logo from "../../assets/images/icons/streamify-logo.svg";
@@ -69,33 +70,26 @@ const Account = () => {
   };
 
   return (
-    <div className="account-page">
-      <Link className="logo-link account-logo" to="/">
-        <img className="logo" src={logo} alt="site logo"></img>
-        <h1 className="site__title">STREAMIFY</h1>
-      </Link>
-      <div className="account-page__details">
-        <div className="account-page__heading">
-          <h1 className="account-page__title">Account</h1>
-          <button className="signout-button" onClick={handleSignOut}>
-            Sign Out
-          </button>
-        </div>
-        <div className="account-page__personal">
-          <div className="account-page__personal-container">
-            <h2 className="account-page__email">{`Hi, ${
+    <div className="flex flex-col items-center">
+      <NavBar />
+      <div className="account-page__details p-8 lg:mt-[3rem] rounded-lg lg:rounded-xl flex flex-col items-center mx-4 lg:w-[650px]">
+        <h1 className="font-bold lg:text-5xl text-3xl">Account</h1>
+
+        <div className="lg:mt-4 mt-3">
+          <div className="">
+            <h2 className="lg:text-2xl text-lg">{`Hi, ${
               user.displayName || user.email
             }`}</h2>
-            <p className="account-page__email">{`email: ${user.email}`}</p>
+            <p className="lg:text-2xl text-lg mt-2">{`email: ${user.email}`}</p>
           </div>
         </div>
 
-        <div className="account-page__profile-container">
+        <div className="flex justify-between lg:mt-12 mt-6 lg:text-xl text-xs">
           <button
             className={
               activeList === "favourites"
-                ? "signout-button button-active"
-                : "signout-button"
+                ? "signout-button button-active mr-8 px-3 py-2"
+                : "signout-button px-3 py-2 mr-8"
             }
             onClick={faveList ? () => setActiveList("favourites") : null}
           >
@@ -104,8 +98,8 @@ const Account = () => {
           <button
             className={
               activeList === "watchlist"
-                ? "signout-button button-active"
-                : "signout-button"
+                ? "signout-button button-active mr-8 px-3 py-2"
+                : "signout-button  px-3 py-2 mr-8"
             }
             onClick={watchList ? () => setActiveList("watchlist") : null}
           >
@@ -114,8 +108,8 @@ const Account = () => {
           <button
             className={
               activeList === "threeByThree"
-                ? "signout-button threeButton button-active"
-                : "signout-button threeButton"
+                ? "signout-button button-active px-7 py-2"
+                : "signout-button px-7 py-2 lg:px-10"
             }
             onClick={threeByThree ? () => setActiveList("threeByThree") : null}
           >
@@ -124,7 +118,7 @@ const Account = () => {
         </div>
       </div>
       {activeList === "favourites" && faveList && faveList.length > 0 && (
-        <div className="profile-lists">
+        <div className="profile-lists  lg:p-8 p-4 lg:w-[90%]">
           {faveList.map((show) => {
             return (
               <SavedShow
@@ -137,7 +131,7 @@ const Account = () => {
         </div>
       )}
       {activeList === "watchlist" && watchList && watchList.length > 0 && (
-        <div className="profile-lists">
+        <div className="profile-lists lg:p-8 p-4 lg:w-[90%]">
           {watchList.map((show) => {
             return (
               <SavedShow

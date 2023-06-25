@@ -39,7 +39,7 @@ const LoginPage = () => {
   return (
     <div className="signup-page">
       <img className="signup-img" src={phoneScreens} />
-      <div className="signup-container">
+      <div className="signup-container lg:relative flex flex-col">
         <form onSubmit={handleSubmit} className="signup-form login-form">
           <h1 className="signup-title login-title">Log in</h1>
 
@@ -76,7 +76,7 @@ const LoginPage = () => {
             <GoogleButton onClick={handleGoogleSignIn} />
           </div>
         </div>
-        <div className="or">OR</div>
+        {/* <div className="or">OR</div> */}
       </div>
 
       <img className="signup-img2" src={phoneScreens} />
